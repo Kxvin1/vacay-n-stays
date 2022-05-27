@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
-import ReviewCard from "./ReviewCard";
-import ReviewForm from "./ReviewForm";
+import React, { useState, useEffect } from 'react';
 
-const Reviews = ({ user, spot, reviews }) => {
-  return <></>;
-};
+const ReviewCard = ({ review }) => {
+  return (
+    <>
+      {review.comment}
+    </>
 
-export default Reviews;
+  )
+}
