@@ -63,14 +63,14 @@ function App() {
         <Route path="/sign-up" exact={true}>
           <SignUpForm />
         </Route> */}
+        <Route path="/" exact={true}>
+          <Spots />
+        </Route>
         <ProtectedRoute path="/users" exact={true}>
           <UsersList />
         </ProtectedRoute>
         <ProtectedRoute path="/users/:userId" exact={true}>
           <User />
-        </ProtectedRoute>
-        <ProtectedRoute path="/" exact={true}>
-          <Spots />
         </ProtectedRoute>
         <ProtectedRoute path="/spot/new" exact={true}>
           <SpotForm />
