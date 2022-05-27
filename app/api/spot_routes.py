@@ -1,10 +1,8 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
 from .auth_routes import validation_errors_to_error_messages
-
-# TODO add model and form.
-# from app.models import db, Spot
-# from app.forms import NewSpotForm
+from app.forms import NewSpotForm
+from app.models import db, Spot
 
 spot_routes = Blueprint('spots', __name__)
 
@@ -22,12 +20,12 @@ def get():
 
 
 #Create a spot.
-@spot_routes.route("/", methods=["POST"])
+@spot_routes.route("", methods=["POST"])
 @login_required
 def add_spot():
     form = NewSpotForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-
+    print(form.validate_on_submit(), "LOOK HEEEEERRREE")
     if form.validate_on_submit():
         data = form.data
         spot = Spot(

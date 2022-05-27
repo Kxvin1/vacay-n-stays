@@ -47,11 +47,8 @@ function Header({ isLoaded }) {
           </NavLink>
         </li>
         <li className="nav-button my-page-link">
-          <NavLink
-            activeClassName="active-link"
-            to={`/members/${sessionUser.id}`}
-          >
-            Uploads
+          <NavLink activeClassName="active-link" to={`/spot/new`}>
+            New Spot
           </NavLink>
         </li>
         <li className="favorites-nav nav-button">
