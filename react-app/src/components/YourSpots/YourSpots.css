@@ -36,3 +36,25 @@
 .your_spot_delete_button {
   cursor: pointer;
 }
+
+.spotAddress {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.spotDescription {
+  margin-bottom: 1.5rem;
+}
+
+.your_spot_button_container {
+  display: flex;
+}
+
+.your_spot_edit_button {
+  margin-left: 0.8rem;
+  margin-right: 0.8rem;
+}
+
+.your_spot_info {
+  margin-left: 0.5rem;
+}

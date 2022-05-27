@@ -89,8 +89,8 @@ export default function YourSpots() {
                 <div className="your_spot_name">{spot?.name}</div>
                 <div className="your_spot_information">
                   <div className="spotPrice">${spot?.price}/night</div>
-                  <div>{spot?.address}</div>
-                  <div>{spot?.description}</div>
+                  <div className="spotAddress">{spot?.address}</div>
+                  <div className="spotDescription">{spot?.description}</div>
                   <div>{/* address */}</div>
                 </div>
                 <div className="your_spot_button_container">
