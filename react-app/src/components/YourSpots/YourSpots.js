@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { getUserSpots } from "../../store/your_spots";
 import ImageSlide from "../ImageSlider/ImageSlide";
 
@@ -19,6 +20,7 @@ const mapContainerStyle = {
 
 export default function YourSpots() {
   const dispatch = useDispatch();
+  const history = useHistory();
   const [latitudeAvg, setLatitudeAvg] = useState(null);
   const [longitudeAvg, setLongitudeAvg] = useState(null);
 
@@ -58,6 +60,12 @@ export default function YourSpots() {
 
   const toSpotPage = (spotId) => {
     // redirect user to spotPage (detail)
+    history.push(`/spots/${spotId}`);
+  };
+
+  const toEditPage = (spotId) => {
+    // redirect user to editForm page
+    history.push(`/spots/edit/${spotId}`);
   };
 
   return (
@@ -74,14 +82,19 @@ export default function YourSpots() {
               <div className="your_spot_info">
                 <div className="your_spot_name">{spot.name}</div>
                 <div className="your_spot_information">
-                  <div>{/* price*/}</div>
-                  <div>{/* City */}</div>
-                  <div>{/* Description */}</div>
+                  <div className="spotPrice">${spot.price}/night</div>
+                  <div>{spot.address}</div>
+                  <div>{spot.description}</div>
                   <div>{/* address */}</div>
                 </div>
-                <div>
-                  <div>EDIT</div>
-                  <div>DELETE</div>
+                <div className="your_spot_button_container">
+                  <button
+                    className="your_spot_edit_button"
+                    onClick={() => toEditPage(spot.id)}
+                  >
+                    EDIT
+                  </button>
+                  <button className="your_spot_delete_button">DELETE</button>
                 </div>
               </div>
             </div>
@@ -101,7 +114,7 @@ export default function YourSpots() {
             <Marker
               key={`${spot.id}`}
               position={{ lat: spot.lat, lng: spot.lng }}
-              label={{ text: `${spot?.price}` }}
+              label={{ text: `$${spot?.price}` }}
               onClick={() => toSpotPage(spot.id)}
             />
           ))}

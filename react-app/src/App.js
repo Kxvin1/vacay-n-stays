@@ -10,12 +10,13 @@ import SignUpForm from "./components/auth/SignUpForm";
 import NavBar from "./components/NavBar";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
-import SpotForm from "./components/SpotForm/SpotForm";
-import YourSpots from "./components/YourSpots/YourSpots";
 
 // new stuff
 import Header from "./components/Header/Header";
+import SpotForm from "./components/SpotForm/SpotForm";
+import YourSpots from "./components/YourSpots/YourSpots";
 import Spots from "./components/Spots/Spots";
+import SpotEditForm from "./components/SpotEditForm/SpotEditForm";
 
 //Google api
 import {
@@ -57,26 +58,17 @@ function App() {
     <BrowserRouter>
       <Header isLoaded={loaded} />
       <Switch>
-        {/* <Route path="/login" exact={true}>
-          <LoginForm />
-        </Route>
-        <Route path="/sign-up" exact={true}>
-          <SignUpForm />
-        </Route> */}
         <Route path="/" exact={true}>
           <Spots />
         </Route>
-        <ProtectedRoute path="/users" exact={true}>
-          <UsersList />
-        </ProtectedRoute>
-        <ProtectedRoute path="/users/:userId" exact={true}>
-          <User />
+        <ProtectedRoute path="/your-spots" exact={true}>
+          <YourSpots />
         </ProtectedRoute>
         <ProtectedRoute path="/spot/new" exact={true}>
           <SpotForm />
         </ProtectedRoute>
-        <ProtectedRoute path="/your-spots" exact={true}>
-          <YourSpots />
+        <ProtectedRoute path={`/spots/edit/:spotId`}>
+          <SpotEditForm />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
