@@ -74,7 +74,7 @@ export const deleteSpotId = (spotId) => async (dispatch) => {
 
 // reducers.
 
-const initialState = {}
+const initialState = {};
 
 const spotReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -107,6 +107,8 @@ const spotReducer = (state = initialState, action) => {
       delete newState[action.spot.id];
       return newState;
     }
+    default:
+      return state;
   }
 };
 
