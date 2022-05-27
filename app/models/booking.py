@@ -17,7 +17,7 @@ class Booking(db.Model):
     # many to one: booking belongsTo spot (line 10)
     spot = db.relationship("Spot", back_populates="booking")
 
-    __table_args__ = (UniqueConstraint("spot_id", "check_in", "check_out", name="booking_date"))
+    __table_args__ = (UniqueConstraint("spot_id", "check_in", "check_out", name="booking_date"), )
 
     def to_dict(self):
         return {
