@@ -1,7 +1,7 @@
 from tokenize import String
 from wsgiref.validate import validator
 from flask_wtf import FlaskForm
-from wtforms.fields import StringField, SelectField, BooleanField, SubmitField, IntegerFeild, TextAreaField, DecimalField
+from wtforms.fields import StringField, SelectField, BooleanField, SubmitField, IntegerField, TextAreaField, DecimalField
 from wtforms.validators import DataRequired, ValidationError
 
 class NewSpotForm(FlaskForm):
