@@ -74,6 +74,8 @@ export const deleteSpotId = (spotId) => async (dispatch) => {
 
 // reducers.
 
+const initialState = {}
+
 const spotReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOAD:
