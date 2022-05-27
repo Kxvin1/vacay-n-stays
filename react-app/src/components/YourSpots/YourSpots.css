@@ -1,0 +1,7 @@
+.your_spots_map {
+  width: 50%;
+  flex: 1;
+  height: calc(100vh - 80px);
+  position: sticky;
+  top: 100px;
+}
