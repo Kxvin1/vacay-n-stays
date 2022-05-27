@@ -10,7 +10,7 @@ def seed_users():
         address="210 Industrial Rd, San Carlos, CA 94070",
         lat=37.51812801028579,
         lng=-122.26468130207536,
-        hashed_password="password",
+        password="password",
     )
     user2 = User(
         first_name="Eduardo",
@@ -19,7 +19,7 @@ def seed_users():
         address="4502 E Desert Park Pl, Paradise Valley, AZ 85253",
         lat=33.55214833306677,
         lng=-111.98368217279491,
-        hashed_password="password1",
+        password="password1",
     )
     user3 = User(
         first_name="Richard",
@@ -28,7 +28,7 @@ def seed_users():
         address="104 Perry St, New York, NY 10014",
         lat=40.73506681973066,
         lng=-74.0055770519573,
-        hashed_password="password2",
+        password="password2",
     )
     user4 = User(
         first_name="Leigh",
@@ -37,7 +37,7 @@ def seed_users():
         address="1 Brewers Way, Milwaukee, WI 53214",
         lat=43.02798041528339,
         lng=-87.97114839320365,
-        hashed_password="password3",
+        password="password3",
     )
     user5 = User(
         first_name="Peter",
@@ -46,7 +46,7 @@ def seed_users():
         address="7000 Coliseum Way, Oakland, CA 94621",
         lat=37.750330742389174,
         lng=-122.20305682663655,
-        hashed_password="password4",
+        password="password4",
     )
     user6 = User(
         first_name="Sofia",
@@ -55,7 +55,7 @@ def seed_users():
         address="Orlando, FL",
         lat=28.377166803244865,
         lng=-81.57071854450346,
-        hashed_password="password5",
+        password="password5",
     )
     user7 = User(
         first_name="Steven",
@@ -64,7 +64,7 @@ def seed_users():
         address="1601 E NASA Pkwy, Houston, TX 77058",
         lat=29.551826186919556,
         lng=-95.09811964880747,
-        hashed_password="password6",
+        password="password6",
     )
     user8 = User(
         first_name="Ludwig",
@@ -73,7 +73,7 @@ def seed_users():
         address="Chicago, IL 60601",
         lat=41.88251625478868,
         lng=-87.62330951535294,
-        hashed_password="password7",
+        password="password7",
     )
     user9 = User(
         first_name="Andres",
@@ -82,7 +82,7 @@ def seed_users():
         address="400 Broad St, Seattle, WA 98109",
         lat=47.62050955039333,
         lng=-122.34928253607458,
-        hashed_password="password8",
+        password="password8",
     )
     user10 = User(
         first_name="John",
@@ -91,7 +91,7 @@ def seed_users():
         address="New York, NY 10001",
         lat=40.748540642047395,
         lng=-73.98576282234029,
-        hashed_password="password9",
+        password="password9",
     )
 
     db.session.add(demo)
