@@ -10,7 +10,7 @@ spot_routes = Blueprint('spots', __name__)
 #prefix
 #/api/spots
 
-@spot_routes.route("/")
+@spot_routes.route("")
 def get():
     spots = Spot.query.all()
     # list of objects pertaining to each spot.

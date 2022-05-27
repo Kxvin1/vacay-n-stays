@@ -11,9 +11,11 @@ import NavBar from "./components/NavBar";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
 import SpotForm from "./components/SpotForm/SpotForm";
+import YourSpots from "./components/YourSpots/YourSpots";
 
 // new stuff
 import Header from "./components/Header/Header";
+import Spots from "./components/Spots/Spots";
 
 //Google api
 import {
@@ -68,10 +70,13 @@ function App() {
           <User />
         </ProtectedRoute>
         <ProtectedRoute path="/" exact={true}>
-          <h1>My Home Page</h1>
+          <Spots />
         </ProtectedRoute>
         <ProtectedRoute path="/spot/new" exact={true}>
           <SpotForm />
+        </ProtectedRoute>
+        <ProtectedRoute path="/your-spots" exact={true}>
+          <YourSpots />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>

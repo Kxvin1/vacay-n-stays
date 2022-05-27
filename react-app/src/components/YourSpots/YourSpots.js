@@ -1,5 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { getUserSpots } from "../../store/your_spots";
+
+import "./YourSpots.css";
 
 import {
   GoogleMap,
@@ -23,23 +26,34 @@ export default function YourSpots() {
   const user = useSelector((state) => state.session.user);
 
   //will do a useEffect to grab all user's spots.
-  if (spots) {
+  // if (spots) {
+  //   let latitude = 0;
+  //   let longitude = 0;
+
+  //   spots.forEach((spot) => {
+  //     lat += spot.lat;
+  //     lng += spot.lng;
+  //   });
+
+  //   const length = spots?.length;
+  //   setLatitudeAvg(parseFloat(latitude / length));
+  //   setLongitudeAvg(parseFloat(longitude / length));
+  // }
+
+  useEffect(() => {
+    dispatch(getUserSpots(user.id));
     let latitude = 0;
     let longitude = 0;
 
     spots.forEach((spot) => {
-      lat += spot.lat;
-      lng += spot.lng;
+      latitude += spot.lat;
+      longitude += spot.lng;
     });
 
     const length = spots?.length;
     setLatitudeAvg(parseFloat(latitude / length));
     setLongitudeAvg(parseFloat(longitude / length));
-  }
-
-  useEffect(() => {
-    dispatch(getUserSpots(user.id));
-  });
+  }, [dispatch]);
 
   const toSpotPage = (spotId) => {
     // redirect user to spotPage (detail)
@@ -79,13 +93,13 @@ export default function YourSpots() {
             lat: latitudeAvg,
             lng: longitudeAvg,
           }}
-          zoom={6}
+          zoom={4}
         >
           {spots?.map((spot) => (
             <Marker
               key={`${spot.id}`}
               position={{ lat: spot.lat, lng: spot.lng }}
-              label={{ text: `${spot.price}` }}
+              label={{ text: `${spot?.price}` }}
               onClick={() => toSpotPage(spot.id)}
             />
           ))}

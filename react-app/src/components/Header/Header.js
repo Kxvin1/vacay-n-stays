@@ -46,9 +46,9 @@ function Header({ isLoaded }) {
             Discover
           </NavLink>
         </li>
-        <li className="nav-button my-page-link">
-          <NavLink activeClassName="active-link" to={`/spot/new`}>
-            New Spot
+        <li className="favorites-nav nav-button">
+          <NavLink activeClassName="active-link" to={`/your-spots`}>
+            My Spots{" "}
           </NavLink>
         </li>
         <li className="favorites-nav nav-button">
@@ -56,9 +56,15 @@ function Header({ isLoaded }) {
             activeClassName="active-link"
             to={`/profiles/${sessionUser.id}`}
           >
-            Profile{" "}
+            Trips{" "}
           </NavLink>
         </li>
+        <li className="nav-button my-page-link">
+          <NavLink activeClassName="active-link" to={`/spot/new`}>
+            Post A Spot
+          </NavLink>
+        </li>
+
         {/* <Search /> */}
       </ul>
     );
