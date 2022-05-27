@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
-// import ImageUploadModal from "../ImageUploadModal";
+// import ImageUploadModal from "../ImageUploadModal"; --> replacing with link to create a spot
 import * as sessionActions from "../../store/session";
 // import Search from "../Search/Search";
 
@@ -31,7 +31,7 @@ function Header({ isLoaded }) {
           Hello, {sessionUser.first_name}!
         </h2>
         <div>
-          {/* <ImageUploadModal /> */}
+          {/* <ImageUploadModal /> --> replace with link to create a spot*/}
           <button className="logout-button" onMouseDown={logout}>
             <i className="fas fa-power-off"></i>
           </button>

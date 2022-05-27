@@ -38,6 +38,7 @@ function LoginForm() {
     setEmail(demoEmail);
     setPassword(demoPassword);
     await dispatch(sessionActions.login("dmo@dmo.com", "password"));
+    clearForm();
   };
 
   return (
