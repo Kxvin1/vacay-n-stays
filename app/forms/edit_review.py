@@ -5,6 +5,6 @@ from wtforms import StringField, IntegerField
 
 class EditReview(FlaskForm):
   comment = StringField("comment", validators=[DataRequired()])
-  cleanliness = StringField("cleanliness", validators=[DataRequired()])
-  location = StringField("location", validators=[DataRequired()])
-  value = StringField("value", validators=[DataRequired()])
+  cleanliness = IntegerField("cleanliness", validators=[DataRequired()])
+  location = IntegerField("location", validators=[DataRequired()])
+  value = IntegerField("value", validators=[DataRequired()])
