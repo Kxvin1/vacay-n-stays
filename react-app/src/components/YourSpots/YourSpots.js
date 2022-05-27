@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserSpots } from "../../store/your_spots";
+import ImageSlide from "../ImageSlider/ImageSlide";
 
 import "./YourSpots.css";
 
@@ -69,6 +70,7 @@ export default function YourSpots() {
           return (
             <div className="your_spot_container" key={`your_spot_${spot.id}`}>
               {/* Will add spotSlide component, pass in spot={spot} key={`spot_slide_${spot.id}`} */}
+              <ImageSlide spot={spot} key={`your_spot_${spot.id}`} />
               <div className="your_spot_info">
                 <div className="your_spot_name">{spot.name}</div>
                 <div className="your_spot_information">
