@@ -31,7 +31,7 @@ function Header({ isLoaded }) {
           Hello, {sessionUser.first_name}!
         </h2>
         <div>
-          {/* <ImageUploadModal /> --> replace with link to create a spot*/}
+          {/* <ImageUploadModal /> --> replace with link to create a spot!*/}
           <button className="logout-button" onMouseDown={logout}>
             <i className="fas fa-power-off"></i>
           </button>
