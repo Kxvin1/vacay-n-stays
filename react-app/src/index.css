@@ -1,1 +1,135 @@
 /* TODO Add site wide styles */
+
+*,
+body {
+  font-family: proxima-nova-condensed, sans-serif;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+li {
+  list-style-type: none;
+}
+
+a {
+  color: #dfe0df;
+  text-decoration: none;
+}
+
+a:hover,
+a:visited,
+a:active {
+  color: #dfe0df;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #a8927a;
+}
+
+.roundbox {
+  -moz-border-radius: 6px 6px 6px 6px;
+  -webkit-border-radius: 6px;
+  border-radius: 6px 6px 6px 6px;
+}
+
+.boxshadow {
+  -moz-box-shadow: 3px 3px 5px #535353;
+  -webkit-box-shadow: 3px 3px 5px #535353;
+  box-shadow: 3px 3px 5px #535353;
+}
+
+.errors-ul {
+  margin-bottom: 20px;
+  padding: 0 30px;
+  width: 100%;
+}
+
+.error-li {
+  font-size: 1rem;
+  margin-top: -8rem;
+  margin-bottom: 2rem;
+  padding: 10px;
+  list-style-type: none;
+  /* margin-right: 40px; */
+  color: red;
+  font-weight: bold;
+  text-align: center;
+}
+
+.error-li-image-edit {
+  font-size: 1rem;
+  /* margin-top: -5rem; */
+  /* margin-bottom: 1rem; */
+  /* padding: 10px; */
+  /* margin-right: 40px; */
+  list-style-type: none;
+  color: red;
+  font-weight: bold;
+  text-align: center;
+}
+.error-li-comment-post {
+  font-size: 1rem;
+  margin-top: -5rem;
+  margin-bottom: 1rem;
+  padding: 10px;
+  list-style-type: none;
+  /* margin-right: 40px; */
+  color: red;
+  font-weight: bold;
+  text-align: center;
+  font-size: 1.2em;
+}
+
+.delete-button,
+.cancel-button {
+  color: white;
+  padding: 10px;
+  border-radius: 3px;
+  width: 300px;
+  transition-duration: 0.2s;
+  cursor: pointer;
+}
+
+.delete-button:hover,
+.cancel-button:hover {
+  transform: scale(1.03);
+  cursor: pointer;
+}
+
+.delete-button {
+  background-color: #a8927a;
+  border: 1px solid #a8927a;
+  margin: 30px 10px 10px 10px;
+}
+
+.delete-button:hover {
+  background-color: red;
+  border: 1px solid red;
+}
+
+.delete-button-disabled {
+  margin: 30px 10px 10px 10px;
+  color: grey;
+  padding: 10px;
+  border-radius: 3px;
+  width: 300px;
+  transition-duration: 0.2s;
+  /* cursor: none; */
+}
+
+.cancel-button {
+  background-color: grey;
+  border: 1px solid grey;
+}
+
+.cancel-delete-button:hover {
+  background-color: grey;
+  border: 1px solid grey;
+}
