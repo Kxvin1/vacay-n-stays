@@ -54,10 +54,8 @@ def add_spot():
 def update(spotId):
     form = NewSpotForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-
     if form.validate_on_submit():
         data = form.data
-
         spot = Spot.query.filter(Spot.id == spotId).first()
 
         spot.user_id = data['user_id']
@@ -75,7 +73,7 @@ def update(spotId):
 
         return {
             "id": spot.id,
-            "user_id": spot.userId,
+            "user_id": spot.user_id,
             "name": spot.name,
             "description": spot.description,
             "address": spot.address,

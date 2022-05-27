@@ -63,6 +63,11 @@ export default function YourSpots() {
     history.push(`/spots/${spotId}`);
   };
 
+  const toEditPage = (spotId) => {
+    // redirect user to editForm page
+    history.push(`/spots/edit/${spotId}`);
+  };
+
   return (
     <div className="main_content_your_spots">
       <div className="your_spots_list">
@@ -83,7 +88,12 @@ export default function YourSpots() {
                   <div>{/* address */}</div>
                 </div>
                 <div className="your_spot_button_container">
-                  <button className="your_spot_edit_button">EDIT</button>
+                  <button
+                    className="your_spot_edit_button"
+                    onClick={() => toEditPage(spot.id)}
+                  >
+                    EDIT
+                  </button>
                   <button className="your_spot_delete_button">DELETE</button>
                 </div>
               </div>
