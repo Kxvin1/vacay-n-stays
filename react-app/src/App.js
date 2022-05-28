@@ -13,11 +13,14 @@ import User from "./components/User";
 // dont add stuff here
 
 // add new imports here ~~~~~~~~~~
+
+// new stuff
 import Header from "./components/Header/Header";
 import SpotForm from "./components/SpotForm/SpotForm";
 import YourSpots from "./components/YourSpots/YourSpots";
 import Spots from "./components/Spots/Spots";
 import Bookings from "./components/Bookings/Bookings";
+import SpotEditForm from "./components/SpotEditForm/SpotEditForm";
 
 //Google api
 import {
@@ -70,6 +73,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path="/spot/new" exact={true}>
           <SpotForm />
+        </ProtectedRoute>
+        <ProtectedRoute path={`/spots/edit/:spotId`}>
+          <SpotEditForm />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
