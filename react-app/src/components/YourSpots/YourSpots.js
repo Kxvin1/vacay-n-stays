@@ -24,6 +24,7 @@ export default function YourSpots() {
   const history = useHistory();
   const [latitudeAvg, setLatitudeAvg] = useState(null);
   const [longitudeAvg, setLongitudeAvg] = useState(null);
+  const [deleteAvailable, setDeleteAvailable] = useState(false);
 
   // Get an array of user's spots
   const spots = useSelector((state) => Object.values(state.yourSpots));
@@ -74,6 +75,11 @@ export default function YourSpots() {
     window.location.reload(true);
   };
 
+  const showDeleteConfirmation = (e) => {
+    e.preventDefault();
+    setDeleteAvailable(true);
+  };
+
   return (
     <div className="main_content_your_spots">
       <div className="your_spots_list">
@@ -101,11 +107,32 @@ export default function YourSpots() {
                     EDIT
                   </button>
                   <button
-                    className="your_spot_delete_button"
-                    onClick={() => toDelete(spot.id)}
+                    class="your_spot_delete_button"
+                    onClick={showDeleteConfirmation}
                   >
-                    DELETE
+                    Delete Spot
                   </button>
+                  {deleteAvailable && (
+                    <div className="delete-spot-modal">
+                      <div className="delete-booking-form">
+                        <div className="delete-confirmation-modal">{`Are you sure you want to delete ${spot?.name}?`}</div>
+                        <div className="delete-booking-confirm-buttons">
+                          <div
+                            class="delete-button"
+                            onClick={() => toDelete(spot.id)}
+                          >
+                            Delete Spot
+                          </div>
+                          <div
+                            class="cancel-button"
+                            onClick={() => setDeleteAvailable(false)}
+                          >
+                            Go Back
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>

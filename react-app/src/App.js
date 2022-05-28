@@ -80,6 +80,9 @@ function App() {
         <ProtectedRoute path={`/spots/edit/:spotId`}>
           <SpotEditForm />
         </ProtectedRoute>
+        <ProtectedRoute path={`/spots/:spotId`}>
+          <div>Render spot detail component</div>
+        </ProtectedRoute>
         <Route>
           <PageNotFound />
           <Footer />
