@@ -31,7 +31,7 @@ function Header({ isLoaded }) {
           Hello, {sessionUser.first_name}!
         </h2>
         <div>
-          {/* <ImageUploadModal /> --> replace with link to create a spot*/}
+          {/* <ImageUploadModal /> --> replace with link to create a spot!*/}
           <button className="logout-button" onMouseDown={logout}>
             <i className="fas fa-power-off"></i>
           </button>
@@ -46,22 +46,26 @@ function Header({ isLoaded }) {
             Discover
           </NavLink>
         </li>
-        <li className="nav-button my-page-link">
-          <NavLink
-            activeClassName="active-link"
-            to={`/members/${sessionUser.id}`}
-          >
-            Uploads
+        <li className="favorites-nav nav-button">
+          <NavLink activeClassName="active-link" to={`/your-spots`}>
+            My Spots{" "}
           </NavLink>
         </li>
         <li className="favorites-nav nav-button">
           <NavLink
             activeClassName="active-link"
-            to={`/profiles/${sessionUser.id}`}
+            // to={`/profiles/${sessionUser.id}`}
+            to={`/bookings`}
           >
-            Profile{" "}
+            Trips{" "}
           </NavLink>
         </li>
+        <li className="nav-button my-page-link">
+          <NavLink activeClassName="active-link" to={`/spot/new`}>
+            Post A Spot
+          </NavLink>
+        </li>
+
         {/* <Search /> */}
       </ul>
     );

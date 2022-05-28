@@ -1,0 +1,38 @@
+.your_spots_map {
+  width: 50%;
+  flex: 1;
+  height: calc(100vh - 80px);
+  position: sticky;
+  top: 100px;
+}
+
+.main_content_your_spots {
+  margin-top: 10rem;
+}
+
+.spotPrice {
+  color: rgb(113, 113, 113);
+  margin-top: 10px;
+}
+
+.your_spot_container {
+  display: flex;
+  padding: 15px;
+  border-top: 1px solid rgb(221, 221, 221);
+  max-width: 630px;
+  min-width: 600px;
+}
+
+.main_content_your_spots {
+  display: flex;
+  justify-content: space-between;
+  font-family: "Questrial", sans-serif;
+}
+
+.your_spot_edit_button {
+  cursor: pointer;
+}
+
+.your_spot_delete_button {
+  cursor: pointer;
+}

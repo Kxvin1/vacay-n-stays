@@ -1,28 +1,38 @@
-import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
-import { addSpot } from "../../store/spots";
-import Map from "./Map";
+import React, { useState } from "react";
+import { useParams, useHistory, Redirect } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import Map from "../SpotForm/Map";
+import { editSpot } from "../../store/spots";
+import "./SpotEditForm.css";
 
-import "./SpotForm.css";
-
-export default function SpotForm() {
+export default function SpotEditForm() {
   const dispatch = useDispatch();
+  const { spotId } = useParams();
   const history = useHistory();
 
-  const user = useSelector((state) => state.session.user);
+  // array of user's spots.
+  const userSpots = useSelector((state) => Object.values(state.yourSpots));
 
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
-  const [address, setAddress] = useState("");
-  const [city, setCity] = useState("");
-  const [state, setState] = useState("");
-  const [country, setCountry] = useState("");
-  const [coordinates, setCoordinates] = useState({
-    lat: null,
-    lng: null,
+  const user = useSelector((state) => {
+    return state.session.user;
   });
-  const [price, setPrice] = useState(null);
+
+  const spotToEdit = userSpots.find((spot) => {
+    return spot.id.toString() === spotId;
+  });
+
+  const [user_id, setUserId] = useState(spotToEdit?.user_id);
+  const [name, setName] = useState(spotToEdit?.name);
+  const [description, setDescription] = useState(spotToEdit?.description);
+  const [address, setAddress] = useState(spotToEdit?.address);
+  const [city, setCity] = useState(spotToEdit?.city);
+  const [state, setState] = useState(spotToEdit?.state);
+  const [country, setCountry] = useState(spotToEdit?.country);
+  const [coordinates, setCoordinates] = useState({
+    lat: spotToEdit?.lat,
+    lng: spotToEdit?.lng,
+  });
+  const [price, setPrice] = useState(spotToEdit?.price);
   const [validationErrors, setValidationErrors] = useState([]);
 
   const handleSubmit = (e) => {
@@ -38,31 +48,16 @@ export default function SpotForm() {
       address,
       city,
       state,
-      country: "USA",
-      price,
+      country,
       lat: coordinates.lat,
       lng: coordinates.lng,
+      price,
     };
 
-    dispatch(addSpot(data));
+    if (data) {
+      dispatch(editSpot(data, spotToEdit.id));
+    }
   };
-
-  useEffect(() => {
-    const errors = [];
-    if (!name.length) errors.push("Please include a name for your Spot.");
-    if (!description.length)
-      errors.push("Please include a description for your Spot.");
-    if (!address.length)
-      errors.push("Please include an address for your Spot.");
-    if (!state.length) errors.push("Please include the state for your Spot.");
-    if (!country.length) errors.push("Please include Country for your Spot.");
-  }, [name, description, address, city, state, country]);
-
-  // async function getCoordinates() {
-  //   // value of address is the valid address...
-  //   const res = await getGeocode({ address: destinationRef.current.value });
-  //   const { lat, lng } = await getLatLng(res[0]);
-  // }
 
   return (
     <div className="spot_form_container">
@@ -168,16 +163,16 @@ export default function SpotForm() {
             </select>
           </div>
           {/* <div className="spot_country_input">
-            <label>Country:</label>
-            <input
-              name="country"
-              type="text"
-              value={country}
-              onChange={(e) => setCountry(e.target.value)}
-            ></input>
-          </div> */}
+        <label>Country:</label>
+        <input
+          name="country"
+          type="text"
+          value={country}
+          onChange={(e) => setCountry(e.target.value)}
+        ></input>
+      </div> */}
           <div className="spot_price_input">
-            <label>Price:</label>
+            <label>Price $:</label>
             <input
               class="spot_price"
               type="number"

@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import * as sessionActions from "../../store/session";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import "./LoginForm.css";
+import { Redirect } from "react-router-dom";
 
 function LoginForm() {
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState({});
+  const user = useSelector((state) => state.session.user);
 
   const clearForm = (e) => {
     setEmail("");
@@ -29,6 +31,14 @@ function LoginForm() {
     );
   };
 
+  useEffect(() => {
+    setErrors(errors);
+  }, [errors]);
+
+  if (user) {
+    return <Redirect to="/" />;
+  }
+
   const demoLogin = async (e) => {
     e.preventDefault();
 
@@ -37,20 +47,13 @@ function LoginForm() {
 
     setEmail(demoEmail);
     setPassword(demoPassword);
-    await dispatch(sessionActions.login("dmo@dmo.com", "password"));
+    dispatch(sessionActions.login("dmo@dmo.com", "password"));
     clearForm();
   };
 
   return (
     <div className="login-box">
       <form onSubmit={handleSubmit} className="login-form">
-        <ul className="error-ul">
-          {errors.map((error, idx) => (
-            <li key={idx} className="error-li">
-              {error}
-            </li>
-          ))}
-        </ul>
         <label className="login-header">Log in to Vacay N Stays</label>
         <div className="user-box">
           <input
@@ -59,7 +62,7 @@ function LoginForm() {
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            required
+            required={true}
           />
         </div>
         <div className="user-box">
@@ -69,18 +72,10 @@ function LoginForm() {
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            required
+            required={true}
           />
         </div>
-        <button
-          type="submit"
-          className={
-            email.length > 0 && password.length > 0
-              ? "login-btn"
-              : "login-btn-disabled"
-          }
-          disabled={email.length === 0 || password.length === 0}
-        >
+        <button type="submit" className={"login-btn"}>
           <span></span>
           <span></span>
           <span></span>

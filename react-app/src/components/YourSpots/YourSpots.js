@@ -1,5 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { getUserSpots } from "../../store/your_spots";
+import ImageSlide from "../ImageSlider/ImageSlide";
+
+import "./YourSpots.css";
 
 import {
   GoogleMap,
@@ -15,6 +20,7 @@ const mapContainerStyle = {
 
 export default function YourSpots() {
   const dispatch = useDispatch();
+  const history = useHistory();
   const [latitudeAvg, setLatitudeAvg] = useState(null);
   const [longitudeAvg, setLongitudeAvg] = useState(null);
 
@@ -23,26 +29,43 @@ export default function YourSpots() {
   const user = useSelector((state) => state.session.user);
 
   //will do a useEffect to grab all user's spots.
-  if (spots) {
+  // if (spots) {
+  //   let latitude = 0;
+  //   let longitude = 0;
+
+  //   spots.forEach((spot) => {
+  //     lat += spot.lat;
+  //     lng += spot.lng;
+  //   });
+
+  //   const length = spots?.length;
+  //   setLatitudeAvg(parseFloat(latitude / length));
+  //   setLongitudeAvg(parseFloat(longitude / length));
+  // }
+
+  useEffect(() => {
+    dispatch(getUserSpots(user.id));
     let latitude = 0;
     let longitude = 0;
 
     spots.forEach((spot) => {
-      lat += spot.lat;
-      lng += spot.lng;
+      latitude += spot.lat;
+      longitude += spot.lng;
     });
 
     const length = spots?.length;
     setLatitudeAvg(parseFloat(latitude / length));
     setLongitudeAvg(parseFloat(longitude / length));
-  }
-
-  useEffect(() => {
-    dispatch(getUserSpots(user.id));
-  });
+  }, [dispatch]);
 
   const toSpotPage = (spotId) => {
     // redirect user to spotPage (detail)
+    history.push(`/spots/${spotId}`);
+  };
+
+  const toEditPage = (spotId) => {
+    // redirect user to editForm page
+    history.push(`/spots/edit/${spotId}`);
   };
 
   return (
@@ -55,17 +78,23 @@ export default function YourSpots() {
           return (
             <div className="your_spot_container" key={`your_spot_${spot.id}`}>
               {/* Will add spotSlide component, pass in spot={spot} key={`spot_slide_${spot.id}`} */}
+              <ImageSlide spot={spot} key={`your_spot_${spot.id}`} />
               <div className="your_spot_info">
                 <div className="your_spot_name">{spot.name}</div>
                 <div className="your_spot_information">
-                  <div>{/* price*/}</div>
-                  <div>{/* City */}</div>
-                  <div>{/* Description */}</div>
+                  <div className="spotPrice">${spot.price}/night</div>
+                  <div>{spot.address}</div>
+                  <div>{spot.description}</div>
                   <div>{/* address */}</div>
                 </div>
-                <div>
-                  <div>EDIT</div>
-                  <div>DELETE</div>
+                <div className="your_spot_button_container">
+                  <button
+                    className="your_spot_edit_button"
+                    onClick={() => toEditPage(spot.id)}
+                  >
+                    EDIT
+                  </button>
+                  <button className="your_spot_delete_button">DELETE</button>
                 </div>
               </div>
             </div>
@@ -79,13 +108,13 @@ export default function YourSpots() {
             lat: latitudeAvg,
             lng: longitudeAvg,
           }}
-          zoom={6}
+          zoom={4}
         >
           {spots?.map((spot) => (
             <Marker
               key={`${spot.id}`}
               position={{ lat: spot.lat, lng: spot.lng }}
-              label={{ text: `${spot.price}` }}
+              label={{ text: `$${spot?.price}` }}
               onClick={() => toSpotPage(spot.id)}
             />
           ))}

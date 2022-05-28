@@ -1,10 +1,8 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
 from .auth_routes import validation_errors_to_error_messages
-
-# TODO add model and form.
-# from app.models import db, Spot
-# from app.forms import NewSpotForm
+from app.forms import NewSpotForm
+from app.models import db, Spot
 
 spot_routes = Blueprint('spots', __name__)
 
@@ -12,7 +10,7 @@ spot_routes = Blueprint('spots', __name__)
 #prefix
 #/api/spots
 
-@spot_routes.route("/")
+@spot_routes.route("")
 def get():
     spots = Spot.query.all()
     # list of objects pertaining to each spot.
@@ -22,12 +20,12 @@ def get():
 
 
 #Create a spot.
-@spot_routes.route("/", methods=["POST"])
+@spot_routes.route("", methods=["POST"])
 @login_required
 def add_spot():
     form = NewSpotForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-
+    print(form.validate_on_submit(), "LOOK HEEEEERRREE")
     if form.validate_on_submit():
         data = form.data
         spot = Spot(
@@ -56,10 +54,8 @@ def add_spot():
 def update(spotId):
     form = NewSpotForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-
     if form.validate_on_submit():
         data = form.data
-
         spot = Spot.query.filter(Spot.id == spotId).first()
 
         spot.user_id = data['user_id']
@@ -77,7 +73,7 @@ def update(spotId):
 
         return {
             "id": spot.id,
-            "user_id": spot.userId,
+            "user_id": spot.user_id,
             "name": spot.name,
             "description": spot.description,
             "address": spot.address,

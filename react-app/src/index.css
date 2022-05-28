@@ -17,20 +17,22 @@ li {
   list-style-type: none;
 }
 
-a {
-  color: #dfe0df;
+a,
+a:visited,
+a:active {
+  color: #141414;
   text-decoration: none;
 }
 
 a:hover,
 a:visited,
 a:active {
-  color: #dfe0df;
+  color: #1e1f1e;
   text-decoration: none;
 }
 
 a:hover {
-  color: #a8927a;
+  /* color: #a8927a; */
 }
 
 .roundbox {

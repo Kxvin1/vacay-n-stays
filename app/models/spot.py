@@ -45,6 +45,7 @@ class Spot(db.Model):
             "country": self.country,
             "lat": self.lat,
             "lng": self.lng,
+            "price": self.price,
             "user": self.user.owner_info(),
             "images": [image.image_info() for image in self.images],
         }
