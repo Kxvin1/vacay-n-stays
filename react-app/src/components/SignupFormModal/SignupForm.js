@@ -8,6 +8,8 @@ function SignupForm() {
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
+  const [first_name, setFirstName] = useState("");
+  const [last_name, setLastName] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
@@ -18,7 +20,7 @@ function SignupForm() {
     if (password === confirmPassword) {
       setErrors([]);
       return dispatch(
-        sessionActions.signUp({ email, username, password })
+        sessionActions.signUp(email, first_name, last_name, password)
       ).catch(async (res) => {
         const data = await res.json();
         if (data && data.errors) {
@@ -53,11 +55,21 @@ function SignupForm() {
         </div>
         <div className="user-box">
           <input
-            placeholder="Username"
+            placeholder="First Name"
             className="signup-input"
             type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            value={first_name}
+            onChange={(e) => setFirstName(e.target.value)}
+            required
+          />
+        </div>
+        <div className="user-box">
+          <input
+            placeholder="Last Name"
+            className="signup-input"
+            type="text"
+            value={last_name}
+            onChange={(e) => setLastName(e.target.value)}
             required
           />
         </div>
