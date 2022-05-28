@@ -54,7 +54,8 @@ function Header({ isLoaded }) {
         <li className="favorites-nav nav-button">
           <NavLink
             activeClassName="active-link"
-            to={`/profiles/${sessionUser.id}`}
+            // to={`/profiles/${sessionUser.id}`}
+            to={`/bookings`}
           >
             Trips{" "}
           </NavLink>

@@ -4,18 +4,20 @@ import { useDispatch } from "react-redux";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import { authenticate } from "./store/session";
 
-// don't use this
+// dont add stuff here
 import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
 import NavBar from "./components/NavBar";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
+// dont add stuff here
+
+// add new imports here ~~~~~~~~~~
+import Header from "./components/Header/Header";
 import SpotForm from "./components/SpotForm/SpotForm";
 import YourSpots from "./components/YourSpots/YourSpots";
-
-// new stuff
-import Header from "./components/Header/Header";
 import Spots from "./components/Spots/Spots";
+import Bookings from "./components/Bookings/Bookings";
 
 //Google api
 import {
@@ -57,26 +59,17 @@ function App() {
     <BrowserRouter>
       <Header isLoaded={loaded} />
       <Switch>
-        {/* <Route path="/login" exact={true}>
-          <LoginForm />
-        </Route>
-        <Route path="/sign-up" exact={true}>
-          <SignUpForm />
-        </Route> */}
         <Route path="/" exact={true}>
           <Spots />
         </Route>
-        <ProtectedRoute path="/users" exact={true}>
-          <UsersList />
+        <ProtectedRoute path="/your-spots" exact={true}>
+          <YourSpots />
         </ProtectedRoute>
-        <ProtectedRoute path="/users/:userId" exact={true}>
-          <User />
+        <ProtectedRoute path="/bookings" exact={true}>
+          <Bookings />
         </ProtectedRoute>
         <ProtectedRoute path="/spot/new" exact={true}>
           <SpotForm />
-        </ProtectedRoute>
-        <ProtectedRoute path="/your-spots" exact={true}>
-          <YourSpots />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
