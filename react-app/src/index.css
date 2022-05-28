@@ -18,7 +18,7 @@ li {
 }
 
 a {
-  color: #dfe0df;
+  /* color: #dfe0df; */
   text-decoration: none;
 }
 
@@ -30,7 +30,7 @@ a:active {
 }
 
 a:hover {
-  color: #a8927a;
+  /* color: #a8927a; */
 }
 
 .roundbox {
