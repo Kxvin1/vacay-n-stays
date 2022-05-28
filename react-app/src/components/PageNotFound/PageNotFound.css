@@ -1,0 +1,58 @@
+.page-not-found-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90vw;
+  max-width: 1600px;
+  margin: 0 auto;
+  height: fit-content;
+  margin-top: 10em;
+}
+
+.page-not-found-stuff {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 40px;
+  color: rgb(72, 72, 72);
+}
+
+.pnf-h1 {
+  font-size: 170px;
+  margin: 0;
+  color: rgb(72, 72, 72);
+  margin-bottom: 15px;
+}
+
+.page-not-found {
+  font-size: 2em;
+  margin: 0;
+  color: rgb(72, 72, 72);
+}
+
+.error-code-404 {
+  font-weight: bold;
+  color: rgb(116, 114, 114);
+}
+
+.img404 {
+  height: 500px;
+  width: 400px;
+  max-width: 400px;
+  margin-left: 5em;
+}
+
+.pnf-visit-these {
+  display: flex;
+  flex-direction: column;
+}
+
+.pnf-visit-these a {
+  color: #008489;
+  margin-bottom: 0.5em;
+  width: fit-content;
+  display: block;
+}
+
+.pnf-visit-these a:hover {
+  text-decoration: underline;
+}
