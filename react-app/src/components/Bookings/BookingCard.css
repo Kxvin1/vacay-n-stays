@@ -53,6 +53,7 @@
   /* background-color: rgba(216, 216, 216, 0.284); */
   transition: all 0.5s 0s;
   border-radius: 10px;
+  /* margin-bottom: 3em; */
 }
 
 .spot-booking-card:hover {
@@ -96,4 +97,69 @@
 #booking-location-id {
   /* margin-right: 25px; */
   margin-right: 4em;
+}
+
+/*
+
+testing stuff below
+*/
+
+.delete-booking-modal {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+}
+
+.delete-booking-form {
+  width: fit-content;
+  max-width: 500px;
+  height: fit-content;
+  max-height: 260px;
+  background-color: white;
+  border-radius: 15px;
+  padding: 20px;
+}
+
+.delete-confirmation-modal {
+  font-size: 20px;
+  margin: 10px;
+}
+
+.delete-booking-confirm-buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.delete-booking-page-button {
+  display: flex;
+  margin-top: 1em;
+  justify-content: center;
+}
+
+.delete-booking-page-button div {
+  width: 50%;
+  text-align: center;
+  padding: 10px 0;
+  border: 1px solid rgb(221, 221, 221);
+  background-color: white;
+  border-radius: 20px;
+  cursor: pointer;
+  color: black;
+  transition: all 0.35s 0s;
+}
+
+.delete-booking-page-button a {
+  margin-right: 10px;
+}
+
+.delete-booking-button-inner:hover {
+  background-color: rgb(204, 45, 74);
+  color: #fff;
 }

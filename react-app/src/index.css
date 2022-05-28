@@ -91,12 +91,15 @@ a:hover {
 
 .delete-button,
 .cancel-button {
+  display: flex;
+  justify-content: center;
   color: white;
   padding: 10px;
   border-radius: 3px;
   width: 300px;
   transition-duration: 0.2s;
   cursor: pointer;
+  margin: 1em;
 }
 
 .delete-button:hover,
@@ -108,12 +111,12 @@ a:hover {
 .delete-button {
   background-color: #a8927a;
   border: 1px solid #a8927a;
-  margin: 30px 10px 10px 10px;
+  /* margin: 30px 10px 10px 10px; */
 }
 
 .delete-button:hover {
-  background-color: red;
-  border: 1px solid red;
+  background-color: rgb(204, 45, 74);
+  border: 1px solid rgb(204, 45, 74);
 }
 
 .delete-button-disabled {
@@ -129,6 +132,10 @@ a:hover {
 .cancel-button {
   background-color: grey;
   border: 1px solid grey;
+}
+.cancel-button:hover {
+  background-color: rgb(98, 103, 81);
+  border: 1px solid rgb(98, 103, 81);
 }
 
 .cancel-delete-button:hover {
