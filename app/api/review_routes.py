@@ -36,7 +36,7 @@ def new_review():
     return {"errors": validation_errors_to_error_messages(form.errors)}
 
 
-@review_routes.route("/<int:id>/", methods=["PUT"])
+@review_routes.route("/<int:id>", methods=["PUT"])
 def edit_review(id):
     form = EditReview()
     form["csrf_token"].data = request.cookies["csrf_token"]
@@ -52,7 +52,7 @@ def edit_review(id):
     return {"errors": validation_errors_to_error_messages(form.errors)}
 
 
-@review_routes.route("/<int:id>/", methods=["DELETE"])
+@review_routes.route("/<int:id>", methods=["DELETE"])
 @login_required
 def delete_review(id):
     deleteReview = Review.query.filter(Review.id == id).first()
