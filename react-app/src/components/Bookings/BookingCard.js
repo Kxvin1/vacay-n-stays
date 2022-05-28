@@ -49,8 +49,8 @@ function BookingCard({ booking, upcoming, user }) {
     const description = booking.spot.description;
     // console.log(description.length);
     const finalResult = [];
-    if (description.length > 600) {
-      let newDescription = description.slice(0, 600);
+    if (description.length > 500) {
+      let newDescription = description.slice(0, 500);
       finalResult.push(newDescription);
       finalResult.push("...");
     } else {
@@ -67,7 +67,7 @@ function BookingCard({ booking, upcoming, user }) {
     <div className="booking-card-outer-container">
       <Link to={`/spots/${booking.spot.id}`}>
         <div className="spot-booking-card">
-          <div className="booking-date">Your Vacation Dates:</div>
+          <div className="booking-date">Your Trip Dates:</div>
           <div className="booking-date">
             {checkInDateFormatted} - {checkOutDateFormatted}
           </div>

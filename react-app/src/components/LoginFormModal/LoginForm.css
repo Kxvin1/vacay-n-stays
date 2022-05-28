@@ -56,21 +56,6 @@
   cursor: pointer;
 }
 
-/* .login-form {
-    display: flex;
-    flex-direction: column;
-    padding: 15px;
-    height: 430px;
-    width: 750px;
-    align-items: center;
-    justify-content: center;
-    background-image: url("../../../public/logo-images/test-3.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-  }
-  } */
-
 .login-form input:focus {
   outline: 0;
 }
@@ -84,7 +69,7 @@
   color: whitesmoke;
   font-weight: 700;
   font-size: 1.4rem;
-  margin-top: -3rem;
+  margin-top: -1rem;
   margin-bottom: 2rem;
 }
 
@@ -96,16 +81,6 @@
   margin-bottom: 7px;
   font-size: 14px;
 }
-
-/* html {
-    height: 100%;
-  } */
-/* body {
-    margin: 0;
-    padding: 0;
-    font-family: sans-serif;
-    background: linear-gradient(#141e30, #243b55);
-  } */
 
 .login-box {
   position: absolute;
