@@ -1,0 +1,128 @@
+.allReviewsContainer {
+  display: grid;
+  grid-template-columns: 2fr 2fr;
+  margin: 100px 50px;
+
+}
+
+.modal {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.deleteReviewForm {
+  text-align: center;
+  font-size: 16px;
+  color: #fff;
+  transition: 0.5s;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  padding: 40px;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.90);
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+}
+
+.modifyReviewBtns {
+  display: grid;
+  grid-template-columns: 2fr 2fr;
+  width: 100%;
+}
+
+.modifyBtn {
+  padding: 5px;
+  border-radius: 5px;
+  padding: 2.5px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  border: 1px solid #ee5557;
+  background-color: #ee5557;
+  font-size: 1.07em;
+  margin: 5px;
+  box-shadow: 2px 2px 2px rgb(70, 67, 67); 
+  width: 80%; 
+}
+
+.modifyBtn:hover {
+  color: rgb(236, 243, 235);
+  transform: scale(1.06);
+  cursor: pointer;
+}
+
+.comment {
+  padding-top: 40px;
+  z-index: 1;
+  scroll-behavior: smooth;
+}
+
+.editReviewForm {
+  text-align: center;
+  font-size: 16px;
+  color: #fff;
+  transition: 0.5s;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  padding: 40px;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.90);
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+}
+
+.x {
+  margin-top: -5%;
+  margin-right: -100%;
+  cursor: pointer;
+}
+
+.commentBox {
+  width: 100%;
+  height: 175px;
+}
+
+.singleReview {
+  width: 85%
+}
+
+.reviewForm {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.commentForm {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  text-align: center;
+  justify-content: space-between;
+}
+
+.ratings {
+  text-align: center;
+  margin-right: 50px;
+}
+
+.commentBoxInput {
+  width: 300px;
+  height: 150px;
+}

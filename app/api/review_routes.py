@@ -25,9 +25,9 @@ def new_review():
             user_id=form.data["user_id"],
             spot_id=form.data["spot_id"],
             comment=form.data["comment"],
-            cleanliness=form.data["cleanliness"],
-            location=form.data["location"],
-            value=form.data["value"],
+            cleanliness=form.data["cleanliness"] / 2 / 10,
+            location=form.data["location"] / 2 / 10,
+            value=form.data["value"] / 2 / 10,
             date=datetime.datetime.now().date(),
         )
         db.session.add(review)
@@ -36,7 +36,7 @@ def new_review():
     return {"errors": validation_errors_to_error_messages(form.errors)}
 
 
-@review_routes.route("/<int:id>/", methods=["PUT"])
+@review_routes.route("/<int:id>", methods=["PUT"])
 def edit_review(id):
     form = EditReview()
     form["csrf_token"].data = request.cookies["csrf_token"]
@@ -46,13 +46,13 @@ def edit_review(id):
         review.cleanliness = (form.data["cleanliness"],)
         review.location = (form.data["location"],)
         review.value = (form.data["value"],)
-        review.date = (form.data["date"],)
+        # review.date = (form.data["date"],)
         db.session.commit()
         return review.to_dict()
     return {"errors": validation_errors_to_error_messages(form.errors)}
 
 
-@review_routes.route("/<int:id>/", methods=["DELETE"])
+@review_routes.route("/<int:id>", methods=["DELETE"])
 @login_required
 def delete_review(id):
     deleteReview = Review.query.filter(Review.id == id).first()
