@@ -6,6 +6,7 @@ import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
 // import ImageUploadModal from "../ImageUploadModal"; --> replacing with link to create a spot
 import * as sessionActions from "../../store/session";
+import logo from '../../assets/logo.png'
 // import Search from "../Search/Search";
 
 import "./Header.css";
@@ -93,7 +94,7 @@ function Header({ isLoaded }) {
           <NavLink exact to="/">
             <img
               className="home-button"
-              src="/logo-images/logo-large.png"
+              src={logo}
               alt="logo"
             />
           </NavLink>
