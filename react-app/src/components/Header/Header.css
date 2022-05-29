@@ -82,9 +82,10 @@ header {
 
 .home-button {
   transition-duration: 0.2s;
-  height: 90px;
+  height: 50px;
   padding: 0 2px;
   cursor: pointer;
+  margin-left: -50px;
 }
 
 .home-button:hover {
