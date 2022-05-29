@@ -96,7 +96,7 @@ def delete_spot(spotId):
         db.session.commit()
         return {
             "id": spotToDelete.id,
-            "user_id": spotToDelete.userId,
+            "user_id": spotToDelete.user_id,
             "name": spotToDelete.name,
             "description": spotToDelete.description,
             "address": spotToDelete.address,

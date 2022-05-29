@@ -4,15 +4,26 @@ import { Link } from "react-router-dom";
 
 import DatePicker from "react-calendar";
 
-import {
-  deleteBookingThunk,
-  updateExistingBookingThunk,
-} from "../../store/booking";
+import { deleteBookingThunk } from "../../store/booking";
 import { loadSpotBookingsThunk } from "../../store/bookingSpot";
 
 import "./BookingCard.css";
 
 function BookingCard({ booking, upcoming, user }) {
+  const dispatch = useDispatch();
+
+  const [deleteAvailable, setDeleteAvailable] = useState(false);
+
+  const showDeleteConfirmation = (e) => {
+    e.preventDefault();
+    setDeleteAvailable(true);
+  };
+
+  const deleteBooking = () => {
+    dispatch(deleteBookingThunk(booking.id));
+    setDeleteAvailable(false);
+  };
+
   const checkInDate = () => {
     const dateFromDb = booking.check_in.split(" ");
     // console.log(booking.check_in.split(" "));
@@ -35,7 +46,6 @@ function BookingCard({ booking, upcoming, user }) {
 
   const checkOutDate = () => {
     const dateFromDb = booking.check_out.split(" ");
-    // console.log(booking.check_in.split(" "));
     console.log(dateFromDb);
     const formattedDate = [];
     formattedDate.push(dateFromDb[0]);
@@ -49,8 +59,8 @@ function BookingCard({ booking, upcoming, user }) {
     const description = booking.spot.description;
     // console.log(description.length);
     const finalResult = [];
-    if (description.length > 500) {
-      let newDescription = description.slice(0, 500);
+    if (description.length > 350) {
+      let newDescription = description.slice(0, 350);
       finalResult.push(newDescription);
       finalResult.push("...");
     } else {
@@ -112,11 +122,39 @@ function BookingCard({ booking, upcoming, user }) {
                     {spotDescription}
                   </div>
                 </div>
+                {upcoming && (
+                  <div className="delete-booking-page-button">
+                    <div
+                      class="delete-booking-button-inner"
+                      onClick={showDeleteConfirmation}
+                    >
+                      Cancel Trip
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           </div>
         </div>
       </Link>
+      {deleteAvailable && (
+        <div className="delete-booking-modal">
+          <div className="delete-booking-form">
+            <div className="delete-confirmation-modal">{`Are you sure you want to cancel your trip at ${booking.spot.name} on ${checkInDateFormatted}?`}</div>
+            <div className="delete-booking-confirm-buttons">
+              <div class="delete-button" onClick={deleteBooking}>
+                Cancel Trip
+              </div>
+              <div
+                class="cancel-button"
+                onClick={() => setDeleteAvailable(false)}
+              >
+                Go Back
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

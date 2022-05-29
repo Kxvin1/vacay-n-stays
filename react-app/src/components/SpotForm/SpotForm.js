@@ -45,6 +45,7 @@ export default function SpotForm() {
     };
 
     dispatch(addSpot(data));
+    history.push("/");
   };
 
   useEffect(() => {
