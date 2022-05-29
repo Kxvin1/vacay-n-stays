@@ -1,0 +1,16 @@
+.login-btn-modal {
+  border: none;
+  display: inline-block;
+  margin: 0;
+  background-color: #21212100;
+  color: #dfe0df;
+  font-size: 1.2em;
+  cursor: pointer;
+  text-align: center;
+  font-weight: 500;
+  padding-right: 20px;
+}
+
+.login-btn-modal:hover {
+  color: #a8927a;
+}

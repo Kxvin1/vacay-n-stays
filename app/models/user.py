@@ -18,7 +18,7 @@ class User(db.Model, UserMixin):
 
     # many to many: user hasmany spots <--> spots has many users
     # tables: user and spots, secondary = wishlist
-    user_wishlist = db.relationship("Spot", secondary="wishlists", back_populates="spot_wishlist")
+    # user_wishlist = db.relationship("Spot", secondary="wishlists", back_populates="spot_wishlist")
 
     # one to many: user hasMany spots
     spot = db.relationship("Spot", back_populates="user")

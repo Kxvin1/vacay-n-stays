@@ -9,7 +9,7 @@ booking_routes = Blueprint("bookings", __name__)
 
 
 # get all upcoming bookings for a spot
-@booking_routes("/spot/<int:spotId>")
+@booking_routes.route("/spot/<int:spotId>")
 def spot_bookings(spotId):
     bookings = Booking.query.filter(Booking.spot_id == spotId).all()
     res = [booking.to_dict() for booking in bookings]
@@ -17,7 +17,7 @@ def spot_bookings(spotId):
 
 
 # get all upcoming bookings for a user
-@booking_routes("/user/<int:userId>")
+@booking_routes.route("/user/<int:userId>")
 @login_required
 def user_bookings(userId):
     bookings = Booking.query.filter(Booking.user_id == userId).all()
@@ -26,7 +26,7 @@ def user_bookings(userId):
 
 
 # post a booking
-@booking_routes("/", methods=["POST"])
+@booking_routes.route("/", methods=["POST"])
 @login_required
 def add_booking():
     form = NewBooking()
@@ -49,7 +49,7 @@ def add_booking():
 
 
 # update a booking
-@booking_routes("/<int:bookingId>", methods=["PUT"])
+@booking_routes.route("/<int:bookingId>", methods=["PUT"])
 @login_required
 def update_booking(bookingId):
     form = UpdateBooking()
@@ -69,7 +69,7 @@ def update_booking(bookingId):
 
 
 # delete a booking
-@booking_routes("/<int:bookingId>", methods=["DELETE"])
+@booking_routes.route("/<int:bookingId>", methods=["DELETE"])
 @login_required
 def delete_booking(bookingId):
     booking = Booking.query.filter(Booking.id == bookingId).first()

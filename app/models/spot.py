@@ -19,7 +19,7 @@ class Spot(db.Model):
 
     # many to many: user hasmany spots <--> spots has many users
     # tables: user and spots, secondary = wishlist
-    spot_wishlist = db.relationship("User", secondary="wishlists", back_populates="user_wishlist")
+    # spot_wishlist = db.relationship("User", secondary="wishlists", back_populates="user_wishlist")
 
     # many to one: spot belongsTo user (line 8 + this below connects)
     user = db.relationship("User", back_populates="spot")
@@ -45,6 +45,7 @@ class Spot(db.Model):
             "country": self.country,
             "lat": self.lat,
             "lng": self.lng,
+            "price": self.price,
             "user": self.user.owner_info(),
             "images": [image.image_info() for image in self.images],
         }

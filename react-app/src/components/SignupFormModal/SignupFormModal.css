@@ -1,0 +1,16 @@
+.signup-btn-modal {
+  border: none;
+  display: inline-block;
+  margin: 0;
+  /* color: #dfe0df; */
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+  font-weight: 500;
+  background-color: #21212100;
+}
+
+.signup-btn-modal:hover {
+  /* background-color: #a8927a; */
+  color: #a8927a;
+}

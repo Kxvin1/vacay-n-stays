@@ -1,0 +1,17 @@
+#container-image-slide-id {
+  width: 270px;
+  height: 270px;
+  max-height: 270px;
+  max-width: 270px;
+  position: relative;
+}
+
+#single-image-slide-id {
+  background-size: cover;
+  border-radius: 20px;
+  width: 270px;
+  height: 270px;
+  max-width: 300px;
+  min-height: 270px;
+  max-height: 300px;
+}

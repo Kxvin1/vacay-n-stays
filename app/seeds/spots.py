@@ -1,3 +1,4 @@
+from re import S
 from app.models import db, Spot
 
 
@@ -249,6 +250,7 @@ def seed_spots():
         description="Surrounded by nature, this unique property is located in the Saariselkä Fell region of Finnish Lapland. The property offers glass igloos and traditional wood chalets and has the world's largest smoke sauna. Free WiFi and free parking are available. The thermal glass igloos feature a bedroom with a glass roof and luxury beds. Some igloos include a bathroom with sauna, while others have shared shower facilities. The chalets feature cooking facilities, a seating area and fireplace. A private sauna is also included. Kakslauttanen Arctic Resort offers 2 à la carte restaurants, which serve Laplandic specialties such as reindeer and char-grilled salmon. The hotel's smoke sauna even has its own restaurant, Savusauna. 6 saunas are available, each has a relaxation room with an open fireplace. A nearby ice hole is ideal for cooling off. Husky and reindeer safaris can be arranged, and snowmobiling is also possible. Guests can also rent cross-country skis, Nordic walking sticks and snow shoes.",
         address="Kiilopääntie 9",
         city="Saariselkä",
+        state="OK",
         country="Finland",
         price=129,
         lat=68.420278,
@@ -260,6 +262,7 @@ def seed_spots():
         description="Centrally located in Palermo, Abali' Gran Sultanato offers free WiFi and individually furnished rooms with original, dreamlike-style décor. With refined textiles, rooms at the Abali' Gran Sultanato feature a mini-bar. The bathroom comes with a shower. Breakfast is available at a cafè nearby.",
         address="Via Sant'Agostino, 5, 90134",
         city="Palermo PA",
+        state="OK",
         country="Italy",
         price=86,
         lat=38.115748,
