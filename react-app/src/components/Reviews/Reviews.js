@@ -8,27 +8,27 @@ import './reviews.css'
 
 const Reviews = () => {
   const dispatch = useDispatch()
-  const spotId = 1;
-  const userId = 1;
+  const spotId = 2;
+  const user = useSelector(state => state.session.user);
   const reviews = useSelector((state) => Object.values(state.reviews));
-console.log(reviews)
+
   useEffect(() => {
     dispatch(loadSpotReviews(spotId))
   }, [dispatch])
 
   return (
     <>
-      {/* <div>
-        <ReviewForm />
-      </div> */}
       <div className="allReviewsContainer">
         {reviews.map((review) =>
           review.spot_id === spotId ? (
-            <ReviewCard review={review} key={review.id} user={userId} />
+            <ReviewCard review={review} key={review.id} user={user} />
           ) : (
             ""
           )
         )}
+      </div>
+      <div>
+        <ReviewForm userId={user.id} spotId={spotId} />
       </div>
     </>
   );

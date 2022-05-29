@@ -25,9 +25,9 @@ def new_review():
             user_id=form.data["user_id"],
             spot_id=form.data["spot_id"],
             comment=form.data["comment"],
-            cleanliness=form.data["cleanliness"],
-            location=form.data["location"],
-            value=form.data["value"],
+            cleanliness=form.data["cleanliness"] / 2 / 10,
+            location=form.data["location"] / 2 / 10,
+            value=form.data["value"] / 2 / 10,
             date=datetime.datetime.now().date(),
         )
         db.session.add(review)
@@ -46,7 +46,7 @@ def edit_review(id):
         review.cleanliness = (form.data["cleanliness"],)
         review.location = (form.data["location"],)
         review.value = (form.data["value"],)
-        review.date = (form.data["date"],)
+        # review.date = (form.data["date"],)
         db.session.commit()
         return review.to_dict()
     return {"errors": validation_errors_to_error_messages(form.errors)}

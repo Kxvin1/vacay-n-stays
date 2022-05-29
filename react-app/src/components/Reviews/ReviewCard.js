@@ -3,7 +3,7 @@ import { deleteOneReview, editSpotReview } from "../../store/reviews";
 import { useDispatch } from "react-redux";
 import { Rating } from "react-simple-star-rating";
 
-const ReviewCard = ({ review }) => {
+const ReviewCard = ({ review, user }) => {
   const dispatch = useDispatch();
   const [cleanlinessRating, setCleanlinessRating] = useState(0);
   const [locationRating, setLocationRating] = useState(0);
@@ -17,7 +17,7 @@ const ReviewCard = ({ review }) => {
     setLocationRating(review?.location);
     setValueRating(review?.value);
     setComment(review?.comment);
-}, [review])
+  }, [review]);
 
   const deleteReview = async () => {
     dispatch(deleteOneReview(review.id));
@@ -27,35 +27,42 @@ const ReviewCard = ({ review }) => {
   const editReview = async (e) => {
     e.preventDefault();
 
-    const data = await dispatch(editSpotReview(review.id, comment, cleanlinessRating, locationRating, valueRating))
-    
-    if (data[0] === "Updated") {
-        setShowEdit(false)
-    } else {
-        return "Error"
-    }
-}
+    const data = await dispatch(
+      editSpotReview(
+        review.id,
+        comment,
+        cleanlinessRating,
+        locationRating,
+        valueRating
+      )
+    );
 
-const closeEditForm = () => {
+      setShowEdit(false);
+  };
+
+  const closeEditForm = () => {
     setCleanlinessRating(review?.cleanliness);
     setLocationRating(review?.location);
     setValueRating(review?.value);
     setComment(review?.comment);
-    setShowEdit(false)
-}
+    setShowEdit(false);
+  };
 
   return (
     <div>
-      <div className="modifyReviewBtns">
-        <button onClick={() => setShowDelete(true)}>
-          <i class="fa fa-trash" title="Delete Review"></i>
-        </button>
-        <button onClick={() => setShowEdit(true)}>
-          <i class="fas fa-edit" title="Edit Review"></i>
-        </button>
+      <div className="singleReview">
+        <div className="comment">{review.comment}</div>
+        {review.user_id === user?.id && (
+          <div className="modifyReviewBtns">
+            <button className="modifyBtn" title="Delete Review" onClick={() => setShowDelete(true)}>
+              <i class="fa fa-trash"></i>
+            </button>
+            <button className="modifyBtn" title="Edit Review" onClick={() => setShowEdit(true)}>
+              <i class="fas fa-edit"></i>
+            </button>
+          </div>
+        )}
       </div>
-      <div className="comment">{review.comment}</div>
-
       {showDelete && (
         <div className="modal">
           <div className="deleteReviewForm">
@@ -64,8 +71,12 @@ const closeEditForm = () => {
             </div>
 
             <div>Are you sure you want to delete your review?</div>
-            <button onClick={deleteReview}>Confirm Delete</button>
-            <button onClick={() => setShowDelete(false)}>Cancel</button>
+            <button className="modifyBtn" onClick={deleteReview}>
+              Confirm Delete
+            </button>
+            <button className="modifyBtn" onClick={() => setShowDelete(false)}>
+              Cancel
+            </button>
           </div>
         </div>
       )}
@@ -76,6 +87,7 @@ const closeEditForm = () => {
             <div className="x" onClick={closeEditForm}>
               <i className="fas fa-times"></i>
             </div>
+            <h2>Edit Review</h2>
             <div className="starRatings">
               <div className="starTitle">Cleanliness</div>
               <Rating
@@ -98,18 +110,19 @@ const closeEditForm = () => {
             </div>
             <div>
               <form className="commentForm" onSubmit={editReview}>
-
-                  <label>Comment</label>
-                  <textarea
-                    className="commentBoxInput"
-                    name="description"
-                    type="input"
-                    required
-                    autoComplete="off"
-                    value={comment}
-                    onChange={(e) => setComment(e.target.value)}
-                  />
-
+                <label>Comment</label>
+                <textarea
+                  className="commentBox"
+                  name="description"
+                  type="input"
+                  required
+                  autoComplete="off"
+                  value={comment}
+                  onChange={(e) => setComment(e.target.value)}
+                />
+                <button className="modifyBtn" type="submit">
+                  Edit Review
+                </button>
               </form>
             </div>
           </div>
