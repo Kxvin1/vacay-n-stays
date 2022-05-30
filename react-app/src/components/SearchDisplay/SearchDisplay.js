@@ -40,6 +40,8 @@ function SearchDisplay() {
     setLongitudeAvg(parseFloat(longitude / length));
   }, [dispatch, spots.length]);
 
+  document.documentElement.scrollTop = 0;
+
   const toSpotPage = (spotId) => {
     history.push(`/spots/${spotId}`);
   };
