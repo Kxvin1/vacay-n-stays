@@ -5,14 +5,16 @@ body {
     Helvetica Neue, sans-serif;
 }
 
+/*
+Don't comment this in it breaks the search bar styling.
+Leaving this in incase you need this somewhere --> give your element a class and copy this style
 form {
-  /* display: flex;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 20px; */
-  margin-right: 10em;
-}
+  padding: 20px;
+} */
 
 li {
   list-style-type: none;
