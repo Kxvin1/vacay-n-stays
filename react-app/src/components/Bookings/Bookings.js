@@ -25,7 +25,7 @@ function Bookings() {
     <div className="bookings-container-container">
       {loaded && (
         <div className="bookings-container">
-          <h1>Bookings</h1>
+          <h1>Your Bookings</h1>
           <BookingsContainer bookings={bookings} user={user} />
         </div>
       )}
