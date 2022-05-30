@@ -41,7 +41,7 @@
   padding: 8px;
 }
 
-.realSearchBar {
+.search-bar-container-inner {
   height: fit-content;
   display: flex;
   flex-direction: column;
@@ -49,7 +49,7 @@
   justify-content: flex-start;
 }
 
-.realSearchFormContainer {
+.search-input-fields-container {
   width: fit-content;
   height: fit-content;
   border: 1px solid rgb(221, 221, 221);
@@ -59,7 +59,7 @@
   align-items: center;
 }
 
-.searchFormField {
+.search-form-inputs {
   display: flex;
   flex-direction: column;
   padding: 0 10px;
@@ -67,21 +67,21 @@
   border-right: 1px solid rgb(221, 221, 221);
 }
 
-.searchFormField:first-child {
+.search-form-inputs:first-child {
   margin-left: 20px;
 }
 
-.lastSearchCat {
+.last-search-remove-border {
   border-right: 1px solid transparent;
 }
 
-.searchFormField label {
+.search-form-inputs label {
   color: black;
   font-size: 14px;
   font-weight: 600;
 }
 
-.searchFormField input {
+.search-form-inputs input {
   border: none;
   width: 100px;
   outline: none;
@@ -89,15 +89,12 @@
   padding-left: 0;
 }
 
-.searchFormField input::placeholder {
-}
-
-.searchFormField select {
+.search-form-inputs select {
   border: 1px solid rgb(221, 221, 221);
   outline: none;
 }
 
-.realSearchButtonContainer {
+.search-container-button-container {
   display: flex;
   height: fit-content;
   align-items: center;
@@ -112,11 +109,11 @@
   border: none;
 }
 
-.realSearchButtonContainer:hover {
+.search-container-button-container:hover {
   background-color: rgb(190, 42, 70);
 }
 
-.searchWord {
+.search-text-div-text {
   margin-left: 10px;
   font-size: 17px;
 }

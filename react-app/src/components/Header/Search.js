@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { loadSearchResultsThunk } from "../../store/search";
@@ -10,18 +10,8 @@ function Search() {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const {
-    showSearch,
-    setShowSearch,
-    searchCity,
-    setSearchCity,
-    searchState,
-    setSearchState,
-  } = useSearch();
-
-  const showRealSearch = () => {
-    setShowSearch(true);
-  };
+  const { searchCity, setSearchCity, searchState, setSearchState } =
+    useSearch();
 
   const handleSearch = async (e) => {
     e.preventDefault();
@@ -30,39 +20,28 @@ function Search() {
   };
 
   return (
-    <div className="searchBarContainer">
-      {/* {!showSearch && (
-        <div className="fakeSearchBar" id="searchBar" onClick={showRealSearch}>
-          <div className="searchCategories">
-            <div>City</div>
-            <div>State</div>
-          </div>
-          <div className="searchMagGlassIcon">
-            <i className="fas fa-search"></i>
-          </div>
-        </div>
-      )} */}
-      <div className="realSearchBar">
-        <form className="realSearchFormContainer" onSubmit={handleSearch}>
-          <div className="searchFormField">
+    <div className="search-bar-container-main">
+      <div className="search-bar-container-inner">
+        <form className="search-input-fields-container" onSubmit={handleSearch}>
+          <div className="search-form-inputs">
             <label>City</label>
             <input
               type="text"
               autoComplete="off"
-              placeholder="What city?"
+              placeholder="Search Cities"
               maxLength="50"
               value={searchCity}
               onChange={(e) => setSearchCity(e.target.value)}
             />
           </div>
-          <div className="searchFormField">
+          <div className="search-form-inputs last-search-remove-border">
             <label>State</label>
             <select
               value={searchState}
               onChange={(e) => setSearchState(e.target.value)}
             >
               <option value="" disabled defaultValue>
-                What state?
+                Which State?
               </option>
               <option value="">-</option>
               <option value="AL">Alabama</option>
@@ -118,11 +97,11 @@ function Search() {
               <option value="WY">Wyoming</option>
             </select>
           </div>
-          <button type="submit" className="realSearchButtonContainer">
+          <button type="submit" className="search-container-button-container">
             <div>
               <i className="fas fa-search"></i>
             </div>
-            <div className="searchWord">Search</div>
+            <div className="search-text-div-text">Search</div>
           </button>
         </form>
       </div>

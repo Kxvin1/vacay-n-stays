@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import ImageSlide from "../ImageSlider/ImageSlide";
-import { getUserSpots } from "../../store/your_spots";
 
 import "./SearchDisplay.css";
 
@@ -22,17 +21,12 @@ function SearchDisplay() {
   const spots = useSelector((state) => Object.values(state.search));
   const [isLoaded] = useState(true);
 
-  //   console.log(spots);
-
   const dispatch = useDispatch();
   const history = useHistory();
   const [latitudeAvg, setLatitudeAvg] = useState(null);
   const [longitudeAvg, setLongitudeAvg] = useState(null);
 
-  const user = useSelector((state) => state.session.user);
-
   useEffect(() => {
-    dispatch(getUserSpots(user.id));
     let latitude = 0;
     let longitude = 0;
 
@@ -47,7 +41,6 @@ function SearchDisplay() {
   }, [dispatch, spots.length]);
 
   const toSpotPage = (spotId) => {
-    // redirect user to spotPage (detail)
     history.push(`/spots/${spotId}`);
   };
 
@@ -60,9 +53,9 @@ function SearchDisplay() {
               <div className="search-spot-list">
                 <div className="search-spots-container-inner">
                   {spots?.length === 1 ? (
-                    <h1>{`Search Results - 1 spot Found`}</h1>
+                    <h1>{`Results - 1 spot found`}</h1>
                   ) : (
-                    <h1>{`Search Results - ${spots?.length} Spots Found`}</h1>
+                    <h1>{`Results - ${spots?.length} spots found`}</h1>
                   )}
                 </div>
                 {spots?.map((spot) => (
@@ -124,20 +117,11 @@ function SearchDisplay() {
                 <GoogleMap
                   mapContainerStyle={mapContainerStyle}
                   center={{
-                    lat: latitudeAvg,
-                    lng: longitudeAvg,
+                    lat: 40.09005801617348,
+                    lng: -100.66383032528964,
                   }}
-                  zoom={4}
-                >
-                  {spots?.map((spot) => (
-                    <Marker
-                      key={`${spot?.id}`}
-                      position={{ lat: spot?.lat, lng: spot?.lng }}
-                      label={{ text: `$${spot?.price}` }}
-                      onClick={() => toSpotPage(spot?.id)}
-                    />
-                  ))}
-                </GoogleMap>
+                  zoom={5}
+                ></GoogleMap>
               </div>
             </div>
           )}
