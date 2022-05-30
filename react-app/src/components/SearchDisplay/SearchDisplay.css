@@ -1,0 +1,81 @@
+.search-spots-container {
+  margin-top: 9em;
+}
+
+.search-spot-card-info {
+  display: flex;
+  align-items: center;
+  margin: 16px 0;
+  margin-left: 2em;
+}
+
+.search-spot-info-single {
+  margin-top: 0;
+}
+
+.search-spot-map {
+  width: 50%;
+  flex: 1;
+  height: calc(100vh - 80px);
+  position: sticky;
+  top: 100px;
+}
+
+.search-spots-and-map-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.search-spot-list {
+  width: 630px;
+  padding: 0 10px;
+}
+
+.search-spots-container-inner {
+  display: flex;
+  align-items: center;
+}
+
+.search-spot-single-container {
+  display: flex;
+  padding: 15px;
+  border-top: 1px solid rgb(221, 221, 221);
+  max-width: 630px;
+  min-width: 600px;
+  margin-top: 1em;
+  margin-bottom: 2em;
+}
+
+.spot-container-single-info {
+  margin: 0;
+  width: 287px;
+  height: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.search-single-spot-name {
+  font-size: 1.2em;
+  margin-top: 10px;
+  margin-left: 1.5em;
+  color: black;
+}
+
+.search-single-spot-price {
+  font-size: 1em;
+  margin-top: 10px;
+  margin-left: 2em;
+  color: rgb(113, 113, 113);
+}
+
+.search-spot-details-no-extra {
+  max-height: 200px;
+  flex-grow: 1;
+  word-wrap: break-word;
+}
+
+.search-spot-details-holder {
+  max-height: 285px;
+  margin-top: 10px;
+}

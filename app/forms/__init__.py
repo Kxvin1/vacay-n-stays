@@ -5,3 +5,4 @@ from .new_booking import NewBooking
 from .update_booking import UpdateBooking
 from .new_review import NewReview
 from .edit_review import EditReview
+from .search_form import NewSearch

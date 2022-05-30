@@ -1,0 +1,122 @@
+.fakeSearchBar {
+  width: fit-content;
+  height: fit-content;
+  max-height: fit-content;
+  border: 1px solid rgb(221, 221, 221);
+  border-radius: 30px;
+  box-shadow: -1px 1px 5px rgb(233, 233, 233), 1px 1px 5px rgb(233, 233, 233);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  padding: 10px;
+  transition: box-shadow 0.25s 0s;
+  margin-right: 20em;
+}
+
+.fakeSearchBar:hover {
+  box-shadow: -1px 1px 3px rgb(173, 173, 173), 1px 1px 3px rgb(173, 173, 173);
+}
+
+.searchCategories {
+  display: flex;
+  color: rgb(145, 145, 145);
+  width: fit-content;
+}
+
+.searchCategories div {
+  border-right: 1px solid rgb(221, 221, 221);
+  padding: 7px 13px;
+  font-size: 15px;
+}
+
+.searchCategories div:last-child {
+  border-right: 1px solid transparent;
+}
+
+.searchMagGlassIcon {
+  background-color: rgb(255, 56, 93);
+  color: white;
+  border-radius: 50%;
+  padding: 8px;
+}
+
+.realSearchBar {
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.realSearchFormContainer {
+  width: fit-content;
+  height: fit-content;
+  border: 1px solid rgb(221, 221, 221);
+  border-radius: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.searchFormField {
+  display: flex;
+  flex-direction: column;
+  padding: 0 10px;
+  margin: 12px 0;
+  border-right: 1px solid rgb(221, 221, 221);
+}
+
+.searchFormField:first-child {
+  margin-left: 20px;
+}
+
+.lastSearchCat {
+  border-right: 1px solid transparent;
+}
+
+.searchFormField label {
+  color: black;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.searchFormField input {
+  border: none;
+  width: 100px;
+  outline: none;
+  padding: 2px;
+  padding-left: 0;
+}
+
+.searchFormField input::placeholder {
+}
+
+.searchFormField select {
+  border: 1px solid rgb(221, 221, 221);
+  outline: none;
+}
+
+.realSearchButtonContainer {
+  display: flex;
+  height: fit-content;
+  align-items: center;
+  color: white;
+  background-color: rgb(255, 56, 93);
+  padding: 10px 15px;
+  border-radius: 40px;
+  font-weight: 600;
+  margin-right: 10px;
+  cursor: pointer;
+  transition: all 0.25s 0s;
+  border: none;
+}
+
+.realSearchButtonContainer:hover {
+  background-color: rgb(190, 42, 70);
+}
+
+.searchWord {
+  margin-left: 10px;
+  font-size: 17px;
+}

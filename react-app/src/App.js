@@ -23,7 +23,9 @@ import Bookings from "./components/Bookings/Bookings";
 import SpotEditForm from "./components/SpotEditForm/SpotEditForm";
 import PageNotFound from "./components/PageNotFound";
 import Footer from "./components/Footer";
-import SpotDetailPage from "./components/SpotDetailPage/SpotDetailPage"
+import SpotDetailPage from "./components/SpotDetailPage/SpotDetailPage";
+import SearchProvider from "./components/SearchContext";
+import SearchDisplay from "./components/SearchDisplay/SearchDisplay";
 
 //Google api
 import {
@@ -62,34 +64,39 @@ function App() {
   }
 
   return (
-    <BrowserRouter>
-      <Header isLoaded={loaded} />
-      <Switch>
-        <Route path="/" exact={true}>
-          <Spots />
-          <Footer />
-        </Route>
-        <ProtectedRoute path="/your-spots" exact={true}>
-          <YourSpots />
-        </ProtectedRoute>
-        <ProtectedRoute path="/bookings" exact={true}>
-          <Bookings />
-        </ProtectedRoute>
-        <ProtectedRoute path="/spot/new" exact={true}>
-          <SpotForm />
-        </ProtectedRoute>
-        <ProtectedRoute path={`/spots/edit/:spotId`}>
-          <SpotEditForm />
-        </ProtectedRoute>
-        <ProtectedRoute path={`/spots/:spotId`}>
-          <SpotDetailPage />
-        </ProtectedRoute>
-        <Route>
-          <PageNotFound />
-          <Footer />
-        </Route>
-      </Switch>
-    </BrowserRouter>
+    <SearchProvider>
+      <BrowserRouter>
+        <Header isLoaded={loaded} />
+        <Switch>
+          <Route path="/" exact={true}>
+            <Spots />
+            <Footer />
+          </Route>
+          <ProtectedRoute path="/your-spots" exact={true}>
+            <YourSpots />
+          </ProtectedRoute>
+          <ProtectedRoute path="/bookings" exact={true}>
+            <Bookings />
+          </ProtectedRoute>
+          <ProtectedRoute path="/spot/new" exact={true}>
+            <SpotForm />
+          </ProtectedRoute>
+          <ProtectedRoute path={`/spots/edit/:spotId`}>
+            <SpotEditForm />
+          </ProtectedRoute>
+          <ProtectedRoute path={`/spots/:spotId`}>
+            <SpotDetailPage />
+          </ProtectedRoute>
+          <Route exact path="/search">
+            <SearchDisplay />
+          </Route>
+          <Route>
+            <PageNotFound />
+            <Footer />
+          </Route>
+        </Switch>
+      </BrowserRouter>
+    </SearchProvider>
   );
 }
 

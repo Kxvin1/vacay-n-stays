@@ -6,8 +6,8 @@ import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
 // import ImageUploadModal from "../ImageUploadModal"; --> replacing with link to create a spot
 import * as sessionActions from "../../store/session";
-import logo from '../../assets/logo.png'
-// import Search from "../Search/Search";
+import logo from "../../assets/logo.png";
+import Search from "./Search";
 
 import "./Header.css";
 
@@ -28,6 +28,7 @@ function Header({ isLoaded }) {
   if (sessionUser) {
     defaultLinks = (
       <>
+        <Search />
         <h2 className="greeting-message-nav">
           Hello, {sessionUser.first_name}!
         </h2>
@@ -66,8 +67,6 @@ function Header({ isLoaded }) {
             Post A Spot
           </NavLink>
         </li>
-
-        {/* <Search /> */}
       </ul>
     );
   } else {
@@ -92,11 +91,7 @@ function Header({ isLoaded }) {
       <nav className="nav-bar">
         <div className="navbar-element" id="left-container">
           <NavLink exact to="/">
-            <img
-              className="home-button"
-              src={logo}
-              alt="logo"
-            />
+            <img className="home-button" src={logo} alt="logo" />
           </NavLink>
         </div>
 
