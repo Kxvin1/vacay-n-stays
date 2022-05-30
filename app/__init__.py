@@ -11,6 +11,7 @@ from .api.auth_routes import auth_routes
 from .api.spot_routes import spot_routes
 from .api.booking_routes import booking_routes
 from .api.review_routes import review_routes
+from .api.search_routes import search_routes
 
 
 from .seeds import seed_commands
@@ -38,9 +39,9 @@ app.register_blueprint(auth_routes, url_prefix="/api/auth")
 app.register_blueprint(spot_routes, url_prefix="/api/spots")  # spots route
 app.register_blueprint(booking_routes, url_prefix="/api/bookings")  # bookings route
 app.register_blueprint(review_routes, url_prefix="/api/reviews")  # reviews route
+app.register_blueprint(search_routes, url_prefix="/api/search")  # search route
 # ! still need to add:
 # map/key route blueprint
-# search route blueprint
 
 db.init_app(app)
 Migrate(app, db)
