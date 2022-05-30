@@ -116,7 +116,7 @@ function BookingCard({ booking, upcoming, user }) {
                     className="booking-confirmed-details-header"
                     id="booking-location-id"
                   >
-                    About Your Vacation:
+                    Location:
                   </div>
                   <div className="booking-confirmed-details-info">
                     {spotDescription}
