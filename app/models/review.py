@@ -28,5 +28,6 @@ class Review(db.Model):
             "date": self.date,
             "cleanliness": self.cleanliness,
             "location": self.location,
+            "user": self.user.owner_info(),
             "value": self.value,
         }

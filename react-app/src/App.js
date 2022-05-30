@@ -23,6 +23,7 @@ import Bookings from "./components/Bookings/Bookings";
 import SpotEditForm from "./components/SpotEditForm/SpotEditForm";
 import PageNotFound from "./components/PageNotFound";
 import Footer from "./components/Footer";
+import SpotDetailPage from "./components/SpotDetailPage/SpotDetailPage"
 
 //Google api
 import {
@@ -81,7 +82,7 @@ function App() {
           <SpotEditForm />
         </ProtectedRoute>
         <ProtectedRoute path={`/spots/:spotId`}>
-          <div>Render spot detail component</div>
+          <SpotDetailPage />
         </ProtectedRoute>
         <Route>
           <PageNotFound />
