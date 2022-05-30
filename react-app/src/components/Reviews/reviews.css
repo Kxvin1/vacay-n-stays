@@ -1,8 +1,7 @@
 .allReviewsContainer {
   display: grid;
   grid-template-columns: 2fr 2fr;
-  margin: 100px 50px;
-
+  margin: 0 0 0 50px;
 }
 
 .modal {
@@ -63,7 +62,6 @@
 }
 
 .comment {
-  padding-top: 40px;
   z-index: 1;
   scroll-behavior: smooth;
 }
@@ -125,4 +123,15 @@
 .commentBoxInput {
   width: 300px;
   height: 150px;
+}
+
+.review_info {
+  margin-left: 100px;
+}
+
+.avatar {
+  width: 80px;
+  position: absolute;
+  border-radius: 80px;
+  border: 1px solid black;
 }
