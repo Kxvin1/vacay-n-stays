@@ -56,6 +56,14 @@
   cursor: pointer;
 }
 
+.login-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
 .login-form input:focus {
   outline: 0;
 }
