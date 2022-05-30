@@ -20,13 +20,13 @@
   /* white-space: nowrap; */
   overflow: hidden;
   /* text-overflow: clip; */
-  width: 50%;
+  width: 100%;
   padding: 5px;
-  /* border-bottom: 1px solid rgb(221, 221, 221); */
+  border-bottom: 1px solid rgb(221, 221, 221);
 }
 
 .booking-card-outer-container:nth-child(odd) {
-  border-right: 1px solid rgb(221, 221, 221);
+  /* border-right: 1px solid rgb(221, 221, 221); */
 }
 
 .booking-card-outer-container:nth-child(1),
@@ -48,16 +48,27 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding: 25px;
+  padding: 35px;
   box-sizing: border-box;
+  /* margin-left: 1em; */
   /* background-color: rgba(216, 216, 216, 0.284); */
   transition: all 0.5s 0s;
   border-radius: 10px;
-  /* margin-bottom: 3em; */
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
 }
 
 .spot-booking-card:hover {
-  background-color: #f8f4f1b3;
+  background-color: #d0b8a5b1;
+}
+
+.spot-booking-card .delete-booking-page-button {
+  opacity: 0;
+}
+
+.spot-booking-card:hover .delete-booking-page-button {
+  opacity: 100;
+  transition: all 0.5s 0s;
 }
 
 .booking-spot-info {
@@ -99,11 +110,6 @@
   margin-right: 4em;
 }
 
-/*
-
-testing stuff below
-*/
-
 .delete-booking-modal {
   width: 100vw;
   height: 100vh;
@@ -139,13 +145,17 @@ testing stuff below
 
 .delete-booking-page-button {
   display: flex;
-  margin-top: 1em;
+  margin-top: 4em;
+  margin-right: 12em;
   justify-content: center;
+  opacity: 100;
 }
 
 .delete-booking-page-button div {
-  width: 50%;
+  width: 30%;
   text-align: center;
+  display: flex;
+  justify-content: center;
   padding: 10px 0;
   border: 1px solid rgb(221, 221, 221);
   background-color: white;
@@ -156,6 +166,8 @@ testing stuff below
 }
 
 .delete-booking-page-button a {
+  display: flex;
+  justify-content: center;
   margin-right: 10px;
 }
 

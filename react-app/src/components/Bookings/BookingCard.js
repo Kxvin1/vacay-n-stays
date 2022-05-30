@@ -87,7 +87,7 @@ function BookingCard({ booking, upcoming, user }) {
               style={{ backgroundImage: `url(${booking.spot.images[0]})` }}
             ></div>
             <div className="booking-spot-info">
-              <div>
+              <div className="booking-spot-info-container-center">
                 <div className="booking-confirmed-details">
                   <div className="booking-confirmed-details-header">
                     Booking Info:
@@ -116,7 +116,7 @@ function BookingCard({ booking, upcoming, user }) {
                     className="booking-confirmed-details-header"
                     id="booking-location-id"
                   >
-                    About Your Vacation:
+                    Location:
                   </div>
                   <div className="booking-confirmed-details-info">
                     {spotDescription}
