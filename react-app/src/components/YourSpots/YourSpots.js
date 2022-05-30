@@ -25,6 +25,7 @@ export default function YourSpots() {
   const [latitudeAvg, setLatitudeAvg] = useState(null);
   const [longitudeAvg, setLongitudeAvg] = useState(null);
   const [deleteAvailable, setDeleteAvailable] = useState(false);
+  const [spotDelete, setSpotDelete] = useState({});
 
   // Get an array of user's spots
   const spots = useSelector((state) => Object.values(state.yourSpots));
@@ -75,9 +76,10 @@ export default function YourSpots() {
     window.location.reload(true);
   };
 
-  const showDeleteConfirmation = (e) => {
+  const showDeleteConfirmation = (e, spot) => {
     e.preventDefault();
     setDeleteAvailable(true);
+    setSpotDelete(spot);
   };
 
   return (
@@ -108,18 +110,18 @@ export default function YourSpots() {
                   </button>
                   <button
                     class="your_spot_delete_button"
-                    onClick={showDeleteConfirmation}
+                    onClick={(e) => showDeleteConfirmation(e, spot)}
                   >
                     Delete Spot
                   </button>
                   {deleteAvailable && (
                     <div className="delete-spot-modal">
                       <div className="delete-booking-form">
-                        <div className="delete-confirmation-modal">{`Are you sure you want to delete ${spot?.name}?`}</div>
+                        <div className="delete-confirmation-modal">{`Are you sure you want to delete ${spotDelete.name}?`}</div>
                         <div className="delete-booking-confirm-buttons">
                           <div
                             class="delete-button"
-                            onClick={() => toDelete(spot.id)}
+                            onClick={() => toDelete(spotDelete.id)}
                           >
                             Delete Spot
                           </div>
