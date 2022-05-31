@@ -74,6 +74,9 @@ def update(spotId):
         spot.lng = data['lng']
         spot.price = data['price']
 
+        images = Image.query.filter(Image.spot_id == spotId).all()
+        for image in images:
+            db.session.delete(image)
         db.session.commit()
 
         return {

@@ -37,19 +37,23 @@ export default function YourSpots() {
   const spots = useSelector((state) => Object.values(state?.yourSpots));
   const user = useSelector((state) => state.session.user);
 
+  spots.sort(function (a, b) {
+    return b.id - a.id;
+  });
+
   useEffect(() => {
     dispatch(getUserSpots(user.id));
-    let latitude = 0;
-    let longitude = 0;
+    // let latitude = 0;
+    // let longitude = 0;
 
-    spots.forEach((spot) => {
-      latitude += spot?.lat;
-      longitude += spot?.lng;
-    });
+    // spots.forEach((spot) => {
+    //   latitude += spot?.lat;
+    //   longitude += spot?.lng;
+    // });
 
-    const length = spots?.length;
-    setLatitudeAvg(parseFloat(latitude / length));
-    setLongitudeAvg(parseFloat(longitude / length));
+    // const length = spots?.length;
+    // setLatitudeAvg(parseFloat(latitude / length));
+    // setLongitudeAvg(parseFloat(longitude / length));
   }, [dispatch]);
 
   const toSpotPage = (spotId) => {

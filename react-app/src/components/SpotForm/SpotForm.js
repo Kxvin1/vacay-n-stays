@@ -35,9 +35,13 @@ export default function SpotForm() {
       return;
     }
 
+    if (images.length < 3) {
+      return;
+    }
+
     let cleanImages = images.map((image) => image.file);
 
-    console.log(cleanImages, "clean images");
+    // console.log(cleanImages, "clean images");
 
     const data = {
       user_id: user.id,
