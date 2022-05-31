@@ -78,7 +78,7 @@ export default function YourSpots() {
     setLatitudeAvg(spot.lat);
     setLongitudeAvg(spot.lng);
     // setting zoom to the spot
-    setZoom(10);
+    setZoom(15);
   };
 
   const reCenter = () => {
@@ -119,6 +119,12 @@ export default function YourSpots() {
                     onClick={(e) => showDeleteConfirmation(e, spot)}
                   >
                     Delete Spot
+                  </button>
+                  <button
+                    className="your_spot_zoom"
+                    onClick={() => panTo(spot)}
+                  >
+                    Zoom to location
                   </button>
                   {deleteAvailable && (
                     <div className="delete-spot-modal">

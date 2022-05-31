@@ -61,12 +61,55 @@
   font-family: "Questrial", sans-serif;
 }
 
+.your_spot_edit_button:hover {
+  cursor: pointer;
+  background-color: #a8927a;
+  border: 1px solid #a8927a;
+  color: #fff;
+  border-radius: 2rem;
+}
+
 .your_spot_edit_button {
   cursor: pointer;
+  background-color: #63605c;
+  border: 1px solid #817f7c;
+  color: #fff;
+  border-radius: 2rem;
+}
+
+.your_spot_delete_button:hover {
+  cursor: pointer;
+  background-color: rgb(243, 50, 50);
+  border: 1px solid #a8927a;
+  color: #fff;
+  border-radius: 2rem;
 }
 
 .your_spot_delete_button {
   cursor: pointer;
+  background-color: white;
+  border: 1px solid #a8927a;
+  color: rgb(0, 0, 0);
+  border-radius: 2rem;
+}
+
+.your_spot_zoom {
+  cursor: pointer;
+  margin-left: 4rem;
+  background-color: #a8927a;
+  border: 1px solid #a8927a;
+  color: rgb(73, 69, 69);
+  border-radius: 2rem;
+  padding: 0.5rem;
+}
+
+.your_spot_zoom:hover {
+  cursor: pointer;
+  margin-left: 4rem;
+  background-color: #a8927a;
+  border: 1px solid #a8927a;
+  color: #fff;
+  border-radius: 2rem;
 }
 
 .spotAddress {
@@ -80,6 +123,7 @@
 
 .your_spot_button_container {
   display: flex;
+  margin-bottom: 2rem;
 }
 
 .your_spot_edit_button {
@@ -102,4 +146,37 @@
   align-items: center;
   justify-content: center;
   z-index: 5;
+}
+
+.your_spot_info:hover {
+  /* background-color: #d0b8a5b1; */
+  cursor: pointer;
+  border-radius: 0.8rem;
+}
+
+.your_spot_info .your_spot_edit_button {
+  opacity: 0;
+}
+
+.your_spot_info:hover .your_spot_edit_button {
+  opacity: 100;
+  transition: all 0.5s 0s;
+}
+
+.your_spot_info .your_spot_delete_button {
+  opacity: 0;
+}
+
+.your_spot_info:hover .your_spot_delete_button {
+  opacity: 100;
+  transition: all 0.5s 0s;
+}
+
+.your_spot_info .your_spot_zoom {
+  opacity: 0;
+}
+
+.your_spot_info:hover .your_spot_zoom {
+  opacity: 100;
+  transition: all 0.5s 0s;
 }
