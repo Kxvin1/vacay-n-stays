@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import { getUserSpots } from "../../store/your_spots";
 import { deleteSpotId } from "../../store/spots";
 import ImageSlide from "../ImageSlider/ImageSlide";
+import mapStyles from "../mapStyles";
 
 import "./YourSpots.css";
 
@@ -19,11 +20,16 @@ const mapContainerStyle = {
   height: "100%",
 };
 
+const options = {
+  styles: mapStyles,
+};
+
 export default function YourSpots() {
   const dispatch = useDispatch();
   const history = useHistory();
   const [latitudeAvg, setLatitudeAvg] = useState(39.5);
   const [longitudeAvg, setLongitudeAvg] = useState(-98.35);
+  const [zoom, setZoom] = useState(4);
   const [deleteAvailable, setDeleteAvailable] = useState(false);
   const [spotDelete, setSpotDelete] = useState({});
 
@@ -67,6 +73,21 @@ export default function YourSpots() {
     setSpotDelete(spot);
   };
 
+  const panTo = (spot) => {
+    // this centers the spot.
+    setLatitudeAvg(spot.lat);
+    setLongitudeAvg(spot.lng);
+    // setting zoom to the spot
+    setZoom(10);
+  };
+
+  const reCenter = () => {
+    setLatitudeAvg(39.5);
+    setLongitudeAvg(-98.35);
+    // zooms out
+    setZoom(4);
+  };
+
   return (
     <div className="main_content_your_spots">
       <div className="your_spots_list">
@@ -78,7 +99,7 @@ export default function YourSpots() {
             <div className="your_spot_container" key={`your_spot_${spot?.id}`}>
               {/* Will add spotSlide component, pass in spot={spot} key={`spot_slide_${spot.id}`} */}
               <ImageSlide spot={spot} key={`your_spot_${spot?.id}`} />
-              <div className="your_spot_info">
+              <div className="your_spot_info" onClick={() => panTo(spot)}>
                 <div className="your_spot_name">{spot?.name}</div>
                 <div className="your_spot_information">
                   <div className="spotPrice">${spot?.price}/night</div>
@@ -133,15 +154,19 @@ export default function YourSpots() {
             lat: latitudeAvg,
             lng: longitudeAvg,
           }}
-          zoom={4}
+          zoom={zoom}
+          options={options}
         >
+          <button className="recenter_button" onClick={reCenter}>
+            Recenter
+          </button>
           {spots?.map((spot) => (
             <Marker
               key={`${spot?.id}`}
               position={{ lat: spot?.lat, lng: spot?.lng }}
               label={{ text: `$${spot?.price}` }}
               onClick={() => toSpotPage(spot?.id)}
-            />
+            ></Marker>
           ))}
         </GoogleMap>
       </div>
