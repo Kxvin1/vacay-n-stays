@@ -3,14 +3,18 @@
   display: inline-block;
   margin: 0;
   background-color: #21212100;
-  color: #dfe0df;
+  /* color: #dfe0df; */
   font-size: 1.2em;
   cursor: pointer;
   text-align: center;
   font-weight: 500;
   padding-right: 20px;
+  transition: all 0.5s;
 }
 
 .login-btn-modal:hover {
-  color: #a8927a;
+  /* color: #504b47; */
+  color: rgb(0, 0, 0);
+  transform: scale(1.2);
+  cursor: pointer;
 }

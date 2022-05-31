@@ -16,6 +16,7 @@ function Search() {
   const handleSearch = async (e) => {
     e.preventDefault();
     dispatch(loadSearchResultsThunk(searchCity, searchState));
+    document.documentElement.scrollTop = 0;
     history.push("/search");
   };
 

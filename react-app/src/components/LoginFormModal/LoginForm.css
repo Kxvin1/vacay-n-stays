@@ -6,11 +6,10 @@
   padding: 3.5px;
   width: 170px;
   font-weight: 700;
-  background-color: #090d0e;
   color: #fff;
   transition: all 0.2s ease-in-out;
   border: 1px solid #090d0e;
-  background-color: #090d0e;
+  background-color: rgb(190, 42, 70);
   font-size: 1.07em;
 }
 
@@ -35,7 +34,6 @@
 
 .demo-btn {
   border: 1.4px solid #ee5557;
-  color: whitesmoke;
   border-radius: 3px;
   margin-top: 0.6rem;
   padding: 2.5px;
@@ -43,15 +41,15 @@
   font-weight: 700;
   cursor: pointer;
   background-color: whitesmoke;
-  color: #fff;
+  color: rgb(190, 42, 70);
   transition: all 0.2s ease-in-out;
-  border: 1px solid #ee5557;
-  background-color: #ee5557;
+  border: 1px solid #c0bdbd;
+  background-color: #c0bdbd;
   font-size: 1.07em;
 }
 
 .demo-btn:hover {
-  color: #fff;
+  /* color: #fff; */
   transform: scale(1.06);
   cursor: pointer;
 }
@@ -69,12 +67,12 @@
 }
 
 .login-form input:focus::placeholder {
-  color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
   transition: all 0.15s ease-in;
 }
 
 .login-header {
-  color: whitesmoke;
+  color: rgb(0, 0, 0);
   font-weight: 700;
   font-size: 1.4rem;
   margin-top: -1rem;
@@ -82,7 +80,7 @@
 }
 
 .login-input {
-  color: black;
+  color: rgb(255, 255, 255);
   padding: 5px;
   width: 154px;
   margin: 5px;
@@ -97,7 +95,7 @@
   width: 400px;
   padding: 40px;
   transform: translate(-50%, -50%);
-  background: rgba(0, 0, 0, 0.75);
+  background: rgba(251, 251, 251, 0.906);
   box-sizing: border-box;
   box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
   border-radius: 10px;
@@ -118,10 +116,10 @@
   width: 100%;
   padding: 10px 0;
   font-size: 16px;
-  color: #fff;
+  color: rgb(0, 0, 0);
   margin-bottom: 30px;
   border: none;
-  border-bottom: 1px solid #fff;
+  border-bottom: 1px solid rgb(0, 0, 0);
   outline: none;
   background: transparent;
 }
@@ -132,7 +130,7 @@
   left: 0;
   padding: 10px 0;
   font-size: 16px;
-  color: #fff;
+  color: rgb(0, 0, 0);
   pointer-events: none;
   transition: 0.5s;
 }

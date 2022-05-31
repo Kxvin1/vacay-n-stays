@@ -71,9 +71,9 @@ function Header({ isLoaded }) {
           <LoginFormModal />
         </li>
         <li id="signup">
-          <button id="signup">
-            <SignupFormModal />
-          </button>
+          {/* <button id="signup"> */}
+          <SignupFormModal />
+          {/* </button> */}
         </li>
       </>
     );

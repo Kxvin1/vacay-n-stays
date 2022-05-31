@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import ImageSlide from "../ImageSlider/ImageSlide";
+import mapStyles from "../mapStyles";
 
 import "./SearchDisplay.css";
 
@@ -17,6 +18,10 @@ const mapContainerStyle = {
   height: "100%",
 };
 
+const options = {
+  styles: mapStyles,
+};
+
 function SearchDisplay() {
   const spots = useSelector((state) => Object.values(state.search));
   const [isLoaded] = useState(true);
@@ -25,6 +30,23 @@ function SearchDisplay() {
   const history = useHistory();
   const [latitudeAvg, setLatitudeAvg] = useState(null);
   const [longitudeAvg, setLongitudeAvg] = useState(null);
+
+  const [zoom, setZoom] = useState(4);
+
+  const panTo = (spot) => {
+    // this centers the spot.
+    setLatitudeAvg(spot.lat);
+    setLongitudeAvg(spot.lng);
+    // setting zoom to the spot
+    setZoom(15);
+  };
+
+  const reCenter = () => {
+    setLatitudeAvg(39.5);
+    setLongitudeAvg(-98.35);
+    // zooms out
+    setZoom(4);
+  };
 
   useEffect(() => {
     let latitude = 0;
@@ -39,8 +61,6 @@ function SearchDisplay() {
     setLatitudeAvg(parseFloat(latitude / length));
     setLongitudeAvg(parseFloat(longitude / length));
   }, [dispatch, spots.length]);
-
-  document.documentElement.scrollTop = 0;
 
   const toSpotPage = (spotId) => {
     history.push(`/spots/${spotId}`);
@@ -73,6 +93,11 @@ function SearchDisplay() {
                       <div className="search-single-spot-price">
                         Price: ${spot?.price}/night
                       </div>
+                      <div className="pan-to-container">
+                        <div class="pan-to-button" onClick={() => panTo(spot)}>
+                          Click to view on map
+                        </div>
+                      </div>
                       <div className="search-spot-details-no-extra search-spot-details-holder">
                         <div className="search-spot-card-info">
                           <div className="search-spot-info-single">
@@ -94,8 +119,12 @@ function SearchDisplay() {
                     lat: latitudeAvg,
                     lng: longitudeAvg,
                   }}
-                  zoom={4}
+                  zoom={zoom}
+                  options={options}
                 >
+                  <button className="recenter_button" onClick={reCenter}>
+                    Recenter
+                  </button>
                   {spots?.map((spot) => (
                     <Marker
                       key={`${spot?.id}`}
@@ -122,8 +151,13 @@ function SearchDisplay() {
                     lat: 40.09005801617348,
                     lng: -100.66383032528964,
                   }}
-                  zoom={5}
-                ></GoogleMap>
+                  zoom={zoom}
+                  options={options}
+                >
+                  <button className="recenter_button" onClick={reCenter}>
+                    Recenter
+                  </button>
+                </GoogleMap>
               </div>
             </div>
           )}
