@@ -18,7 +18,7 @@
 .spot_detail_main_container h1, .spot_detail_main_container h2 {
     text-align: center;
     color: #ee5557;
-    text-shadow: 2px 2px rgb(77, 75, 75);
+    text-shadow: 2px 2px rgb(77, 75, 75, 0.6);
 }
 
 .spot_detail_container {
@@ -50,21 +50,19 @@
 .images_container {
   width: 100%;
   height: 100px;
-
+  margin-top: 2em;
 }
 
 .image {
-  width: 45%;
+  width: 15em;
   padding: 5px;
-  margin-top: 40px;
-  border: 1px 1px black;
   border-radius: 10px;  
 }
 
 .image:hover {
+  opacity: 0.8;
   transform: scale(1.06);
   cursor: pointer;
-
 }
 
 .reviews_container {
