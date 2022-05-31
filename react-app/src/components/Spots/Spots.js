@@ -26,7 +26,7 @@ export default function Spots() {
 
   return (
     <div className="all_spots_main_container">
-      <h1>Browse Spots</h1>
+      <h1 className="all_spots_main_header">Browse Spots</h1>
       <SpotContainer spots={spots} />
     </div>
   );
