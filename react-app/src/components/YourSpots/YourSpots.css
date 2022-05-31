@@ -133,14 +133,18 @@
 }
 
 .your_spot_button_container {
+  /* position: relative;
+  top: 0px;
+  right: 0px; */
   display: flex;
   margin-bottom: 2rem;
-  justify-content: space-around;
 }
 
 .your_spot_edit_button {
-  margin-left: 0.8rem;
-  margin-right: 0.8rem;
+  display: flex;
+  justify-content: flex-end;
+  margin-left: 15rem;
+  margin-right: 1rem;
 }
 
 .your_spot_info {

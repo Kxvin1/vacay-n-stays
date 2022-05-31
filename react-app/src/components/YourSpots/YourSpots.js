@@ -125,13 +125,13 @@ export default function YourSpots() {
                     className="your_spot_edit_button"
                     onClick={() => toEditPage(spot.id)}
                   >
-                    EDIT
+                    <i className="fas fa-edit"></i>
                   </button>
                   <button
                     class="your_spot_delete_button"
                     onClick={(e) => showDeleteConfirmation(e, spot)}
                   >
-                    Delete Spot
+                    <i className="fas fa-trash"></i>
                   </button>
                   {deleteAvailable && (
                     <div className="delete-spot-modal">
