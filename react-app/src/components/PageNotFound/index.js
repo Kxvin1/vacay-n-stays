@@ -49,7 +49,7 @@ function PageNotFound() {
             </p>
             <p>Alternatively, you can go back to browsing here:</p>
             <div className="pnf-visit-these">
-              <Link to="/discover-page">Click Here To Continue Browsing</Link>
+              <Link to="/">Click Here To Continue Browsing</Link>
             </div>
           </div>
           <img
