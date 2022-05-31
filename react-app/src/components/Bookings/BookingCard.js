@@ -128,7 +128,8 @@ function BookingCard({ booking, upcoming, user }) {
                       class="delete-booking-button-inner"
                       onClick={showDeleteConfirmation}
                     >
-                      Cancel Trip
+                      <i className="fas fa-trash"></i>
+                      {/* Cancel Trip */}
                     </div>
                   </div>
                 )}
