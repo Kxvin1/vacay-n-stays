@@ -5,8 +5,8 @@ header {
   background-color: #ffffff;
   position: fixed;
   width: 100%;
-  z-index: 3;
-  max-height: 8rem;
+  z-index: 300;
+  max-height: 7rem;
   top: 0;
   left: 0;
   border-bottom: 1px solid rgb(221, 221, 221);
@@ -142,7 +142,8 @@ header {
   position: relative;
   width: 100%;
   height: 80%;
-  margin-top: 1.2em;
+  /* margin-top: -0.1em; */
+  margin-right: 5em;
 }
 
 #right-container > .links {
