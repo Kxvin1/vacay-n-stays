@@ -37,7 +37,7 @@ function LoginForm() {
   }, [errors]);
 
   if (user) {
-    return <Redirect to="/" />;
+    return <Redirect to="/discover-page" />;
   }
 
   const demoLogin = async (e) => {
