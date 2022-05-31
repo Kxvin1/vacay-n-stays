@@ -1,0 +1,39 @@
+.all_spots_main_container {
+  width: 100vw;
+  max-width: 100%;
+  /* margin: 0 auto; */
+  /* margin-right: 1.5rem; */
+  height: fit-content;
+  font-family: "Questrial", sans-serif;
+  margin-top: 9rem;
+}
+
+.all_spots_container {
+  display: flex;
+  flex-wrap: wrap;
+  width: fit-content;
+  /* margin: 0 auto; */
+  margin-bottom: 100px;
+  margin-left: 5rem;
+  margin-right: 5rem;
+}
+
+.spot_image_slide_div {
+  margin: 0.5rem;
+}
+
+.spot_name {
+  margin-top: 0.2rem;
+  margin-bottom: 0.2rem;
+  font-weight: bold;
+}
+
+.spot_city {
+  margin-top: 0.2rem;
+  margin-bottom: 0.2rem;
+}
+
+.spot_host {
+  margin-top: 0.2rem;
+  margin-bottom: 0.2rem;
+}
