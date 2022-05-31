@@ -44,7 +44,7 @@ function Header({ isLoaded }) {
     loggedInLinks = (
       <ul>
         <li className="nav-button">
-          <NavLink activeClassName="active-link" exact to="/">
+          <NavLink activeClassName="active-link" exact to="/discover-page">
             Discover
           </NavLink>
         </li>

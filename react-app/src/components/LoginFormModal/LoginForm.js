@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 import "./LoginForm.css";
 import { Redirect } from "react-router-dom";
 
 function LoginForm() {
   const dispatch = useDispatch();
+  const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
@@ -20,15 +22,14 @@ function LoginForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
-    return dispatch(sessionActions.login(email, password)).catch(
-      async (res) => {
-        const data = await res.json();
-        if (data && data.errors) {
-          clearForm();
-          setErrors(data.errors);
-        }
+    dispatch(sessionActions.login(email, password)).catch(async (res) => {
+      const data = await res.json();
+      if (data && data.errors) {
+        clearForm();
+        setErrors(data.errors);
       }
-    );
+    });
+    history.push("/discover-page");
   };
 
   useEffect(() => {
@@ -49,6 +50,7 @@ function LoginForm() {
     setPassword(demoPassword);
     dispatch(sessionActions.login("dmo@dmo.com", "password"));
     clearForm();
+    history.push("/discover-page");
   };
 
   return (
