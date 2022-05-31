@@ -16,7 +16,7 @@ const Reviews = ({ spotId, reviews, user }) => {
         )}
       </div>
       <div>
-        <ReviewForm spotId={spotId} />
+        <ReviewForm spotId={spotId} userId={user.id} />
       </div>
     </>
   );
