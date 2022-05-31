@@ -37,19 +37,23 @@ export default function YourSpots() {
   const spots = useSelector((state) => Object.values(state?.yourSpots));
   const user = useSelector((state) => state.session.user);
 
+  spots.sort(function (a, b) {
+    return b.id - a.id;
+  });
+
   useEffect(() => {
     dispatch(getUserSpots(user.id));
-    let latitude = 0;
-    let longitude = 0;
+    // let latitude = 0;
+    // let longitude = 0;
 
-    spots.forEach((spot) => {
-      latitude += spot?.lat;
-      longitude += spot?.lng;
-    });
+    // spots.forEach((spot) => {
+    //   latitude += spot?.lat;
+    //   longitude += spot?.lng;
+    // });
 
-    const length = spots?.length;
-    setLatitudeAvg(parseFloat(latitude / length));
-    setLongitudeAvg(parseFloat(longitude / length));
+    // const length = spots?.length;
+    // setLatitudeAvg(parseFloat(latitude / length));
+    // setLongitudeAvg(parseFloat(longitude / length));
   }, [dispatch]);
 
   const toSpotPage = (spotId) => {
@@ -121,13 +125,13 @@ export default function YourSpots() {
                     className="your_spot_edit_button"
                     onClick={() => toEditPage(spot.id)}
                   >
-                    EDIT
+                    <i className="fas fa-edit"></i>
                   </button>
                   <button
                     class="your_spot_delete_button"
                     onClick={(e) => showDeleteConfirmation(e, spot)}
                   >
-                    Delete Spot
+                    <i className="fas fa-trash"></i>
                   </button>
                   {deleteAvailable && (
                     <div className="delete-spot-modal">

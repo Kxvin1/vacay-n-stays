@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { addSpot } from "../../store/spots";
+import { addSpot, uploadFile } from "../../store/spots";
 import Map from "./Map";
+import ImageUploading from "react-images-uploading";
 
 import "./SpotForm.css";
 
@@ -11,6 +12,7 @@ export default function SpotForm() {
   const history = useHistory();
 
   const user = useSelector((state) => state.session.user);
+  const latestSpot = useSelector((state) => Object.values(state?.spots));
 
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -25,11 +27,21 @@ export default function SpotForm() {
   const [price, setPrice] = useState(null);
   const [validationErrors, setValidationErrors] = useState([]);
 
-  const handleSubmit = (e) => {
+  const [images, setImages] = useState("");
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (validationErrors.length > 0) {
       return;
     }
+
+    if (images.length < 3) {
+      return;
+    }
+
+    let cleanImages = images.map((image) => image.file);
+
+    // console.log(cleanImages, "clean images");
 
     const data = {
       user_id: user.id,
@@ -44,7 +56,22 @@ export default function SpotForm() {
       lng: coordinates.lng,
     };
 
-    dispatch(addSpot(data));
+    const spotData = await dispatch(
+      addSpot(
+        user.id,
+        name,
+        description,
+        address,
+        city,
+        state,
+        country,
+        price,
+        coordinates.lat,
+        coordinates.lng
+      )
+    );
+
+    await addImages(cleanImages, spotData[1].id);
     history.push("/");
   };
 
@@ -65,6 +92,19 @@ export default function SpotForm() {
   //   const { lat, lng } = await getLatLng(res[0]);
   // }
 
+  const addImages = async (images, spot_id) => {
+    for (let x = 0; x < images.length; x++) {
+      const obj = {
+        file: images[x],
+        spot_id: spot_id,
+        newFile: true,
+      };
+
+      await dispatch(uploadFile(obj));
+    }
+
+    // history.push(`/spots/${spot_id}`);
+  };
   return (
     <div className="spot_form_container">
       <div className="spot_form_content">
@@ -185,6 +225,66 @@ export default function SpotForm() {
               value={price}
               onChange={(e) => setPrice(e.target.value)}
             ></input>
+          </div>
+          <div className="formInputSection" id="imageUploadSection">
+            <div className="fieldSection">
+              <h3 className="imagesHeader">Images</h3>
+              <div className="imageUploadContainer">
+                <ImageUploading
+                  multiple
+                  value={images}
+                  onChange={(imageList) => setImages(imageList)}
+                  maxNumber={20}
+                  dataURLKey="data_url"
+                  acceptType={["jpg", "png", "jpeg"]}
+                >
+                  {({
+                    imageList,
+                    onImageUpload,
+                    onImageRemoveAll,
+                    onImageUpdate,
+                    onImageRemove,
+                    isDragging,
+                    dragProps,
+                  }) => (
+                    <div className="upload__image-wrapper">
+                      <div
+                        style={
+                          isDragging ? { color: "rgb(192, 53, 22)" } : undefined
+                        }
+                        onClick={onImageUpload}
+                        {...dragProps}
+                        className="clickDragHere"
+                      >
+                        Add or Drag Images Here
+                      </div>
+                      {/* <div onClick={onImageRemoveAll}>Remove all images</div> */}
+                      <div className="uploadedImagesContainer">
+                        {imageList.map((image, index) => (
+                          <div key={index}>
+                            <img src={image["data_url"]} alt="" height="230" />
+                            <div className="editPhotoButtons">
+                              <div
+                                className="updatePhoto"
+                                onClick={() => onImageUpdate(index)}
+                              >
+                                Update
+                              </div>
+                              <div
+                                className="updatePhoto removePhoto"
+                                onClick={() => onImageRemove(index)}
+                              >
+                                Remove
+                              </div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </ImageUploading>
+              </div>
+            </div>
           </div>
           <div className="spot_button_div">
             <button type="submit">Submit</button>
