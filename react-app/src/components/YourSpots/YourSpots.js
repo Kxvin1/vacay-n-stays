@@ -31,21 +31,6 @@ export default function YourSpots() {
   const spots = useSelector((state) => Object.values(state?.yourSpots));
   const user = useSelector((state) => state.session.user);
 
-  //will do a useEffect to grab all user's spots.
-  // if (spots) {
-  //   let latitude = 0;
-  //   let longitude = 0;
-
-  //   spots.forEach((spot) => {
-  //     lat += spot.lat;
-  //     lng += spot.lng;
-  //   });
-
-  //   const length = spots?.length;
-  //   setLatitudeAvg(parseFloat(latitude / length));
-  //   setLongitudeAvg(parseFloat(longitude / length));
-  // }
-
   useEffect(() => {
     dispatch(getUserSpots(user.id));
     let latitude = 0;
@@ -85,8 +70,8 @@ export default function YourSpots() {
   return (
     <div className="main_content_your_spots">
       <div className="your_spots_list">
-        <div>
-          <h1>Your Spots</h1>
+        <div className="your_spots_header_div">
+          <h1 className="your_spots_header">Your Spots</h1>
         </div>
         {spots?.map((spot) => {
           return (

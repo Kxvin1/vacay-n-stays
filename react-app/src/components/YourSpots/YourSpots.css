@@ -15,6 +15,10 @@
   margin-top: 10px;
 }
 
+.your_spots_header {
+  margin-left: 1.2rem;
+}
+
 .your_spot_container {
   display: flex;
   padding: 15px;
