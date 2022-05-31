@@ -17,10 +17,10 @@
   z-index: 9999;
 }
 
-.deleteReviewForm {
+.reviewFormModal {
   text-align: center;
-  font-size: 16px;
-  color: #fff;
+  font-size:  1.3em;
+  background-color: #fff;
   transition: 0.5s;
   position: absolute;
   top: 50%;
@@ -28,35 +28,40 @@
   width: 400px;
   padding: 40px;
   transform: translate(-50%, -50%);
-  background: rgba(0, 0, 0, 0.90);
   box-sizing: border-box;
   box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
   border-radius: 10px;
 }
 
 .modifyReviewBtns {
-  display: grid;
-  grid-template-columns: 2fr 2fr;
-  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .modifyBtn {
   padding: 5px;
-  border-radius: 5px;
+  border-radius: 10px;
   padding: 2.5px;
   font-weight: 700;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
-  border: 1px solid #ee5557;
-  background-color: #ee5557;
-  font-size: 1.07em;
+  font-size: 1em;
   margin: 5px;
+  border: .5px solid rgba(0, 0, 0, 0.4);
   box-shadow: 2px 2px 2px rgb(70, 67, 67); 
-  width: 80%; 
+  min-width: 3em;
+  padding: .25em 1em;
+}
+
+.modifyReviewBtns button {
+  max-width: 60px;
+  text-align: center;
 }
 
 .modifyBtn:hover {
-  color: rgb(236, 243, 235);
+  border: 1px solid #ee5557;  
+  color: #ee5557;
   transform: scale(1.06);
   cursor: pointer;
 }
@@ -64,23 +69,6 @@
 .comment {
   z-index: 1;
   scroll-behavior: smooth;
-}
-
-.editReviewForm {
-  text-align: center;
-  font-size: 16px;
-  color: #fff;
-  transition: 0.5s;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 400px;
-  padding: 40px;
-  transform: translate(-50%, -50%);
-  background: rgba(0, 0, 0, 0.90);
-  box-sizing: border-box;
-  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
-  border-radius: 10px;
 }
 
 .x {
@@ -95,16 +83,32 @@
 }
 
 .singleReview {
-  width: 85%
+  width: 85%;
+  padding: 1em;
+  border-radius: 20px;
+}
+
+.singleReview .modifyReviewBtns {
+  opacity: 0;
+}
+
+.singleReview:hover .modifyReviewBtns {
+  opacity: 100;
+  transition: all 0.5s 0s;
+}
+
+.singleReview:hover {
+  background-color: #d0b8a5b1;
 }
 
 .reviewForm {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  width: 60%;
-  margin-left: auto;
-  margin-right: auto;
+  width: 100%;
+  margin-top: 5em;
+  margin: 2em;
+  justify-content: center;
 }
 
 .commentForm {
@@ -112,17 +116,24 @@
   flex-direction: column;
   flex-wrap: wrap;
   text-align: center;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
+
 }
 
 .ratings {
   text-align: center;
-  margin-right: 50px;
 }
 
 .commentBoxInput {
-  width: 300px;
-  height: 150px;
+  width: 50em;
+  margin: 2em;
+  height: 10em;
+}
+
+.reviewForm button {
+  width: 20em;
+
 }
 
 .review_info {

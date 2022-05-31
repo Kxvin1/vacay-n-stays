@@ -6,8 +6,11 @@ import { addNewBookingThunk } from "../../store/booking";
 import { getSpots } from "../../store/spots";
 import Reviews from "../Reviews/Reviews";
 import DatePicker from "react-calendar";
+import ReactBnbGallery from 'react-bnb-gallery';
 
 import "./SpotDetailPage.css";
+import "./calendar.css";
+import 'react-bnb-gallery/dist/style.css';
 
 export default function SpotDetailPage() {
   const dispatch = useDispatch();
@@ -19,6 +22,9 @@ export default function SpotDetailPage() {
 
   const [date, setDate] = useState(null);
   const [formattedDate, setFormattedDate] = useState();
+  const [photoIndex, setPhotoIndex] = useState(0)
+  const [photoObject, setPhotoObject] = useState([])
+  const [showPhotoModal, setShowPhotoModal] = useState(false)
 
   useEffect(() => {
     dispatch(getSpots(spotId));
@@ -44,6 +50,22 @@ export default function SpotDetailPage() {
     );
   };
 
+  const handlePhotos = photosIndex => {
+    if (!photoObject.length) {
+      const spotImages = []
+
+      for (let i = 0; i < spot?.images.length; i++) {
+        spotImages.push({
+          'photo': spot?.images[i],
+          'caption': spot?.name,
+        })
+      }
+      setPhotoObject(spotImages)
+    }
+    setPhotoIndex(photoIndex)
+    setShowPhotoModal(true)
+  }
+
   return (
     <div className="spot_detail_main_container">
       <h1>{spot?.name}</h1>
@@ -64,10 +86,11 @@ export default function SpotDetailPage() {
         <div className="description">{spot?.description}</div>
         <div className="images_container">
           {spot?.images.map((image) => (
-            <img className="image" src={image} />
+            <img className="image" src={image} alt={image.id} onClick={() => handlePhotos()} />
           ))}
         </div>
       </div>
+      <ReactBnbGallery show={showPhotoModal} onClose={() => setShowPhotoModal(false)} photos={photoObject} activePhotoIndex={photoIndex} />
       <div className="action_container">
         <div className="spot_mod_btns">
           <button>Delete</button>
