@@ -69,11 +69,10 @@ function App() {
         <Header isLoaded={loaded} />
         <Switch>
           <Route path="/" exact={true}>
+            <Spots />
             <Footer />
           </Route>
-          <Route path="/discover-page" exact={true}>
-            <Spots />
-          </Route>
+          <Route path="/discover-page" exact={true}></Route>
           <ProtectedRoute path="/your-spots" exact={true}>
             <YourSpots />
           </ProtectedRoute>

@@ -29,7 +29,7 @@ function LoginForm() {
         setErrors(data.errors);
       }
     });
-    history.push("/discover-page");
+    // history.push("/discover-page");
   };
 
   useEffect(() => {
@@ -37,7 +37,7 @@ function LoginForm() {
   }, [errors]);
 
   if (user) {
-    return <Redirect to="/discover-page" />;
+    return <Redirect to="/" />;
   }
 
   const demoLogin = async (e) => {
@@ -50,7 +50,7 @@ function LoginForm() {
     setPassword(demoPassword);
     dispatch(sessionActions.login("dmo@dmo.com", "password"));
     clearForm();
-    history.push("/discover-page");
+    // history.push("/discover-page");
   };
 
   return (
