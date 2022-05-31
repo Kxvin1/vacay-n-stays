@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getSpots } from "../../store/spots";
+import { getUserSpots } from "../../store/your_spots";
+import { getUsers } from "../../store/user";
 import SpotContainer from "./SpotContainer";
 
 export default function Spots() {
@@ -8,6 +10,7 @@ export default function Spots() {
 
   // array of spots
   const spots = useSelector((state) => Object.values(state.spots));
+  const user = useSelector((state) => state.session.user);
 
   spots.sort(function (a, b) {
     return b.id - a.id;
@@ -17,8 +20,13 @@ export default function Spots() {
     dispatch(getSpots());
   }, [dispatch]);
 
+  // useEffect(() => {
+  //   dispatch(getUsers());
+  // }, [dispatch]);
+
   return (
-    <div>
+    <div className="all_spots_main_container">
+      <h1>Browse Spots</h1>
       <SpotContainer spots={spots} />
     </div>
   );

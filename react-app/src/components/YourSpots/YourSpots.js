@@ -22,13 +22,13 @@ const mapContainerStyle = {
 export default function YourSpots() {
   const dispatch = useDispatch();
   const history = useHistory();
-  const [latitudeAvg, setLatitudeAvg] = useState(null);
-  const [longitudeAvg, setLongitudeAvg] = useState(null);
+  const [latitudeAvg, setLatitudeAvg] = useState(39.5);
+  const [longitudeAvg, setLongitudeAvg] = useState(-98.35);
   const [deleteAvailable, setDeleteAvailable] = useState(false);
   const [spotDelete, setSpotDelete] = useState({});
 
   // Get an array of user's spots
-  const spots = useSelector((state) => Object.values(state.yourSpots));
+  const spots = useSelector((state) => Object.values(state?.yourSpots));
   const user = useSelector((state) => state.session.user);
 
   //will do a useEffect to grab all user's spots.
