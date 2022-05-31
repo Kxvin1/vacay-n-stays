@@ -23,9 +23,14 @@
 }
 
 .spot_name {
+  max-width: 270px;
   margin-top: 0.2rem;
   margin-bottom: 0.2rem;
   font-weight: bold;
+}
+
+.all_spots_main_header {
+  margin-left: 3.5rem;
 }
 
 .spot_city {

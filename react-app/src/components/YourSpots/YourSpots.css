@@ -15,6 +15,15 @@
   margin-top: 10px;
 }
 
+.your_spots_header {
+  margin-left: 1.2rem;
+}
+
+.your_spots_header_div {
+  display: flex;
+  justify-content: center;
+}
+
 .your_spot_container {
   display: flex;
   padding: 15px;
