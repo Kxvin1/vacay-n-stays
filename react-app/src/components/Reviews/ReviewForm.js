@@ -9,7 +9,7 @@ const ReviewForm = ({ userId, spotId }) => {
   const [cleanlinessRating, setCleanlinessRating] = useState(0);
   const [locationRating, setLocationRating] = useState(0);
   const [valueRating, setValueRating] = useState(0);
-  const [comment, setComment] = useState(0);
+  const [comment, setComment] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -28,9 +28,9 @@ const ReviewForm = ({ userId, spotId }) => {
     setCleanlinessRating(0);
     setLocationRating(0);
     setValueRating(0);
-    setComment("");
+    setComment('');
   };
-
+  console.log(locationRating)
   return (
     <>
       <form className="reviewForm" onSubmit={handleSubmit}>
@@ -60,14 +60,16 @@ const ReviewForm = ({ userId, spotId }) => {
           className="commentBoxInput"
           name="description"
           type="input"
+          value={comment}
           required
           autoComplete="off"
           onChange={(e) => setComment(e.target.value)}
         />
-        </div>
-        <button className="modifyBtn" type="submit">
+        <button className="modifyBtn" type="submit" disabled={locationRating === 0 || cleanlinessRating === 0 || valueRating === 0 || comment === '' ? true : false }>
           New Review
-        </button>
+        </button>        
+        </div>
+
       </form>
     </>
   );
