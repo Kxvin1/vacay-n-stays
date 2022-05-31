@@ -6,13 +6,45 @@
   top: 100px;
 }
 
+.your_spot_name {
+  margin-left: 1.5em;
+  font-size: 1.2em;
+  margin-top: 10px;
+  color: black;
+}
+
 .main_content_your_spots {
   margin-top: 10rem;
+}
+
+.spot_marker_background {
+  background-color: white;
+  z-index: 800;
+  width: 20px;
+  height: 80px;
+}
+
+.recenter_button {
+  z-index: 999;
+  position: absolute;
+  margin-left: 11.1458rem;
+  margin-top: 0.59rem;
+  height: 2.54rem;
+  cursor: pointer;
+  border: 0.2px solid rgb(179, 170, 170);
+  border-radius: 0.09rem;
+  background-color: white;
+}
+
+.recenter_button:hover {
+  opacity: 0.9;
 }
 
 .spotPrice {
   color: rgb(113, 113, 113);
   margin-top: 10px;
+  font-size: 1em;
+  margin-left: 2em;
 }
 
 .your_spots_header {
@@ -38,12 +70,57 @@
   font-family: "Questrial", sans-serif;
 }
 
+.your_spot_edit_button:hover {
+  cursor: pointer;
+  background-color: #a8927a;
+  border: 1px solid #a8927a;
+  color: #fff;
+  border-radius: 2rem;
+}
+
 .your_spot_edit_button {
   cursor: pointer;
+  background-color: #63605c;
+  border: 1px solid #817f7c;
+  color: #fff;
+  border-radius: 2rem;
+  padding: 1em;
+}
+
+.your_spot_delete_button:hover {
+  cursor: pointer;
+  background-color: rgb(204, 45, 74);
+  border: 1px solid #a8927a;
+  color: #fff;
+  border-radius: 2rem;
 }
 
 .your_spot_delete_button {
   cursor: pointer;
+  background-color: white;
+  border: 1px solid #a8927a;
+  color: rgb(0, 0, 0);
+  border-radius: 2rem;
+  padding: 1em;
+}
+
+.your_spot_zoom {
+  cursor: pointer;
+  margin-left: 4rem;
+  background-color: #a8927a;
+  border: 1px solid #a8927a;
+  color: rgb(73, 69, 69);
+  border-radius: 2rem;
+  padding: 0.5rem;
+}
+
+.your_spot_zoom:hover {
+  cursor: pointer;
+  margin-left: 4rem;
+  background-color: #a8927a;
+  border: 1px solid #a8927a;
+  color: #fff;
+  border-radius: 2rem;
 }
 
 .spotAddress {
@@ -57,6 +134,8 @@
 
 .your_spot_button_container {
   display: flex;
+  margin-bottom: 2rem;
+  justify-content: space-around;
 }
 
 .your_spot_edit_button {
@@ -79,4 +158,46 @@
   align-items: center;
   justify-content: center;
   z-index: 5;
+}
+
+.your_spot_info:hover {
+  /* background-color: #d0b8a5b1; */
+  cursor: pointer;
+  border-radius: 0.8rem;
+}
+
+.your_spot_info .your_spot_edit_button {
+  opacity: 0;
+}
+
+.your_spot_info .pan-to-container {
+  opacity: 0;
+}
+
+.your_spot_info:hover .pan-to-container {
+  opacity: 100;
+  transition: all 0.5s 0s;
+}
+
+.your_spot_info:hover .your_spot_edit_button {
+  opacity: 100;
+  transition: all 0.5s 0s;
+}
+
+.your_spot_info .your_spot_delete_button {
+  opacity: 0;
+}
+
+.your_spot_info:hover .your_spot_delete_button {
+  opacity: 100;
+  transition: all 0.5s 0s;
+}
+
+.your_spot_info .your_spot_zoom {
+  opacity: 0;
+}
+
+.your_spot_info:hover .your_spot_zoom {
+  opacity: 100;
+  transition: all 0.5s 0s;
 }

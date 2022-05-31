@@ -44,7 +44,7 @@
   max-width: 630px;
   min-width: 600px;
   margin-top: 1em;
-  margin-bottom: 2em;
+  margin-bottom: 5em;
 }
 
 .spot-container-single-info {
@@ -79,4 +79,40 @@
 .search-spot-details-holder {
   max-height: 285px;
   margin-top: 10px;
+}
+
+.pan-to-container {
+  margin-left: 2em;
+  margin-top: 1.5em;
+  font-size: 0.9em;
+  display: flex;
+  justify-content: center;
+  opacity: 100;
+}
+
+.pan-to-container div {
+  /* width: 30%; */
+  text-align: center;
+  /* display: flex; */
+  /* justify-content: center; */
+  padding: 10px 10px;
+  border: 1px solid rgb(221, 221, 221);
+  background-color: white;
+  border-radius: 20px;
+  cursor: pointer;
+  color: black;
+  transition: all 0.35s 0s;
+}
+
+.pan-to-button:hover {
+  background-color: rgb(204, 45, 74);
+  color: #fff;
+}
+
+.search-spot-single-container .pan-to-button {
+  opacity: 0;
+}
+
+.search-spot-single-container:hover .pan-to-button {
+  opacity: 100;
 }

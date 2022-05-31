@@ -93,17 +93,7 @@ function SignupForm() {
             required
           />
         </div>
-        <button
-          type="submit"
-          className={
-            !email.includes("@") ||
-            username.length < 4 ||
-            password.length < 6 ||
-            confirmPassword.length < 6
-              ? "signup-btn-disabled"
-              : "signup-btn"
-          }
-        >
+        <button type="submit" className="signup-btn">
           Sign Up
         </button>
       </form>
