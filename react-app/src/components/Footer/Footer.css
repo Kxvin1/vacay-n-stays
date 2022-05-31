@@ -1,6 +1,6 @@
 footer {
   border-top: 1px solid rgb(221, 221, 221);
-  z-index: 5;
+  /* z-index: 5; */
   opacity: 1;
   position: fixed;
   bottom: 0;
@@ -9,10 +9,15 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background-color: rgba(0, 0, 0, 0.801); */
-  height: 5.5rem;
+  background-color: #fffffffd;
+  /* height: 5.5rem; */
   flex-direction: column;
   padding: 5px 0;
+  z-index: 30;
+}
+
+footer .pnf {
+  position: fixed;
 }
 
 .footer-ul {

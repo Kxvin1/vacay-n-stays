@@ -34,6 +34,7 @@
 .search-spots-container-inner {
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .search-spot-single-container {
