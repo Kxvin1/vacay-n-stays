@@ -6,6 +6,13 @@
   top: 100px;
 }
 
+.your_spot_name {
+  margin-left: 1.5em;
+  font-size: 1.2em;
+  margin-top: 10px;
+  color: black;
+}
+
 .main_content_your_spots {
   margin-top: 10rem;
 }
@@ -36,6 +43,8 @@
 .spotPrice {
   color: rgb(113, 113, 113);
   margin-top: 10px;
+  font-size: 1em;
+  margin-left: 2em;
 }
 
 .your_spots_header {
@@ -75,11 +84,12 @@
   border: 1px solid #817f7c;
   color: #fff;
   border-radius: 2rem;
+  padding: 1em;
 }
 
 .your_spot_delete_button:hover {
   cursor: pointer;
-  background-color: rgb(243, 50, 50);
+  background-color: rgb(204, 45, 74);
   border: 1px solid #a8927a;
   color: #fff;
   border-radius: 2rem;
@@ -91,6 +101,7 @@
   border: 1px solid #a8927a;
   color: rgb(0, 0, 0);
   border-radius: 2rem;
+  padding: 1em;
 }
 
 .your_spot_zoom {
@@ -124,6 +135,7 @@
 .your_spot_button_container {
   display: flex;
   margin-bottom: 2rem;
+  justify-content: space-around;
 }
 
 .your_spot_edit_button {
@@ -156,6 +168,15 @@
 
 .your_spot_info .your_spot_edit_button {
   opacity: 0;
+}
+
+.your_spot_info .pan-to-container {
+  opacity: 0;
+}
+
+.your_spot_info:hover .pan-to-container {
+  opacity: 100;
+  transition: all 0.5s 0s;
 }
 
 .your_spot_info:hover .your_spot_edit_button {

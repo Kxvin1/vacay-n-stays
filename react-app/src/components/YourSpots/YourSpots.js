@@ -103,9 +103,18 @@ export default function YourSpots() {
                 <div className="your_spot_name">{spot?.name}</div>
                 <div className="your_spot_information">
                   <div className="spotPrice">${spot?.price}/night</div>
-                  <div className="spotAddress">{spot?.address}</div>
-                  <div className="spotDescription">{spot?.description}</div>
-                  <div>{/* address */}</div>
+                  <div className="pan-to-container">
+                    <div class="pan-to-button" onClick={() => panTo(spot)}>
+                      Click to view on map
+                    </div>
+                  </div>
+                  <div className="search-spot-card-info">
+                    <div className="spotDescription">{spot?.description}</div>
+                  </div>
+
+                  <div className="search-spot-card-info">
+                    <div>Location: {`${spot?.city}, ${spot?.state}`}</div>
+                  </div>
                 </div>
                 <div className="your_spot_button_container">
                   <button
@@ -119,12 +128,6 @@ export default function YourSpots() {
                     onClick={(e) => showDeleteConfirmation(e, spot)}
                   >
                     Delete Spot
-                  </button>
-                  <button
-                    className="your_spot_zoom"
-                    onClick={() => panTo(spot)}
-                  >
-                    Zoom to location
                   </button>
                   {deleteAvailable && (
                     <div className="delete-spot-modal">
