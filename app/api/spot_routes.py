@@ -1,8 +1,13 @@
-from flask import Blueprint, jsonify, request
-from flask_login import login_required
+from flask import Blueprint, request
+from flask_login import login_required, current_user
 from .auth_routes import validation_errors_to_error_messages
 from app.forms import NewSpotForm
-from app.models import db, Spot
+from app.models import db, Spot, Image
+
+import boto3
+import botocore
+from app.config import Config
+from app.aws_s3 import *
 
 spot_routes = Blueprint('spots', __name__)
 
@@ -119,9 +124,32 @@ def get_spot(userId):
     return {'spots': results}
 
 
+@spot_routes.route("/images", methods=['POST'])
+@login_required
+def add_spot_images():
+    newFile = request.form.get('newFile')
+    print(newFile)
+    if newFile == 'true':
+        if "file" not in request.files:
+            return "No user_file key in request.files"
+        file = request.files['file']
 
+        if file:
+            spot_id = request.form.get('spot_id')
+            file_url = upload_file_to_s3(file)
+            # file_url = file_url.replace(" ", "+")
+            image = Image(spot_id=spot_id, url=file_url["url"])
+            db.session.add(image)
+            db.session.commit()
 
+    if newFile == 'false':
+        print("********************************")
+        spot_id = request.form.get('spot_id')
+        url = request.form.get('file')
+        print(spot_id)
+        print(url)
+        image = Image(spot_id=spot_id, url=url)
+        db.session.add(image)
+        db.session.commit()
 
-############Will add to root __init__ ##
-# from .routes import spots
-# app.register_blueprint(spots.bp, url_prefix='/api/spots)
+    return {'message': 'okay'}
