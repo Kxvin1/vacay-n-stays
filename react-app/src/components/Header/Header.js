@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
-// import ImageUploadModal from "../ImageUploadModal"; --> replacing with link to create a spot
 import * as sessionActions from "../../store/session";
 import logo from "../../assets/logo.png";
 import Search from "./Search";
@@ -33,7 +32,6 @@ function Header({ isLoaded }) {
           Hello, {sessionUser.first_name}!
         </h2>
         <div>
-          {/* <ImageUploadModal /> --> replace with link to create a spot!*/}
           <button className="logout-button" onMouseDown={logout}>
             <i className="fas fa-power-off"></i>
           </button>
@@ -54,11 +52,7 @@ function Header({ isLoaded }) {
           </NavLink>
         </li>
         <li className="favorites-nav nav-button">
-          <NavLink
-            activeClassName="active-link"
-            // to={`/profiles/${sessionUser.id}`}
-            to={`/bookings`}
-          >
+          <NavLink activeClassName="active-link" to={`/bookings`}>
             Trips{" "}
           </NavLink>
         </li>
@@ -72,6 +66,7 @@ function Header({ isLoaded }) {
   } else {
     defaultLinks = (
       <>
+        <Search />
         <li id="login">
           <LoginFormModal />
         </li>
@@ -83,7 +78,15 @@ function Header({ isLoaded }) {
       </>
     );
 
-    loggedInLinks = <></>;
+    loggedInLinks = (
+      <ul>
+        <li className="nav-button">
+          <NavLink activeClassName="active-link" exact to="/discover-page">
+            Discover
+          </NavLink>
+        </li>
+      </ul>
+    );
   }
 
   return (
