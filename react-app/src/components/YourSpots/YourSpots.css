@@ -10,6 +10,29 @@
   margin-top: 10rem;
 }
 
+.spot_marker_background {
+  background-color: white;
+  z-index: 800;
+  width: 20px;
+  height: 80px;
+}
+
+.recenter_button {
+  z-index: 999;
+  position: absolute;
+  margin-left: 11.1458rem;
+  margin-top: 0.59rem;
+  height: 2.54rem;
+  cursor: pointer;
+  border: 0.2px solid rgb(179, 170, 170);
+  border-radius: 0.09rem;
+  background-color: white;
+}
+
+.recenter_button:hover {
+  opacity: 0.9;
+}
+
 .spotPrice {
   color: rgb(113, 113, 113);
   margin-top: 10px;
