@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+
 import { loadSpotReviews } from "../../store/reviews";
 import { addNewBookingThunk } from "../../store/booking";
 import { getSpots } from "../../store/spots";
@@ -8,10 +9,22 @@ import { getUserSpots } from "../../store/your_spots";
 import Reviews from "../Reviews/Reviews";
 import DatePicker from "react-calendar";
 import ReactBnbGallery from "react-bnb-gallery";
+import { GoogleMap, Marker } from "@react-google-maps/api";
+import spotMarkerSmall from "../SearchDisplay/spot-marker-small.png";
+import mapStyles from "../mapStyles";
 
 import "./SpotDetailPage.css";
 import "./calendar.css";
 import "react-bnb-gallery/dist/style.css";
+
+const mapContainerStyle = {
+  width: "100%",
+  height: "100%",
+};
+
+const options = {
+  styles: mapStyles,
+};
 
 export default function SpotDetailPage() {
   const dispatch = useDispatch();
@@ -66,21 +79,6 @@ export default function SpotDetailPage() {
   const handleBooking = async (e) => {
     e.preventDefault();
 
-    // console.log(date, "DATE");
-
-    // console.log(date[0], "date[0]"); // check in
-    // console.log(date[1], "date[1]"); // check out
-
-    // const convertedObjToStr = date[0].toString();
-    // // console.log(convertedObjToStr, "convertedObjToStr");
-    // let checkInDateArray = convertedObjToStr.split(" ");
-    // console.log(checkInDateArray);
-
-    // const checkInDateArrayMonth = monthFormatter.checkInDateArray[1];
-    // console.log(checkInDateArrayMonth);
-    // const checkInDateArrayDay = checkInDateArray[2];
-    // const checkInDateArrayYear = checkInDateArray[3];
-
     const checkInDate = date[0].toISOString().split("T")[0];
     console.log(checkInDate);
 
@@ -91,6 +89,17 @@ export default function SpotDetailPage() {
       addNewBookingThunk(user.id, spotId, checkInDate, checkOutDate)
     );
   };
+
+  useEffect(() => {
+    if (date) {
+      const displayDate = `${
+        date[0].getMonth() + 1
+      }/${date[0].getDate()}/${date[0].getFullYear()} - ${
+        date[1].getMonth() + 1
+      }/${date[1].getDate()}/${date[1].getFullYear()}`;
+      setFormattedDate(displayDate);
+    }
+  }, [date]);
 
   const handlePhotos = (photosIndex) => {
     if (!photoObject.length) {
@@ -125,6 +134,7 @@ export default function SpotDetailPage() {
             </h3>
           )}
         </div>
+        <p>${spot?.price} a night</p>
         <div className="description">{spot?.description}</div>
         <div className="images_container">
           {spot?.images.map((image) => (
@@ -156,16 +166,40 @@ export default function SpotDetailPage() {
               value={date}
               view={"month"}
               showFixedNumberOfWeeks={true}
+              activeStartDate={new Date()}
               prev2Label={null}
               next2Label={null}
               returnValue="range"
               selectRange={true}
+              tileDisabled={({ activeStartDate, date }) => date < activeStartDate}
             />
             <input type="text" value={formattedDate} placeholder="Add date" />
             <button type="Submit">Book</button>
           </form>
         </div>
         <div></div>
+      </div>
+      <div className="spot_map">
+        <GoogleMap
+          mapContainerStyle={mapContainerStyle}
+          center={{
+            lat: spot?.lat,
+            lng: spot?.lng,
+          }}
+          zoom={15}
+          options={options}
+        >
+          <>
+            <Marker
+              key={`${spot?.id}`}
+              icon={{
+                url: spotMarkerSmall,
+              }}
+              position={{ lat: spot?.lat, lng: spot?.lng }}
+              label={{ text: `$${spot?.price}`, fontWeight: "bold" }}
+            ></Marker>
+          </>
+        </GoogleMap>
       </div>
       <div className="reviews_container">
         <Reviews spotId={spotId} reviews={reviews} user={user} />

@@ -10,9 +10,15 @@ const ReviewForm = ({ userId, spotId }) => {
   const [locationRating, setLocationRating] = useState(0);
   const [valueRating, setValueRating] = useState(0);
   const [comment, setComment] = useState('');
+  const [showError, setShowError] = useState(false)
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!cleanlinessRating || !locationRating || !valueRating || !comment) {
+      setShowError(true)
+      return;
+    }
 
     const data = await dispatch(
       addNewReview(
@@ -25,10 +31,17 @@ const ReviewForm = ({ userId, spotId }) => {
       )
     );
 
+    if (data[0] === "Error") {
+      setShowError(true)
+    } else {
+
     setCleanlinessRating(0);
     setLocationRating(0);
     setValueRating(0);
     setComment('');
+
+    document.querySelector("#starRatings").scrollIntoView({behavior: 'smooth' });
+    }
   };
   console.log(locationRating)
   return (
@@ -65,7 +78,10 @@ const ReviewForm = ({ userId, spotId }) => {
           autoComplete="off"
           onChange={(e) => setComment(e.target.value)}
         />
-        <button className="modifyBtn" type="submit" disabled={locationRating === 0 || cleanlinessRating === 0 || valueRating === 0 || comment === '' ? true : false }>
+        {showError && (
+          <div className="reviewError">Please check your input and fill out all fields</div>
+        )}
+        <button className="modifyBtn" type="submit">
           New Review
         </button>        
         </div>

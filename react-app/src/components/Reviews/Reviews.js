@@ -52,20 +52,41 @@ const Reviews = ({ spotId, reviews, user }) => {
 
   const avgRatings = calculateAvgRatings();
 
-  console.log(avgRatings)
-
   return (
     <>
       <h2>Reviews</h2>
-      <div className="starAvgs">
-        <div>Total Cleanliness</div>
-        <Rating ratingValue={avgRatings[2] * 2 * 10} size="25" />
-        <div>Total Location</div>
-        <Rating ratingValue={avgRatings[3] * 2 * 10} size="25" />
-        <div>Total Value</div>
-        <Rating ratingValue={avgRatings[4] * 2 * 10} size="25" />
+      <h4 className="center">{avgRatings[1]} total reviews</h4>
+      <div id="starRatings" className="starAvgs">
+        
+        <div>Cleanliness</div>
+        <div className="bar">
+        <div className="full">
+          <div className="reviewBar" style={{width: `${avgRatings[2] * 24}px`}}></div>
+        </div>  
+        <div className="avgRatingPerCategory">{avgRatings[2]}</div> 
+        </div>
+        <div>Location</div>
+        <div className="bar">
+        <div className="full">
+          <div className="reviewBar" style={{width: `${avgRatings[3] * 24}px`}}></div>
+        </div>  
+        <div className="avgRatingPerCategory">{avgRatings[3]}</div> 
+        </div>
+        <div>Value</div>
+        <div className="bar">
+        <div className="full">
+          <div className="reviewBar" style={{width: `${avgRatings[4] * 24}px`}}></div>
+        </div>  
+        <div className="avgRatingPerCategory">{avgRatings[4]}</div> 
+        </div>
         <div>Total</div>
-        <Rating ratingValue={avgRatings[0] * 2 * 10} size="25" />
+        <div className="bar">
+        <div className="full">
+          <div className="reviewBar" style={{width: `${avgRatings[0] * 24}px`}}></div>
+        </div>  
+        <div className="avgRatingPerCategory">{avgRatings[0]}</div> 
+        </div>        
+        
       </div>
       
       <div className="allReviewsContainer">
