@@ -141,7 +141,7 @@ function SearchDisplay() {
                         url: spotMarkerSmall,
                       }}
                       position={{ lat: spot?.lat, lng: spot?.lng }}
-                      label={{ text: `$${spot?.price}` }}
+                      label={{ text: `$${spot?.price}`, fontWeight: "bold" }}
                       onClick={() => infoSpot(spot)}
                     />
                   ))}
