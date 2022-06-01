@@ -22,7 +22,8 @@
     "react-slideshow-image": "^3.7.5",
     "redux": "^4.1.0",
     "redux-logger": "^3.0.6",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "use-places-autocomplete": "^3.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
