@@ -8,3 +8,129 @@
   margin-left: 2.5rem;
   margin-right: 2.5rem;
 }
+
+.spot_form_content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.spot_form_input_container {
+  display: flex;
+  /* flex-wrap: nowrap; */
+  flex-direction: column;
+  border: 1px solid rgb(221, 221, 221);
+  border-radius: 10px;
+  /* width: fit-content; */
+  width: 100%;
+  padding: 10px;
+  height: 100%;
+}
+
+.spot_button_div {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 2em;
+  /* max-width: 5em; */
+}
+
+.spot_input_main_container {
+  margin-right: 15rem;
+  margin-left: 5rem;
+}
+
+.spot_form_field_container {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+  height: fit-content;
+}
+
+.spot_form_field_container h3 {
+  font-size: 25px;
+  max-width: 282px;
+  overflow-wrap: break-word;
+  margin-top: 0;
+}
+
+.form_input_section {
+  display: flex;
+  flex-wrap: nowrap;
+  border: 1px solid rgb(221, 221, 221);
+  border-radius: 10px;
+  width: fit-content;
+  padding: 10px;
+  /* height: fit-content; */
+}
+
+.field_section_container {
+  padding: 5px;
+  font-size: 16px;
+}
+
+.field_section_container h3 {
+  font-size: 25px;
+  max-width: 282px;
+  overflow-wrap: break-word;
+  margin-top: 0;
+}
+
+.images_container {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.add_images_container {
+  border: 1px solid rgb(221, 221, 221);
+  background-color: rgb(231, 231, 231);
+  border-radius: 5px;
+  padding: 50px 0;
+  box-sizing: border-box;
+  width: 575px;
+  cursor: pointer;
+  transition: background-color 0.25s ease-in-out;
+  text-align: center;
+  font-size: 18px;
+}
+
+.add_images_container:hover {
+  background-color: rgb(184, 182, 182);
+}
+
+.spot_form_container {
+  display: flex;
+  justify-content: center;
+}
+
+.spot_name_container_input {
+  padding: 1rem;
+}
+
+.spot_input {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  max-width: 18rem;
+}
+
+.spot_address_input {
+  max-width: 20rem;
+  width: 10rem;
+}
+
+.search-input {
+  width: 18rem;
+  max-width: 25rem;
+}
+
+.label {
+  font-size: large;
+  font-weight: 300;
+  padding-bottom: 0.5em;
+}
+
+.editPhotoButtons {
+  display: flex;
+  justify-content: center;
+}
