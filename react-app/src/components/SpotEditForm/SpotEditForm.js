@@ -119,7 +119,7 @@ export default function SpotEditForm() {
           <div className="spot_form_input_container">
             <div className="spot_form_field_container">
               <div className="spot_input_main_container">
-                <h3>Edit your Spot:</h3>
+                <h3>Edit {name}:</h3>
                 <div className="error_container_div">
                   <ul className="error_container">
                     {validationErrors.length > 0 &&
