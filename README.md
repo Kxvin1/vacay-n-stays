@@ -154,6 +154,11 @@ Inspired by Airbnb, VacayNStays is an online marketplace single page app where u
 
 ![Bookings Hover Past](https://i.imgur.com/Ppjk4eS.png)
 
+## Directions
+
+- When in 'Trips' page and the User clicks on Get Directions, the User is taken to a page that lets them input a location to show how far away the Booking Spot is from that origin.
+
+![Directions](https://i.imgur.com/qLbULvH.jpeg)
 
 ## Search
 
