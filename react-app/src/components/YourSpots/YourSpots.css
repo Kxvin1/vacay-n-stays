@@ -166,7 +166,7 @@
 
 .your_spot_info:hover {
   /* background-color: #d0b8a5b1; */
-  cursor: pointer;
+  /* cursor: pointer; */
   border-radius: 0.8rem;
 }
 
