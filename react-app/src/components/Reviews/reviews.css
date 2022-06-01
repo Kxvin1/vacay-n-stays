@@ -148,7 +148,7 @@
 }
 
 .reviews_container {
-  margin-top: 15em;
+  margin-top: 5em;
 }
 
 .rating {
@@ -173,7 +173,41 @@
 
 .starAvgs {
   display: grid;
-  grid-template-columns: 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr;
-  width: 100%;
+  grid-template-columns: 2fr 2fr 2fr 2fr;
+  width: 90%;
   padding: 1em;
+  border: 1px solid black;
+  margin: 1em;
+  max-width: 50em;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.reviewBar {
+  height: 4px;
+  background-color: rgb(34,34,34);
+  border-radius: 15px;
+}
+
+.bar {
+  width: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.full {
+  width: 120px;
+  height: 4px;
+  background-color: rgb(221,221,221);
+  border-radius: 15px;
+}
+
+.avgRatingPerCategory {
+  font-size: 14px;
+  color: rgb(34,34,34);
+}
+
+.center {
+  text-align: center;
 }

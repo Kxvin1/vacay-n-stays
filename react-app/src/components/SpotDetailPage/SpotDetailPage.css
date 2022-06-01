@@ -13,12 +13,13 @@
 .spot_detail_main_container {
   margin-top: 150px;
   justify-content: space-around;
+  overflow: hidden;
 }
 
 .spot_detail_main_container h1, .spot_detail_main_container h2 {
     text-align: center;
     color: #ee5557;
-    text-shadow: 2px 2px rgb(77, 75, 75, 0.6);
+    text-shadow: 1px 1px rgb(77, 75, 75, 0.6);
 }
 
 .spot_detail_container {
@@ -75,15 +76,14 @@
   color: #ee5557;
 }
 
-@media screen and (max-width: 1600px) {
-  .action_container {
-    margin-top: -25em;
-  }  
-
-  .starAvgs {
-    display: grid;
-    grid-template-columns: 2fr 2fr 2fr 2fr;
-    padding: 1em;
-    margin-left: 3em;
-  }
+.spot_map {
+  width: 90%;
+  height: 20em;
+  margin-top: 15em;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid black;
+  box-shadow: 2px 2px 25px rgba(0, 0, 0, 0.459);
 }
+
+
