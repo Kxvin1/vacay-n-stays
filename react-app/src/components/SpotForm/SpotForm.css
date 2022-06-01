@@ -30,6 +30,8 @@
   display: flex;
   justify-content: flex-end;
   margin-right: 2em;
+  margin-top: 3em;
+  /* z-index: -2; */
   /* max-width: 5em; */
 }
 
@@ -55,7 +57,7 @@
 .form_input_section {
   display: flex;
   flex-wrap: nowrap;
-  border: 1px solid rgb(221, 221, 221);
+  /* border: 1px solid rgb(221, 221, 221); */
   border-radius: 10px;
   width: fit-content;
   padding: 10px;
@@ -79,6 +81,10 @@
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
+}
+
+.upload__image-wrapper {
+  overflow-x: visible;
 }
 
 .add_images_container {
@@ -111,7 +117,18 @@
   display: flex;
   flex-direction: column;
   padding: 1rem;
-  max-width: 18rem;
+  max-width: 20rem;
+}
+
+.spot_description_input textarea {
+  width: 33rem;
+  height: 9rem;
+}
+
+.spot_input input {
+  font-size: 18px;
+  border: 1px solid #afafaf;
+  outline: none;
 }
 
 .spot_address_input {
@@ -120,17 +137,75 @@
 }
 
 .search-input {
-  width: 18rem;
+  width: 20rem;
   max-width: 25rem;
 }
 
 .label {
   font-size: large;
-  font-weight: 300;
+  font-weight: 450;
   padding-bottom: 0.5em;
 }
 
 .editPhotoButtons {
   display: flex;
   justify-content: center;
+}
+
+.spot_form_button {
+  border: none;
+  border-radius: 2em;
+  width: 10em;
+  height: 2em;
+  cursor: pointer;
+  color: white;
+  font-weight: 400;
+  font-size: medium;
+  background-color: #ff385c;
+  box-shadow: 2px 2px 2px rgb(70 67 67);
+}
+
+.spot_form_button:hover {
+  opacity: 0.95;
+}
+
+.change_image {
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2em;
+  width: 8em;
+  height: 1.5em;
+  cursor: pointer;
+  color: white;
+  font-weight: 400;
+  font-size: medium;
+  background-color: #386dff;
+  box-shadow: 2px 2px 2px rgb(70 67 67);
+}
+
+.remove_image {
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2em;
+  width: 8em;
+  height: 1.5em;
+  cursor: pointer;
+  color: white;
+  font-weight: 400;
+  font-size: medium;
+  background-color: #ff0a0a;
+  box-shadow: 2px 2px 2px rgb(70 67 67);
+  margin-left: 0.5em;
+}
+
+.change_image:hover {
+  opacity: 0.95;
+}
+
+.remove_image:hover {
+  opacity: 0.95;
 }

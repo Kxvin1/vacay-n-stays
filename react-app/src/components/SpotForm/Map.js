@@ -34,6 +34,7 @@ export default function Map(props) {
             <input
               {...getInputProps({ placeholder: "Type address" })}
               className="search-input"
+              required
             />
             <div>
               {loading ? <div>...loading</div> : null}

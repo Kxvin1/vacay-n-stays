@@ -32,15 +32,16 @@
   background-color: turquoise;
   border: none;
   border-radius: 5px;
-  color: #333;
+  color: white;
   margin-right: 1em;
   cursor: pointer;
 }
 
 .button_clear {
-  background-color: rosybrown;
+  background-color: #be2a46;
   border-radius: 5px;
   border: none;
+  color: white;
   margin-left: 1em;
   cursor: pointer;
 }

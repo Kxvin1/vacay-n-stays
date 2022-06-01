@@ -77,14 +77,16 @@ export default function SpotForm() {
 
   useEffect(() => {
     const errors = [];
-    if (!name.length) errors.push("Please include a name for your Spot.");
-    if (!description.length)
-      errors.push("Please include a description for your Spot.");
-    if (!address.length)
-      errors.push("Please include an address for your Spot.");
-    if (!state.length) errors.push("Please include the state for your Spot.");
-    if (!country.length) errors.push("Please include Country for your Spot.");
-  }, [name, description, address, city, state, country]);
+    // if (!name.length) errors.push("Please include a name for your Spot.");
+    // if (!description.length)
+    //   errors.push("Please include a description for your Spot.");
+    // if (!address.length)
+    //   errors.push("Please include an address for your Spot.");
+    if (images.length < 3) errors.push("Please include at least 3 images");
+    // if (!state.length) errors.push("Please include the state for your Spot.");
+    // if (!country.length) errors.push("Please include Country for your Spot.");
+    setValidationErrors(errors);
+  }, [name, description, address, city, state, country, images]);
 
   // async function getCoordinates() {
   //   // value of address is the valid address...
@@ -234,6 +236,20 @@ export default function SpotForm() {
               <div className="form_input_section" id="imageUploadSection">
                 <div className="field_section_container">
                   <h3 className="imagesHeader">Images</h3>
+                  <div className="error_container_div">
+                    <ul className="error_container">
+                      {validationErrors.length > 0 &&
+                        validationErrors.map((error) => (
+                          <li
+                            className="error"
+                            key={error}
+                            style={{ color: "red" }}
+                          >
+                            {error}
+                          </li>
+                        ))}
+                    </ul>
+                  </div>
                   <div className="imageUploadContainer">
                     <ImageUploading
                       multiple
@@ -276,13 +292,13 @@ export default function SpotForm() {
                                 />
                                 <div className="editPhotoButtons">
                                   <div
-                                    className="updatePhoto"
+                                    className="change_image"
                                     onClick={() => onImageUpdate(index)}
                                   >
-                                    Update
+                                    Change
                                   </div>
                                   <div
-                                    className="updatePhoto removePhoto"
+                                    className="remove_image"
                                     onClick={() => onImageRemove(index)}
                                   >
                                     Remove
@@ -299,7 +315,9 @@ export default function SpotForm() {
               </div>
             </div>
             <div className="spot_button_div">
-              <button type="submit">Submit</button>
+              <button className="spot_form_button" type="submit">
+                Submit
+              </button>
             </div>
           </div>
         </form>
