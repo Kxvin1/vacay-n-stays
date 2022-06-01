@@ -18,7 +18,7 @@ function ImageSlide({ spot }) {
   };
 
   return (
-    <div id="container-image-slide-id">
+    <div id="container-image-slide-id" className="container-image-slide">
       <Fade {...properties}>
         {imageArray.map((image) => (
           <Link to={`/spots/${spot.id}`} key={`Slider-${image.id}`}>

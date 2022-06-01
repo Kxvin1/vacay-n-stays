@@ -12,6 +12,7 @@ import {
   Marker,
   DirectionsRenderer,
   Autocomplete,
+  InfoWindow,
 } from "@react-google-maps/api";
 
 const mapContainerStyle = {
@@ -31,6 +32,8 @@ function SearchDisplay() {
   const history = useHistory();
   const [latitudeAvg, setLatitudeAvg] = useState(null);
   const [longitudeAvg, setLongitudeAvg] = useState(null);
+  const [spotInfo, setInfoSpot] = useState({});
+  const [click, setClick] = useState(false);
 
   const [zoom, setZoom] = useState(4);
 
@@ -47,6 +50,11 @@ function SearchDisplay() {
     setLongitudeAvg(-98.35);
     // zooms out
     setZoom(4);
+  };
+
+  const infoSpot = (spot) => {
+    setInfoSpot(spot);
+    setClick(!click);
   };
 
   useEffect(() => {
@@ -133,10 +141,38 @@ function SearchDisplay() {
                         url: spotMarkerSmall,
                       }}
                       position={{ lat: spot?.lat, lng: spot?.lng }}
-                      label={{ text: `$${spot?.price}` }}
-                      onClick={() => toSpotPage(spot?.id)}
+                      label={{ text: `$${spot?.price}`, fontWeight: "bold" }}
+                      onClick={() => infoSpot(spot)}
                     />
                   ))}
+                  {click && (
+                    <div className="info_container">
+                      <InfoWindow
+                        position={{
+                          lat: spotInfo?.lat + 3,
+                          lng: spotInfo?.lng,
+                        }}
+                        className="info_window"
+                      >
+                        <div className="your_spot_slide_div">
+                          <ImageSlide
+                            spot={spotInfo}
+                            key={`your_spot_info${spotInfo?.id}`}
+                          ></ImageSlide>
+                          <div className="info_window_slide_info">
+                            <div className="info_window_name">
+                              {spotInfo?.name}
+                            </div>
+                            <div className="info_window_city">{`${spotInfo?.city}, ${spotInfo?.state}`}</div>
+                            <div className="info_window_price">
+                              ${spotInfo?.price}
+                              <span className="perNightSpan"> night</span>
+                            </div>
+                          </div>
+                        </div>
+                      </InfoWindow>
+                    </div>
+                  )}
                 </GoogleMap>
               </div>
             </div>
