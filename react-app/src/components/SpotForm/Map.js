@@ -24,8 +24,11 @@ export default function Map(props) {
     >
       {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => {
         return (
-          <div>
-            <input {...getInputProps({ placeholder: "Type address" })} />
+          <div className="search-container">
+            <input
+              {...getInputProps({ placeholder: "Type address" })}
+              className="search-input"
+            />
             <div>
               {loading ? <div>...loading</div> : null}
               {suggestions.map((suggestion) => {

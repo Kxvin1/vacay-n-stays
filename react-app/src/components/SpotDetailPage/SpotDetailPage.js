@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { loadSpotReviews } from "../../store/reviews";
 import { addNewBookingThunk } from "../../store/booking";
 import { getSpots } from "../../store/spots";
+import { getUserSpots } from "../../store/your_spots";
 import Reviews from "../Reviews/Reviews";
 import DatePicker from "react-calendar";
 import ReactBnbGallery from "react-bnb-gallery";
@@ -17,7 +18,8 @@ export default function SpotDetailPage() {
   const { spotId } = useParams();
 
   const user = useSelector((state) => state.session.user);
-  const spot = useSelector((state) => state.spots[spotId]);
+  // const spot = useSelector((state) => state.spots[spotId]);
+  const spot = useSelector((state) => state.yourSpots[spotId]);
   const reviews = useSelector((state) => Object.values(state.reviews));
 
   const [date, setDate] = useState(null);
@@ -29,6 +31,10 @@ export default function SpotDetailPage() {
   useEffect(() => {
     dispatch(getSpots(spotId));
     dispatch(loadSpotReviews(spotId));
+  }, [dispatch, spotId]);
+
+  useEffect(() => {
+    dispatch(getUserSpots(user.id));
   }, [dispatch, spotId]);
 
   // useEffect(() => {
