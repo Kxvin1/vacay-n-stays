@@ -151,7 +151,7 @@ function SearchDisplay() {
                     <div className="info_container">
                       <InfoWindow
                         position={{
-                          lat: spotInfo?.lat + 3,
+                          lat: spotInfo?.lat,
                           lng: spotInfo?.lng,
                         }}
                         className="info_window"
