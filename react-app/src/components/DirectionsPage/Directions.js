@@ -89,14 +89,16 @@ export default function Directions() {
           <div>
             <div className="directions_main_container">
               <div className="directions_distance_container">
-                <h2>Distance to spot: {distance}</h2>
+                <h2>
+                  Distance to {`${spot?.name}`}: {distance}
+                </h2>
               </div>
               <div className="directions_duration_container">
-                <h2>By driving: {duration}</h2>
+                <h2>Drive Duration: {duration}</h2>
               </div>
               <div>
-                <Link to={`/spots/${spot.id}`}>
-                  Click here to go back to spot detail page.
+                <Link to={`/spots/${spot?.id}`}>
+                  View {`${spot?.name}'s`} Booking Page.
                 </Link>
               </div>
             </div>
@@ -123,7 +125,7 @@ export default function Directions() {
                     getCoordinates();
                   }}
                 >
-                  CALCULATE
+                  CALCULATE DISTANCE
                 </button>
               </div>
               <div>
@@ -134,7 +136,7 @@ export default function Directions() {
             </div>
           </div>
         </div>
-        <div style={{ width: "100rem", height: "800px" }}>
+        <div style={{ width: "100%", height: "85vh" }}>
           <GoogleMap
             mapContainerStyle={mapContainerStyle}
             center={center}
