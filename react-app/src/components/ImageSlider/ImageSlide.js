@@ -12,7 +12,7 @@ function ImageSlide({ spot }) {
     transitionDuration: 1000,
     easing: "linear",
     indicators: true,
-    arrows: true,
+    arrows: false,
     autoplay: false,
     cssClass: "ImageSlide",
   };
