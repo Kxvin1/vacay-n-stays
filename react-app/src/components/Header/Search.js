@@ -17,6 +17,8 @@ function Search() {
     e.preventDefault();
     dispatch(loadSearchResultsThunk(searchCity, searchState));
     document.documentElement.scrollTop = 0;
+    setSearchCity("");
+    setSearchState("");
     history.push("/search");
   };
 
