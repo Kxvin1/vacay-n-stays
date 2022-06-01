@@ -178,6 +178,39 @@
   opacity: 0;
 }
 
+.container-image-slide {
+  max-width: 2em;
+}
+
+.your_spot_slide_div {
+  max-width: 22em;
+  max-height: 30em;
+}
+
+.info_window_name {
+  padding: 0.5em;
+  margin-top: 2em;
+  font-weight: bold;
+}
+
+.info_window_city {
+  padding: 0.5em;
+}
+
+.info_window_price {
+  padding: 0.5em;
+  font-weight: bold;
+}
+
+.info_container {
+  margin-bottom: 100px;
+}
+
+.perNightSpan {
+  font-weight: lighter;
+  color: #63605c;
+}
+
 .your_spot_info:hover .pan-to-container {
   opacity: 100;
   transition: all 0.5s 0s;

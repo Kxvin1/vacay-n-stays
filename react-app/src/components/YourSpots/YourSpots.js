@@ -14,6 +14,7 @@ import {
   Marker,
   DirectionsRenderer,
   Autocomplete,
+  InfoWindow,
 } from "@react-google-maps/api";
 
 const mapContainerStyle = {
@@ -31,8 +32,10 @@ export default function YourSpots() {
   const [latitudeAvg, setLatitudeAvg] = useState(39.5);
   const [longitudeAvg, setLongitudeAvg] = useState(-98.35);
   const [zoom, setZoom] = useState(4);
+  const [click, setClick] = useState(false);
   const [deleteAvailable, setDeleteAvailable] = useState(false);
   const [spotDelete, setSpotDelete] = useState({});
+  const [spotInfo, setInfoSpot] = useState({});
 
   // Get an array of user's spots
   const spots = useSelector((state) => Object.values(state?.yourSpots));
@@ -91,6 +94,11 @@ export default function YourSpots() {
     setLongitudeAvg(-98.35);
     // zooms out
     setZoom(4);
+  };
+
+  const infoSpot = (spot) => {
+    setInfoSpot(spot);
+    setClick(!click);
   };
 
   return (
@@ -175,16 +183,41 @@ export default function YourSpots() {
             Recenter
           </button>
           {spots?.map((spot) => (
-            <Marker
-              key={`${spot?.id}`}
-              icon={{
-                url: spotMarkerSmall,
-              }}
-              position={{ lat: spot?.lat, lng: spot?.lng }}
-              label={{ text: `$${spot?.price}` }}
-              onClick={() => toSpotPage(spot?.id)}
-            ></Marker>
+            <>
+              <Marker
+                key={`${spot?.id}`}
+                icon={{
+                  url: spotMarkerSmall,
+                }}
+                position={{ lat: spot?.lat, lng: spot?.lng }}
+                label={{ text: `$${spot?.price}`, fontWeight: "bold" }}
+                onClick={() => infoSpot(spot)}
+              ></Marker>
+            </>
           ))}
+          {click && (
+            <div className="info_container">
+              <InfoWindow
+                position={{ lat: spotInfo?.lat + 3, lng: spotInfo?.lng }}
+                className="info_window"
+              >
+                <div className="your_spot_slide_div">
+                  <ImageSlide
+                    spot={spotInfo}
+                    key={`your_spot_info${spotInfo?.id}`}
+                  ></ImageSlide>
+                  <div className="info_window_slide_info">
+                    <div className="info_window_name">{spotInfo?.name}</div>
+                    <div className="info_window_city">{`${spotInfo?.city}, ${spotInfo?.state}`}</div>
+                    <div className="info_window_price">
+                      ${spotInfo?.price}
+                      <span className="perNightSpan"> night</span>
+                    </div>
+                  </div>
+                </div>
+              </InfoWindow>
+            </div>
+          )}
         </GoogleMap>
       </div>
     </div>
