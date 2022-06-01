@@ -125,6 +125,10 @@ This is the starter for the Flask React project.
 
 ![Your Spots Blank](https://i.imgur.com/u2E88ya.jpeg)
 
+- When a User hovers over a marker on the map and clicks it an image modal pops up with details of that specific spot.
+
+![Image Modal Spot](https://i.imgur.com/W4b0smC.jpeg)
+
 - When a user hovers over a spot, 3 buttons appear: Click to view on map, an Edit button, and a Delete button.
 
 ![Your Spots Hovered](https://i.imgur.com/vSb5dkX.jpeg)
@@ -161,6 +165,10 @@ This is the starter for the Flask React project.
   - On the left, they are shown a list of all the results of the search that met their criteria.
   - On the right is a Google Map of all the spots with their respective locations marked on the map that display as that spot's price per night.
 ![Search Page](https://i.imgur.com/eexkSjI.jpeg)
+
+- When a User hovers over a marker on the map and clicks it an image modal pops up with details of that specific spot.
+
+![Image Modal Spot](https://i.imgur.com/W4b0smC.jpeg)
 
 -  When hovering over a specific spot, a clickable button appears "Click to view on map" that will zoom into the map to that specific spot.
 
