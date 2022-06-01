@@ -65,6 +65,25 @@
   cursor: pointer;
 }
 
-.reviews_container {
-  margin-top: 100px;
+.hosted_by {
+  text-align: center;
+  font-size: 1.7em;
+}
+
+.hosted_by span {
+  font-weight: bold;
+  color: #ee5557;
+}
+
+@media screen and (max-width: 1600px) {
+  .action_container {
+    margin-top: -25em;
+  }  
+
+  .starAvgs {
+    display: grid;
+    grid-template-columns: 2fr 2fr 2fr 2fr;
+    padding: 1em;
+    margin-left: 3em;
+  }
 }

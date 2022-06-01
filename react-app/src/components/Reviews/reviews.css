@@ -57,6 +57,7 @@
 .modifyReviewBtns button {
   max-width: 60px;
   text-align: center;
+
 }
 
 .modifyBtn:hover {
@@ -69,6 +70,7 @@
 .comment {
   z-index: 1;
   scroll-behavior: smooth;
+
 }
 
 .x {
@@ -84,8 +86,9 @@
 
 .singleReview {
   width: 85%;
-  padding: 1em;
+  padding: 4em 1em 0 1em;
   border-radius: 20px;
+  min-height: 9em;
 }
 
 .singleReview .modifyReviewBtns {
@@ -136,13 +139,41 @@
 
 }
 
-.review_info {
-  margin-left: 100px;
-}
-
 .avatar {
   width: 75px;
-  position: absolute;
   border-radius: 80px;
   border: 1px solid black;
+  position: absolute;
+  margin-top: -3em;
+}
+
+.reviews_container {
+  margin-top: 15em;
+}
+
+.rating {
+  display: flex;
+  justify-content: flex-end;
+
+}
+
+.singleReview h3 {
+  position: absolute;
+  margin-left: 5em;
+  margin-top: -2em;
+  
+}
+
+.singleReview p {
+  position: absolute;
+  margin-left: 6em;
+  margin-top: .1em;
+  width: fit-content;
+}
+
+.starAvgs {
+  display: grid;
+  grid-template-columns: 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr;
+  width: 100%;
+  padding: 1em;
 }

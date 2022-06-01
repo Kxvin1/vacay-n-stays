@@ -43,9 +43,9 @@ def edit_review(id):
     if form.validate_on_submit():
         review = Review.query.filter(Review.id == id).first()
         review.comment = (form.data["comment"],)
-        review.cleanliness = (form.data["cleanliness"],)
-        review.location = (form.data["location"],)
-        review.value = (form.data["value"],)
+        review.cleanliness = (form.data["cleanliness"] / 2 / 10,)
+        review.location = (form.data["location"] / 2 / 10,)
+        review.value = (form.data["value"] / 2 / 10,)
         # review.date = (form.data["date"],)
         db.session.commit()
         return review.to_dict()

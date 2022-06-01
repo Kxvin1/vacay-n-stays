@@ -13,9 +13,9 @@ const ReviewCard = ({ review, user }) => {
   const [showDelete, setShowDelete] = useState(false);
 
   useEffect(() => {
-    setCleanlinessRating(review?.cleanliness);
-    setLocationRating(review?.location);
-    setValueRating(review?.value);
+    setCleanlinessRating(review?.cleanliness * 2 * 10);
+    setLocationRating(review?.location * 2 * 10);
+    setValueRating(review?.value * 2 * 10);
     setComment(review?.comment);
   }, [review]);
 
@@ -38,14 +38,16 @@ const ReviewCard = ({ review, user }) => {
     );
 
     setShowEdit(false);
+
   };
 
-  const closeEditForm = () => {
-    setCleanlinessRating(review?.cleanliness);
-    setLocationRating(review?.location);
-    setValueRating(review?.value);
+  const closeForm = () => {
+    setCleanlinessRating(review?.cleanliness * 2 * 10);
+    setLocationRating(review?.location * 2 * 10);
+    setValueRating(review?.value * 2 * 10);
     setComment(review?.comment);
     setShowEdit(false);
+    setShowDelete(false)
   };
 
   const avatars = [
@@ -70,42 +72,48 @@ const ReviewCard = ({ review, user }) => {
 
   return (
     <div className="singleReview">
-      <div className="avatar_container">
-        <img className="avatar" src={avatars[review?.user_id]} />
-      </div>
-      <div className="review_info">
-        <h3>{review?.user.first_name}</h3>
-        <p>{review.date}</p>
+      <img className="avatar" src={avatars[review?.user_id]} />
+      <h3>{review?.user.first_name}</h3>
+      <p>{review.date.slice(0, 16)}</p>
+      <div className="rating">
+        <Rating
+          ratingValue={(cleanlinessRating + locationRating + valueRating) / 3}
+          readonly="true"
+          size="30"
+        />
       </div>
 
-      <div className="comment">{review.comment}</div>
-      {review.user_id === user?.id && (
-        <div className="modifyReviewBtns">
-          <button
-            className="modifyBtn"
-            title="Delete Review"
-            onClick={() => setShowDelete(true)}
-          >
-            <i class="fa fa-trash"></i>
-          </button>
-          <button
-            className="modifyBtn"
-            title="Edit Review"
-            onClick={() => setShowEdit(true)}
-          >
-            <i class="fas fa-edit"></i>
-          </button>
-        </div>
-      )}
+      {review.comment}
+
+      <div className="modifyReviewBtns">
+        {review.user_id === user?.id && (
+          <div>
+            <button
+              className="modifyBtn"
+              title="Delete Review"
+              onClick={() => setShowDelete(true)}
+            >
+              <i class="fa fa-trash"></i>
+            </button>
+            <button
+              className="modifyBtn"
+              title="Edit Review"
+              onClick={() => setShowEdit(true)}
+            >
+              <i class="fas fa-edit"></i>
+            </button>
+          </div>
+        )}
+      </div>
 
       {showDelete && (
         <div className="modal">
           <div className="reviewFormModal">
-            <div className="x" onClick={() => setShowDelete(false)}>
+            <div className="x" onClick={closeForm}>
               <i className="fas fa-times"></i>
             </div>
             <h2>Delete</h2>
-            <p>Are you sure you want to delete your review?</p>
+            <h4>Are you sure you want to delete your review?</h4>
             <button className="modifyBtn" onClick={deleteReview}>
               Delete
             </button>
@@ -119,7 +127,7 @@ const ReviewCard = ({ review, user }) => {
       {showEdit && (
         <div className="modal">
           <div className="reviewFormModal">
-            <div className="x" onClick={closeEditForm}>
+            <div className="x" onClick={closeForm}>
               <i className="fas fa-times"></i>
             </div>
             <h2>Edit Review</h2>
