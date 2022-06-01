@@ -75,6 +75,8 @@ function SearchDisplay() {
     history.push(`/spots/${spotId}`);
   };
 
+  console.log(spotInfo);
+
   return (
     <>
       {isLoaded && (
@@ -162,8 +164,16 @@ function SearchDisplay() {
                           <div className="info_window_slide_info">
                             <div className="info_window_name">
                               {spotInfo?.name}
+                              <span className="perNightSpan">
+                                {" "}
+                                -- {`${spotInfo?.city}, ${spotInfo?.state}`}
+                              </span>
                             </div>
-                            <div className="info_window_city">{`${spotInfo?.city}, ${spotInfo?.state}`}</div>
+                            <div className="info_window_price">
+                              <span className="perNightSpan">Host: </span>
+                              {spotInfo?.user.first_name}{" "}
+                              {spotInfo?.user.last_name}
+                            </div>
                             <div className="info_window_price">
                               ${spotInfo?.price}
                               <span className="perNightSpan"> night</span>

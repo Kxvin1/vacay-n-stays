@@ -198,7 +198,10 @@ export default function YourSpots() {
           {click && (
             <div className="info_container">
               <InfoWindow
-                position={{ lat: spotInfo?.lat + 3, lng: spotInfo?.lng }}
+                position={{
+                  lat: spotInfo?.lat + 3,
+                  lng: spotInfo?.lng,
+                }}
                 className="info_window"
               >
                 <div className="your_spot_slide_div">
@@ -207,8 +210,17 @@ export default function YourSpots() {
                     key={`your_spot_info${spotInfo?.id}`}
                   ></ImageSlide>
                   <div className="info_window_slide_info">
-                    <div className="info_window_name">{spotInfo?.name}</div>
-                    <div className="info_window_city">{`${spotInfo?.city}, ${spotInfo?.state}`}</div>
+                    <div className="info_window_name">
+                      {spotInfo?.name}
+                      <span className="perNightSpan">
+                        {" "}
+                        -- {`${spotInfo?.city}, ${spotInfo?.state}`}
+                      </span>
+                    </div>
+                    <div className="info_window_price">
+                      <span className="perNightSpan">Host: </span>
+                      {spotInfo?.user.first_name} {spotInfo?.user.last_name}
+                    </div>
                     <div className="info_window_price">
                       ${spotInfo?.price}
                       <span className="perNightSpan"> night</span>
