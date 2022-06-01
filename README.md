@@ -98,8 +98,8 @@ Inspired by Airbnb, VacayNStays is an online marketplace single page app where u
 
 - Users can log into an existing account or sign up. Alternatively, users can test the site with the Demo Login feature.
 
-![Login Modal](https://i.imgur.com/P476t95.jpeg)
-![Signup Modal](https://i.imgur.com/yj8nfGL.jpeg)
+![Login Modal](https://i.imgur.com/64drfMS.jpeg)
+![Signup Modal](https://i.imgur.com/F8fRUvm.jpeg)
 
 
 ## Home Page (logged in)
