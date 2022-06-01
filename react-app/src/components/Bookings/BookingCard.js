@@ -136,6 +136,15 @@ function BookingCard({ booking, upcoming, user }) {
               </div>
             </div>
           </div>
+          {upcoming && (
+            <div className="get-directions-booking-page-button">
+              <Link to={`/directions/${booking.spot.id}`}>
+                <div class="get-directions-booking-button-inner">
+                  Get Directions
+                </div>
+              </Link>
+            </div>
+          )}
         </div>
       </Link>
       {deleteAvailable && (
