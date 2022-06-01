@@ -174,6 +174,57 @@
 }
 
 .delete-booking-button-inner:hover {
-  background-color: rgb(204, 45, 74);
+  background-color: rgb(235, 89, 116);
   color: #fff;
+}
+
+.get-directions-booking-page-button {
+  display: flex;
+  /* margin-bottom: 8em; */
+  /* margin-right: 20em; */
+  /* margin-left: 25em; */
+  /* margin-top: 10em; */
+  justify-content: center;
+  /* align-self: flex-end; */
+  /* position: fixed; */
+  opacity: 100;
+  /* top: 10px; */
+  /* bottom: 10px; */
+}
+
+.get-directions-booking-page-button div {
+  width: 10em;
+  height: 2em;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1em 2em;
+  border: 1px solid rgb(221, 221, 221);
+  background-color: white;
+  border-radius: 20px;
+  cursor: pointer;
+  color: black;
+  transition: all 0.35s 0s;
+  font-size: 1.2em;
+}
+
+.get-directions-booking-page-button a {
+  display: flex;
+  justify-content: center;
+  /* margin-right: 10px; */
+}
+
+.get-directions-booking-button-inner:hover {
+  background-color: rgb(235, 89, 116);
+  color: #fff;
+}
+
+.spot-booking-card .get-directions-booking-page-button {
+  opacity: 0;
+}
+
+.spot-booking-card:hover .get-directions-booking-page-button {
+  opacity: 100;
+  transition: all 0.5s 0s;
 }
