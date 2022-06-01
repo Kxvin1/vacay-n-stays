@@ -6,6 +6,7 @@ import DatePicker from "react-calendar";
 
 import { deleteBookingThunk } from "../../store/booking";
 import { loadSpotBookingsThunk } from "../../store/bookingSpot";
+// import { loadUserBookingsThunk } from "../../store/booking";
 
 import "./BookingCard.css";
 
@@ -46,7 +47,7 @@ function BookingCard({ booking, upcoming, user }) {
 
   const checkOutDate = () => {
     const dateFromDb = booking.check_out.split(" ");
-    console.log(dateFromDb);
+    // console.log(dateFromDb);
     const formattedDate = [];
     formattedDate.push(dateFromDb[0]);
     formattedDate.push(dateFromDb[2]);
@@ -56,10 +57,10 @@ function BookingCard({ booking, upcoming, user }) {
   };
 
   const spotDescriptionText = () => {
-    const description = booking.spot.description;
+    const description = booking?.spot?.description;
     // console.log(description.length);
     const finalResult = [];
-    if (description.length > 350) {
+    if (description?.length > 350) {
       let newDescription = description.slice(0, 350);
       finalResult.push(newDescription);
       finalResult.push("...");
@@ -75,7 +76,7 @@ function BookingCard({ booking, upcoming, user }) {
 
   return (
     <div className="booking-card-outer-container">
-      <Link to={`/spots/${booking.spot.id}`}>
+      <Link to={`/spots/${booking?.spot?.id}`}>
         <div className="spot-booking-card">
           <div className="booking-date">Your Trip Dates:</div>
           <div className="booking-date">
@@ -84,7 +85,7 @@ function BookingCard({ booking, upcoming, user }) {
           <div className="specific-booking-info-card">
             <div
               className="booking-picture"
-              style={{ backgroundImage: `url(${booking.spot.images[0]})` }}
+              style={{ backgroundImage: `url(${booking?.spot?.images[0]})` }}
             ></div>
             <div className="booking-spot-info">
               <div className="booking-spot-info-container-center">
@@ -93,7 +94,7 @@ function BookingCard({ booking, upcoming, user }) {
                     Booking Info:
                   </div>
                   <div className="booking-confirmed-details-info">
-                    {booking.spot?.name}
+                    {booking?.spot?.name}
                   </div>
                 </div>
                 <div
@@ -106,7 +107,7 @@ function BookingCard({ booking, upcoming, user }) {
                   >
                     Address:
                   </div>
-                  <div className="booking-confirmed-details-info">{`${booking.spot?.address}`}</div>
+                  <div className="booking-confirmed-details-info">{`${booking?.spot?.address}`}</div>
                 </div>
                 <div
                   className="booking-confirmed-details"
@@ -125,7 +126,7 @@ function BookingCard({ booking, upcoming, user }) {
                 {upcoming && (
                   <div className="delete-booking-page-button">
                     <div
-                      class="delete-booking-button-inner"
+                      className="delete-booking-button-inner"
                       onClick={showDeleteConfirmation}
                     >
                       <i className="fas fa-trash"></i>
@@ -138,8 +139,8 @@ function BookingCard({ booking, upcoming, user }) {
           </div>
           {upcoming && (
             <div className="get-directions-booking-page-button">
-              <Link to={`/directions/${booking.spot.id}`}>
-                <div class="get-directions-booking-button-inner">
+              <Link to={`/directions/${booking?.spot?.id}`}>
+                <div className="get-directions-booking-button-inner">
                   Get Directions
                 </div>
               </Link>
@@ -150,7 +151,7 @@ function BookingCard({ booking, upcoming, user }) {
       {deleteAvailable && (
         <div className="delete-booking-modal">
           <div className="delete-booking-form">
-            <div className="delete-confirmation-modal">{`Are you sure you want to cancel your trip at ${booking.spot.name} on ${checkInDateFormatted}?`}</div>
+            <div className="delete-confirmation-modal">{`Are you sure you want to cancel your trip at ${booking?.spot?.name} on ${checkInDateFormatted}?`}</div>
             <div className="delete-booking-confirm-buttons">
               <div class="delete-button" onClick={deleteBooking}>
                 Cancel Trip

@@ -20,7 +20,7 @@ function BookingsContainer({ bookings, user }) {
     let today = new Date();
 
     for (let booking of bookings) {
-      let check_in = new Date(booking.check_in.slice(5, 16));
+      let check_in = new Date(booking?.check_in.slice(5, 16));
       if (check_in < today) {
         oldBookingsArray.push(booking);
       } else {
@@ -79,7 +79,7 @@ function BookingsContainer({ bookings, user }) {
                     user={user}
                     booking={booking}
                     upcoming={true}
-                    key={`Your-booking-${booking.spot.id}-${index}`}
+                    key={`Your-booking-${booking?.spot?.id}-${index}`}
                   />
                 ))}
               </div>
