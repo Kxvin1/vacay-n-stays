@@ -5,6 +5,7 @@ import { getUserSpots } from "../../store/your_spots";
 import { deleteSpotId } from "../../store/spots";
 import ImageSlide from "../ImageSlider/ImageSlide";
 import mapStyles from "../mapStyles";
+import spotMarkerSmall from "../SearchDisplay/spot-marker-small.png";
 
 import "./YourSpots.css";
 
@@ -176,6 +177,9 @@ export default function YourSpots() {
           {spots?.map((spot) => (
             <Marker
               key={`${spot?.id}`}
+              icon={{
+                url: spotMarkerSmall,
+              }}
               position={{ lat: spot?.lat, lng: spot?.lng }}
               label={{ text: `$${spot?.price}` }}
               onClick={() => toSpotPage(spot?.id)}

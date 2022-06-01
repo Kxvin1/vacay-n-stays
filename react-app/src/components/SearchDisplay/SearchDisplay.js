@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import ImageSlide from "../ImageSlider/ImageSlide";
 import mapStyles from "../mapStyles";
+import spotMarkerSmall from "./spot-marker-small.png";
 
 import "./SearchDisplay.css";
 
@@ -128,6 +129,9 @@ function SearchDisplay() {
                   {spots?.map((spot) => (
                     <Marker
                       key={`${spot?.id}`}
+                      icon={{
+                        url: spotMarkerSmall,
+                      }}
                       position={{ lat: spot?.lat, lng: spot?.lng }}
                       label={{ text: `$${spot?.price}` }}
                       onClick={() => toSpotPage(spot?.id)}
