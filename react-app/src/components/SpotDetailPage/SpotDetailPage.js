@@ -92,9 +92,8 @@ export default function SpotDetailPage() {
       </div>
       <ReactBnbGallery show={showPhotoModal} onClose={() => setShowPhotoModal(false)} photos={photoObject} activePhotoIndex={photoIndex} />
       <div className="action_container">
-        <div className="spot_mod_btns">
-          <button>Delete</button>
-          <button>Edit</button>
+        <div className="hosted_by">
+            Hosted by <span>{spot?.user.first_name}</span>{spot?.user.last_name}
         </div>
         <div className="booking_container">
           <h2>Booking</h2>
@@ -116,7 +115,6 @@ export default function SpotDetailPage() {
         <div></div>
       </div>
       <div className="reviews_container">
-        <h2>Reviews</h2>
         <Reviews spotId={spotId} reviews={reviews} user={user} />
       </div>
     </div>
