@@ -4,17 +4,23 @@ import PlacesAutocomplete, {
   getLatLng,
 } from "react-places-autocomplete";
 
+import usePlacesAutocomplete from "use-places-autocomplete";
+
 export default function Map(props) {
   // const [address, setAddress] = React.useState("");
   // const [coordinates, setCoordinates] = React.useState({
   //   lat: null,
   //   lng: null,
   // });
+
+  const { clearSuggestions } = usePlacesAutocomplete();
+
   const handleSelect = async (value) => {
     const results = await geocodeByAddress(value);
     const latlng = await getLatLng(results[0]);
     props.setAddress(value);
     props.setCoordinates(latlng);
+    clearSuggestions();
   };
   return (
     <PlacesAutocomplete
@@ -35,11 +41,11 @@ export default function Map(props) {
                 const style = {
                   backgroundColor: suggestion.active ? "#41b6e6" : "#fff",
                 };
-                //   console.log(suggestion);
                 return (
                   <div
                     {...getSuggestionItemProps(suggestion, { style })}
-                    onClick={() => handleSelect(suggestion.description)}
+                    // onClick={() => handleSelect(suggestion.description)}
+                    onSelect={() => handleSelect(suggestion.description)}
                   >
                     {suggestion.description}
                   </div>
