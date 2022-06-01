@@ -9,8 +9,8 @@ export default function Spots() {
   const dispatch = useDispatch();
 
   // array of spots
-  const spots = useSelector((state) => Object.values(state.spots));
-  const user = useSelector((state) => state.session.user);
+  const spots = useSelector((state) => Object.values(state?.spots));
+  const user = useSelector((state) => state?.session?.user);
 
   spots.sort(function (a, b) {
     return b.id - a.id;

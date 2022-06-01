@@ -133,14 +133,18 @@
 }
 
 .your_spot_button_container {
+  /* position: relative;
+  top: 0px;
+  right: 0px; */
   display: flex;
   margin-bottom: 2rem;
-  justify-content: space-around;
 }
 
 .your_spot_edit_button {
-  margin-left: 0.8rem;
-  margin-right: 0.8rem;
+  display: flex;
+  justify-content: flex-end;
+  margin-left: 15rem;
+  margin-right: 1rem;
 }
 
 .your_spot_info {
@@ -162,7 +166,7 @@
 
 .your_spot_info:hover {
   /* background-color: #d0b8a5b1; */
-  cursor: pointer;
+  /* cursor: pointer; */
   border-radius: 0.8rem;
 }
 
@@ -172,6 +176,39 @@
 
 .your_spot_info .pan-to-container {
   opacity: 0;
+}
+
+.container-image-slide {
+  max-width: 2em;
+}
+
+.your_spot_slide_div {
+  max-width: 22em;
+  max-height: 30em;
+}
+
+.info_window_name {
+  padding: 0.5em;
+  margin-top: 2.5em;
+  font-weight: bold;
+}
+
+.info_window_city {
+  padding: 0.5em;
+}
+
+.info_window_price {
+  padding: 0.5em;
+  font-weight: bold;
+}
+
+.info_container {
+  margin-bottom: 100px;
+}
+
+.perNightSpan {
+  font-weight: lighter;
+  color: #63605c;
 }
 
 .your_spot_info:hover .pan-to-container {

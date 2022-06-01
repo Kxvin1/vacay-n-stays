@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams, useHistory, Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Map from "../SpotForm/Map";
-import { editSpot } from "../../store/spots";
+import { editSpot, uploadFile } from "../../store/spots";
+import ImageUploading from "react-images-uploading";
 import "./SpotEditForm.css";
 
 export default function SpotEditForm() {
@@ -34,10 +35,22 @@ export default function SpotEditForm() {
   });
   const [price, setPrice] = useState(spotToEdit?.price);
   const [validationErrors, setValidationErrors] = useState([]);
+  const [images, setImages] = useState("");
 
-  const handleSubmit = (e) => {
+  useEffect(() => {
+    let images = spotToEdit?.images.map((image) => {
+      return { data_url: image };
+    });
+    setImages(images);
+  }, []);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (validationErrors.length > 0) {
+      return;
+    }
+
+    if (images.length < 3) {
       return;
     }
 
@@ -54,8 +67,33 @@ export default function SpotEditForm() {
       price,
     };
 
-    if (data) {
-      dispatch(editSpot(data, spotToEdit.id));
+    const spotData = await dispatch(editSpot(data, spotToEdit.id));
+
+    await addImages(images, spotData[1].id);
+  };
+
+  const addImages = async (images, spot_id) => {
+    for (let x = 0; x < images.length; x++) {
+      let image = images[x];
+
+      let newFile = false;
+      let file;
+
+      //If there is a file, this is a new/updated upload
+      if (image.file) {
+        newFile = true;
+        file = image.file;
+      } else {
+        file = image.data_url;
+      }
+
+      const obj = {
+        file: file,
+        spot_id: spot_id,
+        newFile: newFile,
+      };
+
+      await dispatch(uploadFile(obj));
     }
   };
 
@@ -179,6 +217,66 @@ export default function SpotEditForm() {
               value={price}
               onChange={(e) => setPrice(e.target.value)}
             ></input>
+          </div>
+          <div className="formInputSection" id="imageUploadSection">
+            <div className="fieldSection">
+              <h3 className="imagesHeader">Images</h3>
+              <div className="imageUploadContainer">
+                <ImageUploading
+                  multiple
+                  value={images}
+                  onChange={(imageList) => setImages(imageList)}
+                  maxNumber={80}
+                  dataURLKey="data_url"
+                  acceptType={["jpg", "png", "jpeg"]}
+                >
+                  {({
+                    imageList,
+                    onImageUpload,
+                    onImageRemoveAll,
+                    onImageUpdate,
+                    onImageRemove,
+                    isDragging,
+                    dragProps,
+                  }) => (
+                    <div className="upload__image-wrapper">
+                      <div
+                        style={
+                          isDragging ? { color: "rgb(192, 53, 22)" } : undefined
+                        }
+                        onClick={onImageUpload}
+                        {...dragProps}
+                        className="clickDragHere"
+                      >
+                        Add or Drag Images Here
+                      </div>
+                      {/* <div onClick={onImageRemoveAll}>Remove all images</div> */}
+                      <div className="uploadedImagesContainer">
+                        {imageList.map((image, index) => (
+                          <div key={index}>
+                            <img src={image["data_url"]} alt="" height="230" />
+                            <div className="editPhotoButtons">
+                              <div
+                                className="updatePhoto"
+                                onClick={() => onImageUpdate(index)}
+                              >
+                                Update
+                              </div>
+                              <div
+                                className="updatePhoto removePhoto"
+                                onClick={() => onImageRemove(index)}
+                              >
+                                Remove
+                              </div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </ImageUploading>
+              </div>
+            </div>
           </div>
           <div className="spot_button_div">
             <button type="submit">Submit</button>

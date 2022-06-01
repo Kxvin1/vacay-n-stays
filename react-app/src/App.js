@@ -88,6 +88,9 @@ function App() {
           <ProtectedRoute path={`/spots/:spotId`}>
             <SpotDetailPage />
           </ProtectedRoute>
+          <ProtectedRoute path={`/directions/:spotId`}>
+            <h1>TEXT</h1>
+          </ProtectedRoute>
           <Route exact path="/search">
             <SearchDisplay />
           </Route>

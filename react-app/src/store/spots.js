@@ -34,20 +34,45 @@ export const getSpots = () => async (dispatch) => {
   }
 };
 
-export const addSpot = (data) => async (dispatch) => {
-  const response = await fetch("/api/spots", {
-    method: "post",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  });
+export const addSpot =
+  (
+    user_id,
+    name,
+    description,
+    address,
+    city,
+    state,
+    country,
+    price,
+    lat,
+    lng
+  ) =>
+  async (dispatch) => {
+    const response = await fetch("/api/spots", {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        user_id,
+        name,
+        description,
+        address,
+        city,
+        state,
+        country: "USA",
+        price,
+        lat,
+        lng,
+      }),
+    });
 
-  if (response.ok) {
-    const spot = await response.json();
-    dispatch(add(spot));
-  }
-};
+    if (response.ok) {
+      const spot = await response.json();
+      dispatch(add(spot));
+      return ["Created", spot];
+    }
+  };
 
 export const editSpot = (data, spotId) => async (dispatch) => {
   const response = await fetch(`/api/spots/${spotId}`, {
@@ -58,6 +83,7 @@ export const editSpot = (data, spotId) => async (dispatch) => {
   if (response.ok) {
     const editedSpot = await response.json();
     dispatch(edit(editedSpot));
+    return ["Created", editedSpot];
   }
 };
 
@@ -70,6 +96,21 @@ export const deleteSpotId = (spotId) => async (dispatch) => {
     const data = await response.json();
     dispatch(deleteSpot(data));
   }
+};
+
+export const uploadFile = (fileForm) => async (dispatch) => {
+  const { spot_id, file, newFile } = fileForm;
+
+  const form = new FormData();
+  form.append("file", file);
+  form.append("spot_id", spot_id);
+  form.append("newFile", newFile);
+
+  console.log("before");
+  const res = await fetch("/api/spots/images", {
+    method: "POST",
+    body: form,
+  });
 };
 
 // reducers.

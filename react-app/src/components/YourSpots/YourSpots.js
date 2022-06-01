@@ -5,6 +5,7 @@ import { getUserSpots } from "../../store/your_spots";
 import { deleteSpotId } from "../../store/spots";
 import ImageSlide from "../ImageSlider/ImageSlide";
 import mapStyles from "../mapStyles";
+import spotMarkerSmall from "../SearchDisplay/spot-marker-small.png";
 
 import "./YourSpots.css";
 
@@ -13,6 +14,7 @@ import {
   Marker,
   DirectionsRenderer,
   Autocomplete,
+  InfoWindow,
 } from "@react-google-maps/api";
 
 const mapContainerStyle = {
@@ -30,26 +32,32 @@ export default function YourSpots() {
   const [latitudeAvg, setLatitudeAvg] = useState(39.5);
   const [longitudeAvg, setLongitudeAvg] = useState(-98.35);
   const [zoom, setZoom] = useState(4);
+  const [click, setClick] = useState(false);
   const [deleteAvailable, setDeleteAvailable] = useState(false);
   const [spotDelete, setSpotDelete] = useState({});
+  const [spotInfo, setInfoSpot] = useState({});
 
   // Get an array of user's spots
   const spots = useSelector((state) => Object.values(state?.yourSpots));
   const user = useSelector((state) => state.session.user);
 
+  spots.sort(function (a, b) {
+    return b.id - a.id;
+  });
+
   useEffect(() => {
     dispatch(getUserSpots(user.id));
-    let latitude = 0;
-    let longitude = 0;
+    // let latitude = 0;
+    // let longitude = 0;
 
-    spots.forEach((spot) => {
-      latitude += spot?.lat;
-      longitude += spot?.lng;
-    });
+    // spots.forEach((spot) => {
+    //   latitude += spot?.lat;
+    //   longitude += spot?.lng;
+    // });
 
-    const length = spots?.length;
-    setLatitudeAvg(parseFloat(latitude / length));
-    setLongitudeAvg(parseFloat(longitude / length));
+    // const length = spots?.length;
+    // setLatitudeAvg(parseFloat(latitude / length));
+    // setLongitudeAvg(parseFloat(longitude / length));
   }, [dispatch]);
 
   const toSpotPage = (spotId) => {
@@ -88,6 +96,11 @@ export default function YourSpots() {
     setZoom(4);
   };
 
+  const infoSpot = (spot) => {
+    setInfoSpot(spot);
+    setClick(!click);
+  };
+
   return (
     <div className="main_content_your_spots">
       <div className="your_spots_list">
@@ -121,13 +134,13 @@ export default function YourSpots() {
                     className="your_spot_edit_button"
                     onClick={() => toEditPage(spot.id)}
                   >
-                    EDIT
+                    <i className="fas fa-edit"></i>
                   </button>
                   <button
                     class="your_spot_delete_button"
                     onClick={(e) => showDeleteConfirmation(e, spot)}
                   >
-                    Delete Spot
+                    <i className="fas fa-trash"></i>
                   </button>
                   {deleteAvailable && (
                     <div className="delete-spot-modal">
@@ -170,13 +183,53 @@ export default function YourSpots() {
             Recenter
           </button>
           {spots?.map((spot) => (
-            <Marker
-              key={`${spot?.id}`}
-              position={{ lat: spot?.lat, lng: spot?.lng }}
-              label={{ text: `$${spot?.price}` }}
-              onClick={() => toSpotPage(spot?.id)}
-            ></Marker>
+            <>
+              <Marker
+                key={`${spot?.id}`}
+                icon={{
+                  url: spotMarkerSmall,
+                }}
+                position={{ lat: spot?.lat, lng: spot?.lng }}
+                label={{ text: `$${spot?.price}`, fontWeight: "bold" }}
+                onClick={() => infoSpot(spot)}
+              ></Marker>
+            </>
           ))}
+          {click && (
+            <div className="info_container">
+              <InfoWindow
+                position={{
+                  lat: spotInfo?.lat + 3,
+                  lng: spotInfo?.lng,
+                }}
+                className="info_window"
+              >
+                <div className="your_spot_slide_div">
+                  <ImageSlide
+                    spot={spotInfo}
+                    key={`your_spot_info${spotInfo?.id}`}
+                  ></ImageSlide>
+                  <div className="info_window_slide_info">
+                    <div className="info_window_name">
+                      {spotInfo?.name}
+                      <span className="perNightSpan">
+                        {" "}
+                        -- {`${spotInfo?.city}, ${spotInfo?.state}`}
+                      </span>
+                    </div>
+                    <div className="info_window_price">
+                      <span className="perNightSpan">Host: </span>
+                      {spotInfo?.user.first_name} {spotInfo?.user.last_name}
+                    </div>
+                    <div className="info_window_price">
+                      ${spotInfo?.price}
+                      <span className="perNightSpan"> night</span>
+                    </div>
+                  </div>
+                </div>
+              </InfoWindow>
+            </div>
+          )}
         </GoogleMap>
       </div>
     </div>
