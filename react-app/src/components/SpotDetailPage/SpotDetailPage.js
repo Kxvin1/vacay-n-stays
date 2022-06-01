@@ -18,8 +18,8 @@ export default function SpotDetailPage() {
   const { spotId } = useParams();
 
   const user = useSelector((state) => state.session.user);
-  // const spot = useSelector((state) => state.spots[spotId]);
-  const spot = useSelector((state) => state.yourSpots[spotId]);
+  const spot = useSelector((state) => state.spots[spotId]);
+  // const spot = useSelector((state) => state.yourSpots[spotId]);
   const reviews = useSelector((state) => Object.values(state.reviews));
 
   const [date, setDate] = useState(null);
