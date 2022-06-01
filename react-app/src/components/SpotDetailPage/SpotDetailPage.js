@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { loadSpotReviews } from "../../store/reviews";
 import { addNewBookingThunk } from "../../store/booking";
 import { getSpots } from "../../store/spots";
+import { getUserSpots } from "../../store/your_spots";
 import Reviews from "../Reviews/Reviews";
 import DatePicker from "react-calendar";
 import ReactBnbGallery from "react-bnb-gallery";
@@ -31,6 +32,7 @@ export default function SpotDetailPage() {
 
   const user = useSelector((state) => state.session.user);
   const spot = useSelector((state) => state.spots[spotId]);
+  // const spot = useSelector((state) => state.yourSpots[spotId]);
   const reviews = useSelector((state) => Object.values(state.reviews));
 
   const [date, setDate] = useState(null);
@@ -43,6 +45,36 @@ export default function SpotDetailPage() {
     dispatch(getSpots(spotId));
     dispatch(loadSpotReviews(spotId));
   }, [dispatch, spotId]);
+
+  useEffect(() => {
+    dispatch(getUserSpots(user.id));
+  }, [dispatch, spotId]);
+
+  // useEffect(() => {
+  //   if (date) {
+  //     const displayDate = `${
+  //       date[0].getMonth() + 1
+  //     }/${date[0].getDate()}/${date[0].getFullYear()} - ${
+  //       date[1].getMonth() + 1
+  //     }/${date[1].getDate()}/${date[1].getFullYear()}`;
+  //     setFormattedDate(displayDate);
+  //   }
+  // }, [date]);
+
+  const monthFormatter = {
+    Jan: "1",
+    Feb: "2",
+    Mar: "3",
+    Apr: "4",
+    May: "5",
+    Jun: "6",
+    Jul: "7",
+    Aug: "8",
+    Sep: "9",
+    Oct: "10",
+    Nov: "11",
+    Dec: "12",
+  };
 
   const handleBooking = async (e) => {
     e.preventDefault();

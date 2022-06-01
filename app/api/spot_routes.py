@@ -30,7 +30,7 @@ def get():
 def add_spot():
     form = NewSpotForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    print(form.validate_on_submit(), "LOOK HEEEEERRREE")
+    # print(form.validate_on_submit(), "LOOK HEEEEERRREE")
     if form.validate_on_submit():
         data = form.data
         spot = Spot(
@@ -79,19 +79,7 @@ def update(spotId):
             db.session.delete(image)
         db.session.commit()
 
-        return {
-            "id": spot.id,
-            "user_id": spot.user_id,
-            "name": spot.name,
-            "description": spot.description,
-            "address": spot.address,
-            "city": spot.city,
-            "state": spot.state,
-            "country": spot.country,
-            "lat": spot.lat,
-            "lng": spot.lng,
-            "price": spot.price
-        }
+        return spot.to_dict()
     return {"errors": validation_errors_to_error_messages(form.errors)}, 401
 
 @spot_routes.route("/<int:spotId>", methods=["DELETE"])
