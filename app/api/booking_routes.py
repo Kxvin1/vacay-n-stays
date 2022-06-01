@@ -32,6 +32,10 @@ def add_booking():
     form = NewBooking()
 
     form["csrf_token"].data = request.cookies["csrf_token"]
+    print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+    print(form.validate_on_submit())
+    print(form.data)
+    print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
     if form.validate_on_submit():
         data = form.data
         booking = Booking(
