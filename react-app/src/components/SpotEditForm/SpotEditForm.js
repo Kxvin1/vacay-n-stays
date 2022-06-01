@@ -223,76 +223,76 @@ export default function SpotEditForm() {
                     onChange={(e) => setPrice(e.target.value)}
                   ></input>
                 </div>
-                <div className="formInputSection" id="imageUploadSection">
-                  <div className="field_section_container">
-                    <h3 className="imagesHeader">Images</h3>
-                    <div className="imageUploadContainer">
-                      <ImageUploading
-                        multiple
-                        value={images}
-                        onChange={(imageList) => setImages(imageList)}
-                        maxNumber={80}
-                        dataURLKey="data_url"
-                        acceptType={["jpg", "png", "jpeg"]}
-                      >
-                        {({
-                          imageList,
-                          onImageUpload,
-                          onImageRemoveAll,
-                          onImageUpdate,
-                          onImageRemove,
-                          isDragging,
-                          dragProps,
-                        }) => (
-                          <div className="upload__image-wrapper">
-                            <div
-                              style={
-                                isDragging
-                                  ? { color: "rgb(192, 53, 22)" }
-                                  : undefined
-                              }
-                              onClick={onImageUpload}
-                              {...dragProps}
-                              className="add_images_container"
-                            >
-                              Add or Drag Images Here
-                            </div>
-                            {/* <div onClick={onImageRemoveAll}>Remove all images</div> */}
-                            <div className="images_container">
-                              {imageList.map((image, index) => (
-                                <div key={index}>
-                                  <img
-                                    src={image["data_url"]}
-                                    alt=""
-                                    height="230"
-                                  />
-                                  <div className="editPhotoButtons">
-                                    <div
-                                      className="updatePhoto"
-                                      onClick={() => onImageUpdate(index)}
-                                    >
-                                      Update
-                                    </div>
-                                    <div
-                                      className="updatePhoto removePhoto"
-                                      onClick={() => onImageRemove(index)}
-                                    >
-                                      Remove
-                                    </div>
+              </div>
+              <div className="formInputSection" id="imageUploadSection">
+                <div className="field_section_container">
+                  <h3 className="imagesHeader">Images</h3>
+                  <div className="imageUploadContainer">
+                    <ImageUploading
+                      multiple
+                      value={images}
+                      onChange={(imageList) => setImages(imageList)}
+                      maxNumber={80}
+                      dataURLKey="data_url"
+                      acceptType={["jpg", "png", "jpeg"]}
+                    >
+                      {({
+                        imageList,
+                        onImageUpload,
+                        onImageRemoveAll,
+                        onImageUpdate,
+                        onImageRemove,
+                        isDragging,
+                        dragProps,
+                      }) => (
+                        <div className="upload__image-wrapper">
+                          <div
+                            style={
+                              isDragging
+                                ? { color: "rgb(192, 53, 22)" }
+                                : undefined
+                            }
+                            onClick={onImageUpload}
+                            {...dragProps}
+                            className="add_images_container"
+                          >
+                            Add or Drag Images Here
+                          </div>
+                          {/* <div onClick={onImageRemoveAll}>Remove all images</div> */}
+                          <div className="images_container">
+                            {imageList.map((image, index) => (
+                              <div key={index}>
+                                <img
+                                  src={image["data_url"]}
+                                  alt=""
+                                  height="230"
+                                />
+                                <div className="editPhotoButtons">
+                                  <div
+                                    className="updatePhoto"
+                                    onClick={() => onImageUpdate(index)}
+                                  >
+                                    Update
+                                  </div>
+                                  <div
+                                    className="updatePhoto removePhoto"
+                                    onClick={() => onImageRemove(index)}
+                                  >
+                                    Remove
                                   </div>
                                 </div>
-                              ))}
-                            </div>
+                              </div>
+                            ))}
                           </div>
-                        )}
-                      </ImageUploading>
-                    </div>
+                        </div>
+                      )}
+                    </ImageUploading>
                   </div>
                 </div>
-                <div className="spot_button_div">
-                  <button type="submit">Submit</button>
-                </div>
               </div>
+            </div>
+            <div className="spot_button_div">
+              <button type="submit">Submit</button>
             </div>
           </div>
         </form>
