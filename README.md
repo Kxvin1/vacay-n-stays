@@ -86,7 +86,7 @@ Inspired by Airbnb, VacayNStays is an online marketplace single page app where u
 
 - A User that isn't logged in can browse the catalog of spots and use the search feature.
 
-![Splash Page](https://i.imgur.com/Kyyhnlu.jpeg)
+![Splash Page](https://i.imgur.com/nkBAlt4.jpeg)
 
 - A User that isn't logged is not able to click and view the details of the spot. 
   - The User will be redirected to a 403 FORBIDDEN page if they attempt to access a page they are not allowed to until they log in.
@@ -106,7 +106,7 @@ Inspired by Airbnb, VacayNStays is an online marketplace single page app where u
 
 - A User that is logged in will gain additional links to their navigation bar: My Spots, Trips, Post A Spot. The footer will also disappear.
 
-![Home Page Authenticated](https://i.imgur.com/zqDAjXH.jpeg)
+![Home Page Authenticated](https://i.imgur.com/NPVBOq4.jpeg)
 
 
 ## Spot Details Section Here
