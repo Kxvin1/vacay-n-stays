@@ -1,12 +1,44 @@
-# Flask React Project
+# Vacay N Stays
 
-This is the starter for the Flask React project.
+Inspired by Airbnb, VacayNStays is an online marketplace single page app where users can book vacations at luxurious and unique vacation spots. Users can search for spots and either book stays at these spots, create their own spot or leave reviews for spots.
 
-## Getting started
-1. Clone this repository (only this branch)
+### Here are some key features:
+  - Leveraged Redux to create a single page app to dynamically render React components without a refresh
+  - Implemented CRUD features for Spots, Bookings, and Reviews
+  - Implemented Google Maps API to dynamically display the location of all spots and add markers on the map for each spot
+  - Utilized Werkzeug to hash user passwords and store them in the database to implement access control lists
+  - Integrated AWS S3 for all image uploads
+
+### Links
+- [Live Site](https://vacay-n-stays.herokuapp.com/)
+- [MVP Feature List](https://github.com/Kxvin1/vacay-n-stays/wiki/Feature-List)
+- [Database Schema](https://github.com/Kxvin1/vacay-n-stays/wiki/Database-Schema)
+- [API Routes](https://github.com/Kxvin1/vacay-n-stays/wiki/API-Routes)
+- [Frontend Routes](https://github.com/Kxvin1/vacay-n-stays/wiki/Frontend-Routes)
+- [User Stories](https://github.com/Kxvin1/vacay-n-stays/wiki/User-Stories)
+- [Wireframes](https://github.com/Kxvin1/vacay-n-stays/wiki/Wireframes)
+
+#### **_Recommended resolution size for viewing: 1366 x 768 or higher_**
+
+# Technologies Used
+
+## Backend
+
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54) ![Flask](https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white) ![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
+
+## Frontend
+
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![Redux](https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white)![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+
+## APIs, Image Storage & Hosting
+
+![Google Maps API](https://img.shields.io/badge/Google%20Maps-4285F4.svg?style=for-the-badge&logo=Google-Maps&logoColor=white) ![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white) ![Heroku](https://img.shields.io/badge/heroku-%23430098.svg?style=for-the-badge&logo=heroku&logoColor=white) ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
+
+# Getting Started
+1. Clone this repository
 
    ```bash
-   git clone https://github.com/appacademy-starters/python-project-starter.git
+   git clone git@github.com:Kxvin1/vacay-n-stays.git
    ```
 
 2. Install dependencies
@@ -47,83 +79,109 @@ This is the starter for the Flask React project.
    There is a layer in the Dockerfile that will install psycopg2 (not binary) for us.
 ***
 
-### Dev Containers (OPTIONAL for M1 Users)
-The following instructions detail an *optional* development setup for M1 Mac users having issues with the `psycopg` package.
+# Project Pages & Features
 
-1. Make sure you have the [Microsoft Remote - Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) extension installed. 
-2. Make sure you have [Docker](https://www.docker.com/products/docker-desktop/) installed on your computer. 
-3. Clone the repository (only this branch)
-   ```bash
-   git clone https://github.com/appacademy-starters/python-project-starter.git
-   ```
-4. Open the repo in VS Code. 
-5. Click "Open in Container" when VS Code prompts to open container in the bottom right hand corner. 
-6. **Be Patient!** The initial install will take a LONG time, it's building a container that has postgres preconfigured and even installing all your project dependencies. (For both flask and react!)
 
-   **Note:** This will take much less time on future starts because everything will be cached.
+## Home Page (logged out) & User Authentication
 
-7. Once everything is up, be sure to make a `.env` file based on `.env.example` in both the root directory and the *react-app* directory before running your app. You do not need a `DATABASE_URL` in the `.env` file if you are using this Docker setup for development - the URL is already set in the image (see `.devcontainer/Dockerfile` for the URL).
+- A User that isn't logged in can browse the catalog of spots and use the search feature.
 
-8. Get into your pipenv, migrate your database, seed your database, and run your flask app
+![Splash Page](https://i.imgur.com/nkBAlt4.jpeg)
 
-   ```bash
-   pipenv shell
-   ```
+- A User that isn't logged is not able to click and view the details of the spot. 
+  - The User will be redirected to a 403 FORBIDDEN page if they attempt to access a page they are not allowed to until they log in.
 
-   ```bash
-   flask db upgrade
-   ```
+![Forbidden 403](https://i.imgur.com/NgLCUMj.png)
 
-   ```bash
-   flask seed all
-   ```
 
-   ```bash
-   flask run
-   ```
+## Log In and Sign Up
 
-9. To run the React App in development, checkout the [README](./react-app/README.md) inside the `react-app` directory.
+- Users can log into an existing account or sign up. Alternatively, users can test the site with the Demo Login feature.
 
-<br>
+![Login Modal](https://i.imgur.com/64drfMS.jpeg)
+![Signup Modal](https://i.imgur.com/F8fRUvm.jpeg)
 
-## Deploy to Heroku
-This repo comes configured with Github Actions. When you push to your main branch, Github will automatically pull your code, package and push it to Heroku, and then release the new image and run db migrations. 
 
-1. Write your Dockerfile. In order for the Github action to work effectively, it must have a configured Dockerfile. Follow the comments found in this [Dockerfile](./Dockerfile) to write your own!
+## Home Page (logged in)
 
-2. Create a new project on Heroku.
+- A User that is logged in will gain additional links to their navigation bar: My Spots, Trips, Post A Spot. The footer will also disappear.
 
-3. Under Resources click "Find more add-ons" and add the add on called "Heroku Postgres".
+![Home Page Authenticated](https://i.imgur.com/NPVBOq4.jpeg)
 
-4. Configure production environment variables. In your Heroku app settings -> config variables you should have two environment variables set:
 
-   |    Key          |    Value    |
-   | -------------   | ----------- |
-   | `DATABASE_URL`  | Autogenerated when adding postgres to Heroku app |
-   | `SECRET_KEY`    | Random string full of entropy |
+## Spot Details Section Here
 
-5. Generate a Heroku OAuth token for your Github Action. To do so, log in to Heroku via your command line with `heroku login`. Once you are logged in, run `heroku authorizations:create`. Copy the GUID value for the Token key.
+- Stuff
+- Stuff 2
 
-6. In your Github Actions Secrets you should have two environment variables set. You can set these variables via your Github repository settings -> secrets -> actions. Click "New respository secret" to create
-each of the following variables:
 
-   |    Key            |    Value    |
-   | -------------     | ----------- |
-   | `HEROKU_API_KEY`  | Heroku Oauth Token (from step 6)|
-   | `HEROKU_APP_NAME` | Heroku app name    |
+## Your Spots
 
-7. Push to your `main` branch! This will trigger the Github Action to build your Docker image and deploy your application to the Heroku container registry. Please note that the Github Action will automatically upgrade your production database with `flask db upgrade`. However, it will *not* automatically seed your database. You must manually seed your production database if/when you so choose (see step 8).
+- When clicking on 'My Spots' the user is redirected to a page that contains a list of all the logged in User's created spots.
 
-8. *Attention!* Please run this command *only if you wish to seed your production database*: `heroku run -a HEROKU_APP_NAME flask seed all`
+![Your Spots Blank](https://i.imgur.com/u2E88ya.jpeg)
 
-## Helpful commands
-|    Command            |    Purpose    |
-| -------------         | ------------- |
-| `pipenv shell`        | Open your terminal in the virtual environment and be able to run flask commands without a prefix |
-| `pipenv run`          | Run a command from the context of the virtual environment without actually entering into it. You can use this as a prefix for flask commands  |
-| `flask db upgrade`    | Check in with the database and run any needed migrations  |
-| `flask db downgrade`  | Check in with the database and revert any needed migrations  |
-| `flask seed all`      | Just a helpful syntax to run queries against the db to seed data. See the **app/seeds** folder for reference and more details |
-| `heroku login -i`      | Authenticate your heroku-cli using the command line. Drop the -i to authenticate via the browser |
-| `heroku authorizations:create` | Once authenticated, use this to generate an Oauth token |
-| `heroku run -a <app name>` | Run a command from within the deployed container on Heroku |
+- When a User hovers over a marker on the map and clicks it an image modal pops up with details of that specific spot.
+
+![Image Modal Spot](https://i.imgur.com/W4b0smC.jpeg)
+
+- When a user hovers over a spot, 3 buttons appear: Click to view on map, an Edit button, and a Delete button.
+
+![Your Spots Hovered](https://i.imgur.com/vSb5dkX.jpeg)
+
+- Clicking on the red Click to view on map will pan the map to that specific spot
+
+![Click To View Spot](https://i.imgur.com/j8kuMVD.png)
+
+
+## Adding and Editing a Spot Section Here
+
+- Stuff
+- Stuff 2
+
+
+## Bookings
+
+- When clicking on 'Trips' the user is redirected to a page that contains a list of all their upcoming and previous bookings.
+
+![Bookings Blank](https://i.imgur.com/73t5r76.png)
+
+- When hovered over a specific trip and the trip is under Upcoming Trips, 2 buttons appear: A Delete button (trash icon) and a Get Directions button
+
+![Bookings Hover Upcoming](https://i.imgur.com/2CRYLe7.png)
+
+- When hovered over a specific trip and the trip is under Where You've Been, no buttons appear. These past trips can't be deleted.
+
+![Bookings Hover Past](https://i.imgur.com/Ppjk4eS.png)
+
+## Directions
+
+- When in 'Trips' page and the User clicks on Get Directions, the User is taken to a page that lets them input a location to show how far away the Booking Spot is from that origin.
+
+![Directions](https://i.imgur.com/qLbULvH.jpeg)
+
+## Search
+
+- This is the page that displays when a user accesses the search bar.
+  - On the left, they are shown a list of all the results of the search that met their criteria.
+  - On the right is a Google Map of all the spots with their respective locations marked on the map that display as that spot's price per night.
+![Search Page](https://i.imgur.com/eexkSjI.jpeg)
+
+- When a User hovers over a marker on the map and clicks it an image modal pops up with details of that specific spot.
+
+![Image Modal Spot](https://i.imgur.com/W4b0smC.jpeg)
+
+-  When hovering over a specific spot, a clickable button appears "Click to view on map" that will zoom into the map to that specific spot.
+
+![Click To View](https://i.imgur.com/em1wDR1.jpeg)
+
+- The map zooms and pans to that spot to show the surroundings and any nearby shops that might interest the user.
+
+![Zoomed In](https://i.imgur.com/NmfD1jt.png)
+
+
+## Page Not Found
+
+- If a User navigates to a page that doesn't exist, they are met with a Page Not Found and are given links to redirect them to different pages of the site.
+
+![Page Not Found 404](https://i.imgur.com/oGK39MC.png)

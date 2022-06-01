@@ -26,6 +26,7 @@ import Footer from "./components/Footer";
 import SpotDetailPage from "./components/SpotDetailPage/SpotDetailPage";
 import SearchProvider from "./components/SearchContext";
 import SearchDisplay from "./components/SearchDisplay/SearchDisplay";
+import Directions from "./components/DirectionsPage/Directions";
 
 //Google api
 import {
@@ -89,7 +90,7 @@ function App() {
             <SpotDetailPage />
           </ProtectedRoute>
           <ProtectedRoute path={`/directions/:spotId`}>
-            <h1>TEXT</h1>
+            <Directions />
           </ProtectedRoute>
           <Route exact path="/search">
             <SearchDisplay />
