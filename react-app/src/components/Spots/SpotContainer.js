@@ -17,10 +17,9 @@ export default function SpotContainer({ spots }) {
             <div className="spot_info_main_container">
               <div className="spot_name">{spot?.name}</div>
               <div className="spot_city">City: {spot?.city}</div>
-              {/* <div className="spot_host">
-                Host: {userList[`${spot?.user_id}`]?.first_name}{" "}
-                {userList[`${spot?.user_id}`]?.last_name}
-              </div> */}
+              <div className="spot_host">
+                Hosted by: {spot?.user.first_name} {spot?.user.last_name}
+              </div>
               <div className="spot_price" style={{ fontWeight: "bold" }}>
                 ${spot?.price}
                 <span style={{ fontWeight: "lighter" }}> night</span>
