@@ -34,15 +34,11 @@ Inspired by Airbnb, VacayNStays is an online marketplace single page app where u
 
 ![Google Maps API](https://img.shields.io/badge/Google%20Maps-4285F4.svg?style=for-the-badge&logo=Google-Maps&logoColor=white) ![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white) ![Heroku](https://img.shields.io/badge/heroku-%23430098.svg?style=for-the-badge&logo=heroku&logoColor=white) ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
 
-# Flask React Project
-
-This is the starter for the Flask React project.
-
-## Getting started
-1. Clone this repository (only this branch)
+# Getting started
+1. Clone this repository
 
    ```bash
-   git clone https://github.com/appacademy-starters/python-project-starter.git
+   git clone git@github.com:Kxvin1/vacay-n-stays.git
    ```
 
 2. Install dependencies
@@ -83,7 +79,7 @@ This is the starter for the Flask React project.
    There is a layer in the Dockerfile that will install psycopg2 (not binary) for us.
 ***
 
-# About the Project & Features
+# Project Pages & Features
 
 
 ## Home Page (logged out) & User Authentication
