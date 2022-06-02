@@ -8,6 +8,8 @@ import "./Spots.css";
 export default function SpotContainer({ spots }) {
   // Object of userList
   const userList = useSelector((state) => state.userList);
+  const [hoverState, setHoverState] = useState(false);
+
   return (
     <div className="all_spots_container">
       {spots?.map((spot) => {
