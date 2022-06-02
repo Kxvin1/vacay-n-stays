@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory, Link } from "react-router-dom";
 import { getUserSpots } from "../../store/your_spots";
 import { deleteSpotId } from "../../store/spots";
+import Description from "./Description";
 import ImageSlide from "../ImageSlider/ImageSlide";
 import mapStyles from "../mapStyles";
 import spotMarkerSmall from "../SearchDisplay/spot-marker-small.png";
@@ -42,6 +43,7 @@ export default function YourSpots() {
   const user = useSelector((state) => state.session.user);
 
   const [hoverState, setHoverState] = useState(false);
+  const [read, setRead] = useState(false);
 
   spots.sort(function (a, b) {
     return b.id - a.id;
@@ -103,6 +105,8 @@ export default function YourSpots() {
     setClick(!click);
   };
 
+  console.log(read);
+
   return (
     <div className="main_content_your_spots">
       <div className="your_spots_list">
@@ -153,7 +157,7 @@ export default function YourSpots() {
                     </div>
                   </div>
                   <div className="search-spot-card-info">
-                    <div className="spotDescription">{spot?.description}</div>
+                    <Description description={spot?.description} />
                   </div>
 
                   <div className="search-spot-card-info">

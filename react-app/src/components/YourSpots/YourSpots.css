@@ -6,6 +6,12 @@
   top: 100px;
 }
 
+.dots {
+  color: blue;
+  font-size: small;
+  border-bottom: 1px solid blue;
+}
+
 .your_spot_name {
   margin-left: 1.5em;
   font-size: 1.2em;
