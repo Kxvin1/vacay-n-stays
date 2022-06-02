@@ -33,7 +33,8 @@ function Header({ isLoaded }) {
         </h2>
         <div>
           <button className="logout-button" onMouseDown={logout}>
-            <i className="fas fa-power-off"></i>
+            <i className="fas fa-sign-out-alt"></i>
+            <span className="logout-text">Log Out</span>
           </button>
         </div>
       </>

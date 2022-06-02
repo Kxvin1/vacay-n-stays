@@ -163,9 +163,14 @@ header {
 }
 
 .logout-button:hover {
-  transform: scale(1.5);
+  transform: scale(1.2);
   /* color: white; */
   cursor: pointer;
+}
+
+.logout-text {
+  margin-left: 0.5em;
+  font-size: 20px;
 }
 
 .greeting-message-nav {
