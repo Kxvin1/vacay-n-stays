@@ -55,12 +55,18 @@ function ImageSlide({ spot }) {
           <Link to={`/spots/${spot.id}`} key={`Slider-${image.id}`}>
             <div
               key={`Slider-${image.id}`}
-              style={{
-                backgroundImage: `url(${image}), url("https://i.imgur.com/MJ5yHQw.jpg")`,
-              }}
+              // style={{
+              //   backgroundImage: `url(${image}), url("https://i.imgur.com/MJ5yHQw.jpg")`,
+              // }}
               id="single-image-slide-id"
               className="container-image-slide"
-            ></div>
+            >
+              <img
+                style={{ objectFit: "cover", width: "100%", height: "100%" }}
+                src={image}
+                alt="COOL"
+              />
+            </div>
           </Link>
         ))}
       </Slide>
