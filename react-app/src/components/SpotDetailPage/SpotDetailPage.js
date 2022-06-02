@@ -64,7 +64,7 @@ export default function SpotDetailPage() {
       );
 
       setSuccess(true);
-      setTimeout(() => history.push("/bookings"), 2000);
+      setTimeout(() => setSuccess(false), 2000);
     }
   };
 
@@ -157,6 +157,7 @@ export default function SpotDetailPage() {
               selectRange={true}
               tileDisabled={({ date }) => date < new Date()}
             />
+            {console.log(date)}
             <div className="calendar_actions">
               <div>${spot?.price} per night</div>
               <div className="checkin">
@@ -169,10 +170,15 @@ export default function SpotDetailPage() {
                 Total Price: $
                 {formattedDate
                   ? spot?.price *
-                    (formattedDate.slice(14, 16) -
-                      formattedDate.slice(2, 4) +
+                    (formattedDate.split("/")[3] -
+                      formattedDate.split("/")[1] +
                       1)
                   : ""}
+                  {console.log(formattedDate
+                  ? formattedDate.split("/")[1] : "")}
+                  {console.log(formattedDate
+                  ? formattedDate.split("/")[3] : "")}
+                  
               </div>
               {showError && (
                 <p className="reviewError">Please select a range of dates</p>

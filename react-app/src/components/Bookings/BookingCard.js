@@ -25,36 +25,38 @@ function BookingCard({ booking, upcoming, user }) {
     setDeleteAvailable(false);
   };
 
-  const checkInDate = () => {
-    const dateFromDb = booking?.check_in?.split(" ");
-    // console.log(booking.check_in.split(" "));
-    // console.log(dateFromDb); // => returns an array with length of 6, example below
-    // [0, 1, 2, 3, 4, 5]
-    // 0 = "Sun,"
-    // 1 = "24"
-    // 2 = "Jul"
-    // 3 = "2022"
-    // 4 = "00:00:00"
-    // 5 = "GMT"
-    // console.log(booking.spot.description);
-    const formattedDate = [];
-    formattedDate.push(dateFromDb[0]);
-    formattedDate.push(dateFromDb[2]);
-    formattedDate.push(dateFromDb[1]);
-    formattedDate.push(`${dateFromDb[3]}`);
-    return formattedDate.join(" ");
-  };
+  // const checkInDate = () => {
+  //   const dateFromDb = booking?.check_in?.split(" ");
+  //   // console.log(booking.check_in.split(" "));
+  //   // console.log(dateFromDb); // => returns an array with length of 6, example below
+  //   // [0, 1, 2, 3, 4, 5]
+  //   // 0 = "Sun,"
+  //   // 1 = "24"
+  //   // 2 = "Jul"
+  //   // 3 = "2022"
+  //   // 4 = "00:00:00"
+  //   // 5 = "GMT"
+  //   // console.log(booking.spot.description);
+  //   const formattedDate = [];
+  
+  //   formattedDate.push(dateFromDb[0]);
+  //   formattedDate.push(dateFromDb[2]);
 
-  const checkOutDate = () => {
-    const dateFromDb = booking?.check_out?.split(" ");
-    // console.log(dateFromDb);
-    const formattedDate = [];
-    formattedDate.push(dateFromDb[0]);
-    formattedDate.push(dateFromDb[2]);
-    formattedDate.push(dateFromDb[1]);
-    formattedDate.push(`${dateFromDb[3]}`);
-    return formattedDate.join(" ");
-  };
+  //   formattedDate.push(dateFromDb[1]);
+  //   formattedDate.push(`${dateFromDb[3]}`);
+  //   return formattedDate.join(" ");
+  // };
+
+  // const checkOutDate = () => {
+  //   const dateFromDb = booking?.check_out?.split(" ");
+  //   // console.log(dateFromDb);
+  //   const formattedDate = [];
+  //   formattedDate.push(dateFromDb[0]);
+  //   formattedDate.push(dateFromDb[2]);
+  //   formattedDate.push(dateFromDb[1]);
+  //   formattedDate.push(`${dateFromDb[3]}`);
+  //   return formattedDate.join(" ");
+  // };
 
   const spotDescriptionText = () => {
     const description = booking?.spot?.description;
@@ -70,8 +72,8 @@ function BookingCard({ booking, upcoming, user }) {
     return finalResult;
   };
 
-  const checkInDateFormatted = checkInDate();
-  const checkOutDateFormatted = checkOutDate();
+  // const checkInDateFormatted = checkInDate();
+  // const checkOutDateFormatted = checkOutDate();
   const spotDescription = spotDescriptionText();
 
   return (
@@ -80,7 +82,7 @@ function BookingCard({ booking, upcoming, user }) {
         <div className="spot-booking-card">
           <div className="booking-date">Your Trip Dates:</div>
           <div className="booking-date">
-            {checkInDateFormatted} - {checkOutDateFormatted}
+            {/* {checkInDateFormatted} - {checkOutDateFormatted} */}
           </div>
           <div className="specific-booking-info-card">
             <div
@@ -157,7 +159,8 @@ function BookingCard({ booking, upcoming, user }) {
       {deleteAvailable && (
         <div className="delete-booking-modal">
           <div className="delete-booking-form">
-            <div className="delete-confirmation-modal">{`Are you sure you want to cancel your trip at ${booking?.spot?.name} on ${checkInDateFormatted}?`}</div>
+            <div className="delete-confirmation-modal">{`Are you sure you want to cancel your trip at ${booking?.spot?.name} on ${'test'}?`}</div>
+            {/* <div className="delete-confirmation-modal">{`Are you sure you want to cancel your trip at ${booking?.spot?.name} on ${checkInDateFormatted}?`}</div> */}
             <div className="delete-booking-confirm-buttons">
               <div class="delete-button" onClick={deleteBooking}>
                 Cancel Trip
