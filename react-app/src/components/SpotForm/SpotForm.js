@@ -7,6 +7,11 @@ import ImageUploading from "react-images-uploading";
 
 import "./SpotForm.css";
 
+import usePlacesAutoComplete, {
+  getGeocode,
+  getLatLng,
+} from "use-places-autocomplete";
+
 export default function SpotForm() {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -36,6 +41,11 @@ export default function SpotForm() {
     }
 
     if (images.length < 3) {
+      return;
+    }
+
+    if (coordinates.lat === null || coordinates.lng === null) {
+      window.alert("Invalid address, please use one of the options listed.");
       return;
     }
 
@@ -89,11 +99,15 @@ export default function SpotForm() {
     setValidationErrors(errors);
   }, [name, description, address, city, state, country, images]);
 
-  // async function getCoordinates() {
-  //   // value of address is the valid address...
-  //   const res = await getGeocode({ address: destinationRef.current.value });
-  //   const { lat, lng } = await getLatLng(res[0]);
-  // }
+  async function getCoordinates(address) {
+    // value of address is the valid address...
+    const res = await getGeocode({ address: address });
+    const { lat, lng } = await getLatLng(res[0]);
+
+    if (!res) {
+      return;
+    }
+  }
 
   const addImages = async (images, spot_id) => {
     for (let x = 0; x < images.length; x++) {
