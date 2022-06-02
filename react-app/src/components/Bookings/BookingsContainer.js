@@ -28,9 +28,9 @@ function BookingsContainer({ bookings, user }) {
       }
     }
 
-    oldBookingsArray.sort((a, b) => a.check_in - b.check_in);
+    oldBookingsArray.sort((a, b) => a?.check_in - b?.check_in);
 
-    newBookingsArray.sort((a, b) => b.check_in - a.check_in);
+    newBookingsArray.sort((a, b) => b?.check_in - a?.check_in);
 
     setOldBookings(oldBookingsArray);
     setNewBookings(newBookingsArray);

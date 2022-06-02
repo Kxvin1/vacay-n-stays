@@ -26,7 +26,7 @@ function BookingCard({ booking, upcoming, user }) {
   };
 
   const checkInDate = () => {
-    const dateFromDb = booking.check_in.split(" ");
+    const dateFromDb = booking?.check_in?.split(" ");
     // console.log(booking.check_in.split(" "));
     // console.log(dateFromDb); // => returns an array with length of 6, example below
     // [0, 1, 2, 3, 4, 5]
@@ -46,7 +46,7 @@ function BookingCard({ booking, upcoming, user }) {
   };
 
   const checkOutDate = () => {
-    const dateFromDb = booking.check_out.split(" ");
+    const dateFromDb = booking?.check_out?.split(" ");
     // console.log(dateFromDb);
     const formattedDate = [];
     formattedDate.push(dateFromDb[0]);
@@ -123,17 +123,6 @@ function BookingCard({ booking, upcoming, user }) {
                     {spotDescription}
                   </div>
                 </div>
-                {upcoming && (
-                  <div className="delete-booking-page-button">
-                    <div
-                      className="delete-booking-button-inner"
-                      onClick={showDeleteConfirmation}
-                    >
-                      <i className="fas fa-trash"></i>
-                      {/* Cancel Trip */}
-                    </div>
-                  </div>
-                )}
               </div>
             </div>
           </div>
@@ -144,6 +133,17 @@ function BookingCard({ booking, upcoming, user }) {
                   Get Directions
                 </div>
               </Link>
+            </div>
+          )}
+          {upcoming && (
+            <div className="delete-booking-page-button">
+              <div
+                className="delete-booking-button-inner"
+                onClick={showDeleteConfirmation}
+              >
+                <i className="fas fa-trash"></i>
+                {/* Cancel Trip */}
+              </div>
             </div>
           )}
         </div>
