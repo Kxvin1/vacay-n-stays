@@ -44,8 +44,10 @@ export default function SpotForm() {
       return;
     }
 
+    console.log(address);
+
     if (coordinates.lat === null || coordinates.lng === null) {
-      window.alert("Invalid address, please use one of the options listed.");
+      window.alert("Invalid address, please select one of the options listed.");
       return;
     }
 
