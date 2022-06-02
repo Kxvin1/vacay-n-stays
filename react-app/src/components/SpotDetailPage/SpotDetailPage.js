@@ -63,10 +63,9 @@ export default function SpotDetailPage() {
         addNewBookingThunk(user.id, spotId, checkInDate, checkOutDate)
       );
 
-
-    setSuccess(true);
-    setTimeout(() => history.push("/bookings"), 2000);
-
+      setSuccess(true);
+      setTimeout(() => history.push("/bookings"), 2000);
+    }
   };
 
   useEffect(() => {
@@ -170,7 +169,9 @@ export default function SpotDetailPage() {
                       1)
                   : ""}{" "}
               </div>
-              {showError && <p className="reviewError">Please select a range of dates</p>}
+              {showError && (
+                <p className="reviewError">Please select a range of dates</p>
+              )}
               <button type="submit" className="modifyBtn">
                 Book
               </button>
