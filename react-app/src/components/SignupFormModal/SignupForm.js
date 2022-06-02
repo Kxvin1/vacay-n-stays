@@ -20,7 +20,7 @@ function SignupForm() {
     if (password === confirmPassword) {
       setErrors([]);
       return dispatch(
-        sessionActions.signUp(email, first_name, last_name, password)
+        sessionActions.signUp(first_name, last_name, email, password)
       ).catch(async (res) => {
         const data = await res.json();
         if (data && data.errors) {
@@ -47,7 +47,7 @@ function SignupForm() {
           <input
             placeholder="Email Address"
             className="signup-input"
-            type="text"
+            type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required

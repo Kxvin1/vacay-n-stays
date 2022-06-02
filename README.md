@@ -86,7 +86,7 @@ Inspired by Airbnb, VacayNStays is a single page online marketplace app where us
 
 - A User that isn't logged in can browse the catalog of spots and use the search feature.
 
-![Splash Page](https://i.imgur.com/nkBAlt4.jpeg)
+![Splash Page](https://i.imgur.com/3gbHgcv.jpeg)
 
 - A User that isn't logged is not able to click and view the details of the spot. 
   - The User will be redirected to a 403 FORBIDDEN page if they attempt to access a page they are not allowed to until they log in.
@@ -98,19 +98,20 @@ Inspired by Airbnb, VacayNStays is a single page online marketplace app where us
 
 - Users can log into an existing account or sign up. Alternatively, users can test the site with the Demo Login feature.
 
-![Login Modal](https://i.imgur.com/64drfMS.jpeg)
-![Signup Modal](https://i.imgur.com/F8fRUvm.jpeg)
+![Login Modal](https://i.imgur.com/qGly91y.jpeg)
+![Signup Modal](https://i.imgur.com/PMlygWn.jpeg)
 
 
 ## Home Page (logged in)
 
 - A User that is logged in will gain additional links to their navigation bar: My Spots, Trips, Post A Spot. The footer will also disappear.
 
-![Home Page Authenticated](https://i.imgur.com/NPVBOq4.jpeg)
+![Home Page Authenticated](https://i.imgur.com/2g7Gzs3.jpeg)
 
-- When hovering over a spot arrows appear so the user can view all of the images of the spot.
+- When hovering over a spot arrows appear so the user can easily view all of the images of the spot.
+- In addition, if the User's cursor stays hovered on an image, every 2.5 seconds the image will auto slide to the next without having to click.
 
-![Home Page Arrows](https://i.imgur.com/TlIeSvG.jpeg)
+![Home Page Arrows](https://i.imgur.com/PyQjVf7.png)
 
 
 ## Spot Details
@@ -133,6 +134,12 @@ Inspired by Airbnb, VacayNStays is a single page online marketplace app where us
 - The Spot's reviews are shown here and all the User reviews are calculated to display an average via the ratings bar.
 
 ![Spot Details 3](https://i.imgur.com/Yo2cqDf.png)
+
+- To achieve a cleaner look on the site, the edit and delete icons only show when the logged in User wrote the comment themselves.
+
+![Review Owner](https://i.imgur.com/QU97l1B.png)
+
+![Review Not Owner](https://i.imgur.com/bqrzSaX.png)
 
 - Users can leave a review rating here, as well as leave a comment.
 
@@ -210,7 +217,7 @@ Inspired by Airbnb, VacayNStays is a single page online marketplace app where us
 
 - The map zooms and pans to that spot to show the surroundings and any nearby shops that might interest the user.
 
-![Zoomed In](https://i.imgur.com/PUGI1m6.jpeg)
+![Zoomed In](https://i.imgur.com/OhenHeL.png)
 
 
 ## Page Not Found
@@ -218,3 +225,5 @@ Inspired by Airbnb, VacayNStays is a single page online marketplace app where us
 - If a User navigates to a page that doesn't exist, they are met with a Page Not Found and are given links to redirect them to different pages of the site.
 
 ![Page Not Found 404](https://i.imgur.com/oGK39MC.png)
+
+## Click [Here](https://github.com/Kxvin1/vacay-n-stays#vacay-n-stays) to go back to the top of this page!

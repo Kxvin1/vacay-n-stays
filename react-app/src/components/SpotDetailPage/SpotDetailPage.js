@@ -63,9 +63,10 @@ export default function SpotDetailPage() {
         addNewBookingThunk(user.id, spotId, checkInDate, checkOutDate)
       );
 
-      setSuccess(true);
-      setTimeout(() => history.push("/bookings"), 2000);
-    }
+
+    setSuccess(true);
+    setTimeout(() => history.push("/bookings"), 2000);
+
   };
 
   useEffect(() => {

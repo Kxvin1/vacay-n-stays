@@ -1,11 +1,13 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import { getUserSpots } from "../../store/your_spots";
 import { deleteSpotId } from "../../store/spots";
+import Description from "./Description";
 import ImageSlide from "../ImageSlider/ImageSlide";
 import mapStyles from "../mapStyles";
 import spotMarkerSmall from "../SearchDisplay/spot-marker-small.png";
+import star from "./svgexport-12.png";
 
 import "./YourSpots.css";
 
@@ -42,6 +44,7 @@ export default function YourSpots() {
   const user = useSelector((state) => state.session.user);
 
   const [hoverState, setHoverState] = useState(false);
+  const [read, setRead] = useState(false);
 
   spots.sort(function (a, b) {
     return b.id - a.id;
@@ -103,12 +106,63 @@ export default function YourSpots() {
     setClick(!click);
   };
 
+  const avgRating = (spot) => {
+    let cleanS = spot.cleanSum;
+    let locS = spot.locSum;
+    let valueS = spot.valueSum;
+
+    let cleanL = spot.cleanLen;
+    let locL = spot.locLen;
+    let valueL = spot.valueLen;
+
+    const cleanAvg = cleanS / cleanL;
+    const locAvg = locS / locL;
+    const valueAvg = valueS / valueL;
+
+    const totalAvg = (cleanAvg + locAvg + valueAvg) / 3;
+
+    if (!totalAvg) {
+      return 0;
+    }
+
+    return totalAvg.toFixed(2);
+  };
+
   return (
     <div className="main_content_your_spots">
       <div className="your_spots_list">
         <div className="your_spots_header_div">
           <h1 className="your_spots_header">Your Spots</h1>
         </div>
+        {spots.length === 0 && (
+          <div className="search-spots-and-map-container">
+            <div className="search-spot-list">
+              <div className="your_spot_empty_container">
+                <div>
+                  <h2>No Spots yet..</h2>
+                </div>
+                <div>
+                  <Link to="/spots/new">Please visit spot form</Link>
+                </div>
+              </div>
+            </div>
+            <div className="search-spot-map">
+              <GoogleMap
+                mapContainerStyle={mapContainerStyle}
+                center={{
+                  lat: 40.09005801617348,
+                  lng: -100.66383032528964,
+                }}
+                zoom={zoom}
+                options={options}
+              >
+                <button className="recenter_button" onClick={reCenter}>
+                  Recenter
+                </button>
+              </GoogleMap>
+            </div>
+          </div>
+        )}
         {spots?.map((spot) => {
           return (
             <div className="your_spot_container" key={`your_spot_${spot?.id}`}>
@@ -124,7 +178,7 @@ export default function YourSpots() {
                     </div>
                   </div>
                   <div className="search-spot-card-info">
-                    <div className="spotDescription">{spot?.description}</div>
+                    <Description description={spot?.description} />
                   </div>
 
                   <div className="search-spot-card-info">
@@ -213,11 +267,26 @@ export default function YourSpots() {
                   ></ImageSlide>
                   <div className="info_window_slide_info">
                     <div className="info_window_name">
-                      {spotInfo?.name}
-                      <span className="perNightSpan">
-                        {" "}
-                        -- {`${spotInfo?.city}, ${spotInfo?.state}`}
-                      </span>
+                      <div className="star_rating_container">
+                        <div className="info_window_star">
+                          <img
+                            src={star}
+                            style={{
+                              width: "1em",
+                              height: "1em",
+                              marginRight: "0.2em",
+                            }}
+                          ></img>
+                        </div>
+                        <div>{avgRating(spotInfo)}</div>
+                      </div>
+                      <div className="cont">
+                        {spotInfo?.name}
+                        <span className="perNightSpan">
+                          {" "}
+                          -- {`${spotInfo?.city}, ${spotInfo?.state}`}
+                        </span>
+                      </div>
                     </div>
                     <div className="info_window_price">
                       <span className="perNightSpan">Host: </span>
