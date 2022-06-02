@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ReviewCard from "./ReviewCard";
 import ReviewForm from "./ReviewForm";
-import { Rating } from "react-simple-star-rating";
 
 import './reviews.css'
 
@@ -55,9 +54,10 @@ const Reviews = ({ spotId, reviews, user }) => {
   return (
     <>
       <h2 id="starRatings">Reviews</h2>
-      <h4 className="center">{avgRatings[1]} total reviews</h4>
-      <div className="starAvgs">
-        
+      
+      <div className="starBox">
+      <h4>★{avgRatings[0]} - {avgRatings[1]} Reviews</h4>
+        <div className="starAvgs">
         <div>Cleanliness</div>
         <div className="bar">
         <div className="full">
@@ -79,13 +79,7 @@ const Reviews = ({ spotId, reviews, user }) => {
         </div>  
         <div className="avgRatingPerCategory">{avgRatings[4]}</div> 
         </div>
-        <div>Total</div>
-        <div className="bar">
-        <div className="full">
-          <div className="reviewBar" style={{width: `${avgRatings[0] * 24}px`}}></div>
-        </div>  
-        <div className="avgRatingPerCategory">{avgRatings[0]}</div> 
-        </div>        
+        </div>    
         
       </div>
       
