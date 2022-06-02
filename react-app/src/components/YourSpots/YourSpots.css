@@ -17,6 +17,14 @@
   margin-top: 10rem;
 }
 
+.your_spot_empty_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 15em;
+}
+
 .spot_marker_background {
   background-color: white;
   z-index: 800;
