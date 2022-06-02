@@ -68,6 +68,7 @@ export default function SpotDetailPage() {
     setTimeout(() => history.push("/bookings"), 2000);
 
   };
+};
 
   useEffect(() => {
     if (date) {
@@ -161,14 +162,13 @@ export default function SpotDetailPage() {
                 CheckOut: {date ? date[1].toISOString().split("T")[0] : ""}
               </div>
               <div className="total">
-                {" "}
                 Total Price: $
                 {formattedDate
                   ? spot?.price *
                     (formattedDate.slice(14, 16) -
                       formattedDate.slice(2, 4) +
                       1)
-                  : ""}{" "}
+                  : ""}
               </div>
               {showError && <p className="reviewError">Please select a range of dates</p>}
               <button type="submit" className="modifyBtn">
