@@ -112,7 +112,7 @@ Inspired by Airbnb, VacayNStays is an online marketplace single page app where u
 ## Spot Details
 
 - When a User clicks on a Spot, they are directed to the Spot details page. 
-- This page contains a cover image, an image gallery, a booking gallery, a map of the spot, and a reviews section.
+- This page contains a cover image, an image gallery, a booking calendar, a map of the spot, and a reviews section.
 
 ![Spot Details 1](https://i.imgur.com/YBP02Zj.jpeg)
 
