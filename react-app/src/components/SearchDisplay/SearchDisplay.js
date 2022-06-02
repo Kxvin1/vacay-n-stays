@@ -25,24 +25,6 @@ const options = {
   styles: mapStyles,
 };
 
-const avgRating = (spot) => {
-  let cleanS = spot.cleanSum;
-  let locS = spot.locSum;
-  let valueS = spot.valueSum;
-
-  let cleanL = spot.cleanLen;
-  let locL = spot.locLen;
-  let valueL = spot.valueLen;
-
-  const cleanAvg = cleanS / cleanL;
-  const locAvg = locS / locL;
-  const valueAvg = valueS / valueL;
-
-  const totalAvg = (cleanAvg + locAvg + valueAvg) / 3;
-
-  return totalAvg.toFixed(2);
-};
-
 function SearchDisplay() {
   const spots = useSelector((state) => Object.values(state.search));
   const [isLoaded] = useState(true);
@@ -94,7 +76,29 @@ function SearchDisplay() {
     history.push(`/spots/${spotId}`);
   };
 
-  console.log(spotInfo);
+  const avgRating = (spot) => {
+    let cleanS = spot.cleanSum;
+    let locS = spot.locSum;
+    let valueS = spot.valueSum;
+
+    let cleanL = spot.cleanLen;
+    let locL = spot.locLen;
+    let valueL = spot.valueLen;
+
+    const cleanAvg = cleanS / cleanL;
+    const locAvg = locS / locL;
+    const valueAvg = valueS / valueL;
+
+    const totalAvg = (cleanAvg + locAvg + valueAvg) / 3;
+
+    if (!totalAvg) {
+      return 0;
+    }
+
+    return totalAvg.toFixed(2);
+  };
+
+  // console.log(spotInfo);
 
   return (
     <>
@@ -195,7 +199,11 @@ function SearchDisplay() {
                                   <div className="info_window_star">
                                     <img
                                       src={star}
-                                      style={{ width: "1em", height: "1em" }}
+                                      style={{
+                                        width: "1em",
+                                        height: "1em",
+                                        marginRight: "0.5em",
+                                      }}
                                     ></img>
                                   </div>
                                   <div>{avgRating(spotInfo)}</div>

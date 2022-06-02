@@ -121,6 +121,10 @@ export default function YourSpots() {
 
     const totalAvg = (cleanAvg + locAvg + valueAvg) / 3;
 
+    if (!totalAvg) {
+      return 0;
+    }
+
     return totalAvg.toFixed(2);
   };
 
@@ -267,7 +271,11 @@ export default function YourSpots() {
                         <div className="info_window_star">
                           <img
                             src={star}
-                            style={{ width: "1em", height: "1em" }}
+                            style={{
+                              width: "1em",
+                              height: "1em",
+                              marginRight: "0.2em",
+                            }}
                           ></img>
                         </div>
                         <div>{avgRating(spotInfo)}</div>
