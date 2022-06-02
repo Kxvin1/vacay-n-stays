@@ -105,7 +105,23 @@ export default function YourSpots() {
     setClick(!click);
   };
 
-  console.log(read);
+  const avgRating = (spot) => {
+    let cleanS = spot.cleanSum;
+    let locS = spot.locSum;
+    let valueS = spot.valueSum;
+
+    let cleanL = spot.cleanLen;
+    let locL = spot.locLen;
+    let valueL = spot.valueLen;
+
+    const cleanAvg = cleanS / cleanL;
+    const locAvg = locS / locL;
+    const valueAvg = valueS / valueL;
+
+    const totalAvg = (cleanAvg + locAvg + valueAvg) / 3;
+
+    return totalAvg.toFixed(2);
+  };
 
   return (
     <div className="main_content_your_spots">
@@ -245,6 +261,7 @@ export default function YourSpots() {
                     key={`your_spot_info${spotInfo?.id}`}
                   ></ImageSlide>
                   <div className="info_window_slide_info">
+                    <div>{avgRating(spotInfo)}</div>
                     <div className="info_window_name">
                       {spotInfo?.name}
                       <span className="perNightSpan">
