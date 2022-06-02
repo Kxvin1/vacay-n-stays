@@ -42,6 +42,7 @@ export default function SpotDetailPage() {
   const [photoObject, setPhotoObject] = useState([]);
   const [showPhotoModal, setShowPhotoModal] = useState(false);
   const [showSuccess, setSuccess] = useState(false);
+  const [showError, setShowError] = useState(false);
 
   useEffect(() => {
     dispatch(getSpots(spotId));
@@ -51,16 +52,21 @@ export default function SpotDetailPage() {
   const handleBooking = async (e) => {
     e.preventDefault();
 
-    const checkInDate = date[0].toISOString().split("T")[0];
+    if (!date) {
+      setShowError(true);
+    } else {
+      const checkInDate = date[0].toISOString().split("T")[0];
 
-    const checkOutDate = date[1].toISOString().split("T")[0];
+      const checkOutDate = date[1].toISOString().split("T")[0];
 
-    const data = await dispatch(
-      addNewBookingThunk(user.id, spotId, checkInDate, checkOutDate)
-    );
+      const data = await dispatch(
+        addNewBookingThunk(user.id, spotId, checkInDate, checkOutDate)
+      );
+
 
     setSuccess(true);
     setTimeout(() => history.push("/bookings"), 2000);
+
   };
 
   useEffect(() => {
@@ -134,7 +140,7 @@ export default function SpotDetailPage() {
         </div>
         <div className="booking_container">
           <h2>Booking</h2>
-          <form>
+          <form onSubmit={handleBooking}>
             <DatePicker
               onChange={(picked) => setDate(picked)}
               value={date}
@@ -147,11 +153,27 @@ export default function SpotDetailPage() {
               tileDisabled={({ date }) => date < new Date()}
             />
             <div className="calendar_actions">
-              <input type="text" value={formattedDate} placeholder="Add date" />
-              <button type="submit" onClick={handleBooking}>
+              <div>${spot?.price} per night</div>
+              <div className="checkin">
+                CheckIn: {date ? date[0].toISOString().split("T")[0] : ""}
+              </div>
+              <div className="checkout">
+                CheckOut: {date ? date[1].toISOString().split("T")[0] : ""}
+              </div>
+              <div className="total">
+                {" "}
+                Total Price: $
+                {formattedDate
+                  ? spot?.price *
+                    (formattedDate.slice(14, 16) -
+                      formattedDate.slice(2, 4) +
+                      1)
+                  : ""}{" "}
+              </div>
+              {showError && <p className="reviewError">Please select a range of dates</p>}
+              <button type="submit" className="modifyBtn">
                 Book
               </button>
-              <button onClick={() => setFormattedDate("")}>Clear</button>
             </div>
           </form>
         </div>

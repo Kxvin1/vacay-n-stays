@@ -79,11 +79,38 @@
 .spot_map {
   width: 90%;
   height: 20em;
-  margin-top: 15em;
+  margin-top: 20em;
   margin-left: auto;
   margin-right: auto;
   border: 1px solid black;
   box-shadow: 2px 2px 25px rgba(0, 0, 0, 0.459);
 }
 
+button.gallery-control.gallery-control--next, button.gallery-control.gallery-control--prev {
+  border: none;
+}
+
+.calendar_actions {
+  display: flex;
+  flex-direction: column;
+  margin-top: 3em;
+  text-align: left;
+  border: 1px solid rgba(214, 200, 200, 0.795);
+  padding: 1em;
+  border-radius: 10px;
+}
+
+.checkin {
+  margin-top: 1em;
+}
+
+.checkout {
+  margin-bottom: 1em;
+}
+
+@media screen and (min-width: 1200px) {
+  .spot_map {
+    height: 30em;
+  }
+}
 
