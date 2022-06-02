@@ -109,10 +109,30 @@ Inspired by Airbnb, VacayNStays is an online marketplace single page app where u
 ![Home Page Authenticated](https://i.imgur.com/NPVBOq4.jpeg)
 
 
-## Spot Details Section Here
+## Spot Details
 
-- Stuff
-- Stuff 2
+- When a User clicks on a Spot, they are directed to the Spot details page. 
+- This page contains a cover image, an image gallery, a booking gallery, a map of the spot, and a reviews section.
+
+![Spot Details 1](https://i.imgur.com/YBP02Zj.jpeg)
+
+- On the left is a clickable image gallery that pops up an image modal to display all of that Spot's images.
+- On the right is a calendar that allows a User to book a stay at this spot.
+- Below those two is a Google Map displaying the location of the spot.
+
+![Spot Details 2](https://i.imgur.com/MdUmVjO.png)
+
+- Image Modal
+
+![Spot Image Modal](https://i.imgur.com/s0GcRDA.jpeg)
+
+- The Spot's reviews are shown here and all the User reviews are calculated to display an average via the ratings bar.
+
+![Spot Details 3](https://i.imgur.com/Yo2cqDf.png)
+
+- Users can leave a review rating here, as well as leave a comment.
+
+![Spot Details 4](https://i.imgur.com/MLxT0mm.png)
 
 
 ## Your Spots
@@ -134,10 +154,18 @@ Inspired by Airbnb, VacayNStays is an online marketplace single page app where u
 ![Click To View Spot](https://i.imgur.com/j8kuMVD.png)
 
 
-## Adding and Editing a Spot Section Here
+## Adding and Editing a Spot
 
-- Stuff
-- Stuff 2
+- In 'Post A Spot' a User can create their own listing.
+- Users can add images via drag and drop
+- Address and latitude and longitude are automatically filled out via Google Maps API
+
+![Post A Spot](https://i.imgur.com/shHyHXl.png)
+
+- A User can also edit a spot
+- The layout and functionality is similar to the Post A Spot page
+
+![Edit a Spot](https://i.imgur.com/OcswhtO.png)
 
 
 ## Bookings
