@@ -7,6 +7,7 @@ import Description from "./Description";
 import ImageSlide from "../ImageSlider/ImageSlide";
 import mapStyles from "../mapStyles";
 import spotMarkerSmall from "../SearchDisplay/spot-marker-small.png";
+import star from "./svgexport-12.png";
 
 import "./YourSpots.css";
 
@@ -261,13 +262,23 @@ export default function YourSpots() {
                     key={`your_spot_info${spotInfo?.id}`}
                   ></ImageSlide>
                   <div className="info_window_slide_info">
-                    <div>{avgRating(spotInfo)}</div>
                     <div className="info_window_name">
-                      {spotInfo?.name}
-                      <span className="perNightSpan">
-                        {" "}
-                        -- {`${spotInfo?.city}, ${spotInfo?.state}`}
-                      </span>
+                      <div className="star_rating_container">
+                        <div className="info_window_star">
+                          <img
+                            src={star}
+                            style={{ width: "1em", height: "1em" }}
+                          ></img>
+                        </div>
+                        <div>{avgRating(spotInfo)}</div>
+                      </div>
+                      <div className="cont">
+                        {spotInfo?.name}
+                        <span className="perNightSpan">
+                          {" "}
+                          -- {`${spotInfo?.city}, ${spotInfo?.state}`}
+                        </span>
+                      </div>
                     </div>
                     <div className="info_window_price">
                       <span className="perNightSpan">Host: </span>

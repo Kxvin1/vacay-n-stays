@@ -23,6 +23,16 @@
   margin-top: 10rem;
 }
 
+.star_rating_container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.cont {
+  display: flex;
+  justify-content: flex-start;
+}
+
 .your_spot_empty_container {
   display: flex;
   justify-content: center;
