@@ -211,3 +211,9 @@
 .center {
   text-align: center;
 }
+
+.reviewError {
+  padding: 1em;
+  background-color: rgba(235, 27, 72, 0.5);
+  border-radius: 10px;
+}
