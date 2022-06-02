@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import { getUserSpots } from "../../store/your_spots";
 import { deleteSpotId } from "../../store/spots";
 import ImageSlide from "../ImageSlider/ImageSlide";
@@ -109,6 +109,35 @@ export default function YourSpots() {
         <div className="your_spots_header_div">
           <h1 className="your_spots_header">Your Spots</h1>
         </div>
+        {spots.length === 0 && (
+          <div className="search-spots-and-map-container">
+            <div className="search-spot-list">
+              <div className="your_spot_empty_container">
+                <div>
+                  <h2>No Spots yet..</h2>
+                </div>
+                <div>
+                  <Link to="/spots/new">Please visit spot form</Link>
+                </div>
+              </div>
+            </div>
+            <div className="search-spot-map">
+              <GoogleMap
+                mapContainerStyle={mapContainerStyle}
+                center={{
+                  lat: 40.09005801617348,
+                  lng: -100.66383032528964,
+                }}
+                zoom={zoom}
+                options={options}
+              >
+                <button className="recenter_button" onClick={reCenter}>
+                  Recenter
+                </button>
+              </GoogleMap>
+            </div>
+          </div>
+        )}
         {spots?.map((spot) => {
           return (
             <div className="your_spot_container" key={`your_spot_${spot?.id}`}>
