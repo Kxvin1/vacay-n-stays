@@ -218,3 +218,5 @@ Inspired by Airbnb, VacayNStays is a single page online marketplace app where us
 - If a User navigates to a page that doesn't exist, they are met with a Page Not Found and are given links to redirect them to different pages of the site.
 
 ![Page Not Found 404](https://i.imgur.com/oGK39MC.png)
+
+## Click [Here](https://github.com/Kxvin1/vacay-n-stays#vacay-n-stays) to go back to the top of this page!
