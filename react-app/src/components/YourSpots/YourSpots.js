@@ -41,6 +41,8 @@ export default function YourSpots() {
   const spots = useSelector((state) => Object.values(state?.yourSpots));
   const user = useSelector((state) => state.session.user);
 
+  const [hoverState, setHoverState] = useState(false);
+
   spots.sort(function (a, b) {
     return b.id - a.id;
   });
