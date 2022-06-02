@@ -112,9 +112,13 @@ export default function YourSpots() {
         {spots.length === 0 && (
           <div className="search-spots-and-map-container">
             <div className="search-spot-list">
-              <div className="search-spots-container-inner">
-                <h2>No Spots yet..</h2>{" "}
-                <Link to="/spots/new">Please visit spot form</Link>
+              <div className="your_spot_empty_container">
+                <div>
+                  <h2>No Spots yet..</h2>
+                </div>
+                <div>
+                  <Link to="/spots/new">Please visit spot form</Link>
+                </div>
               </div>
             </div>
             <div className="search-spot-map">
