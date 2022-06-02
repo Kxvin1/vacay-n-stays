@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import ImageSlide from "../ImageSlider/ImageSlide";
 import mapStyles from "../mapStyles";
 import spotMarkerSmall from "./spot-marker-small.png";
+import star from "../YourSpots/svgexport-12.png";
 
 import "./SearchDisplay.css";
 
@@ -22,6 +23,24 @@ const mapContainerStyle = {
 
 const options = {
   styles: mapStyles,
+};
+
+const avgRating = (spot) => {
+  let cleanS = spot.cleanSum;
+  let locS = spot.locSum;
+  let valueS = spot.valueSum;
+
+  let cleanL = spot.cleanLen;
+  let locL = spot.locLen;
+  let valueL = spot.valueLen;
+
+  const cleanAvg = cleanS / cleanL;
+  const locAvg = locS / locL;
+  const valueAvg = valueS / valueL;
+
+  const totalAvg = (cleanAvg + locAvg + valueAvg) / 3;
+
+  return totalAvg.toFixed(2);
 };
 
 function SearchDisplay() {
@@ -163,11 +182,25 @@ function SearchDisplay() {
                           ></ImageSlide>
                           <div className="info_window_slide_info">
                             <div className="info_window_name">
-                              {spotInfo?.name}
-                              <span className="perNightSpan">
-                                {" "}
-                                -- {`${spotInfo?.city}, ${spotInfo?.state}`}
-                              </span>
+                              <div className="cont_search">
+                                <div>
+                                  {spotInfo?.name}
+                                  <span className="perNightSpan">
+                                    {" "}
+                                    -- {`${spotInfo?.city}, ${spotInfo?.state}`}
+                                  </span>
+                                </div>
+
+                                <div className="star_rating_container">
+                                  <div className="info_window_star">
+                                    <img
+                                      src={star}
+                                      style={{ width: "1em", height: "1em" }}
+                                    ></img>
+                                  </div>
+                                  <div>{avgRating(spotInfo)}</div>
+                                </div>
+                              </div>
                             </div>
                             <div className="info_window_price">
                               <span className="perNightSpan">Host: </span>
