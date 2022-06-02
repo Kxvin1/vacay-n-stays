@@ -10,19 +10,34 @@ function ImageSlide({ spot }) {
   const imageArray = Object.values(spot.images);
 
   const [proxyHoverState, setHoverState] = useState(false);
+  const [hoverAutoPlay, setHoverAutoPlay] = useState(false);
 
   let arrowState = false;
+  let autoplayStarter = false;
 
-  if (proxyHoverState) {
+  if (proxyHoverState || hoverAutoPlay) {
     arrowState = true;
+    autoplayStarter = true;
   }
 
+  const hoverStateSetterEnter = () => {
+    setHoverAutoPlay(true);
+    setHoverState(true);
+  };
+
+  const hoverStateSetterExit = () => {
+    setHoverAutoPlay(false);
+    setHoverState(false);
+  };
+
   const properties = {
+    duration: 1200,
     transitionDuration: 1000,
     easing: "linear",
     indicators: true,
     arrows: arrowState,
-    autoplay: false,
+    autoplay: autoplayStarter,
+    pauseOnHover: false,
     cssClass: "ImageSlide",
   };
 
@@ -30,8 +45,10 @@ function ImageSlide({ spot }) {
     <div
       id="container-image-slide-id"
       className="container-image-slide"
-      onMouseEnter={() => setHoverState(true)}
-      onMouseLeave={() => setHoverState(false)}
+      // onMouseEnter={() => setHoverState(true) && setHoverAutoPlay(true)}
+      // onMouseLeave={() => setHoverState(false) && setHoverAutoPlay(false)}
+      onMouseEnter={() => hoverStateSetterEnter()}
+      onMouseLeave={() => hoverStateSetterExit()}
     >
       <Fade {...properties}>
         {imageArray.map((image) => (
