@@ -68,7 +68,6 @@ export default function SpotDetailPage() {
     }
   };
 
-
   useEffect(() => {
     if (date) {
       const displayDate = `${
@@ -101,8 +100,14 @@ export default function SpotDetailPage() {
       <h1>{spot?.name}</h1>
       <div
         className="spot_image_container"
-        style={{ backgroundImage: `url(${spot?.images[0]})` }}
-      ></div>
+        // style={{ backgroundImage: `url(${spot?.images[0]})` }}
+      >
+        <img
+          style={{ objectFit: "cover", width: "100%", height: "100%" }}
+          src={spot?.images[0]}
+          alt="spot-details-container"
+        />
+      </div>
       <div className="spot_detail_container">
         <div className="spot_address">
           {spot?.address.length > 40 ? (
@@ -169,7 +174,9 @@ export default function SpotDetailPage() {
                       1)
                   : ""}
               </div>
-              {showError && <p className="reviewError">Please select a range of dates</p>}
+              {showError && (
+                <p className="reviewError">Please select a range of dates</p>
+              )}
               <button type="submit" className="modifyBtn">
                 Book
               </button>
