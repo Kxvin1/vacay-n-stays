@@ -72,6 +72,7 @@ export default function SpotForm() {
     );
 
     await addImages(cleanImages, spotData[1].id);
+    window.alert("Successful post.");
     history.push("/");
   };
 
