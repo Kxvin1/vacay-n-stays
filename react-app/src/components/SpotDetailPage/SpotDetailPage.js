@@ -60,7 +60,7 @@ export default function SpotDetailPage() {
     );
 
     setSuccess(true);
-    setTimeout(() => history.push("/bookings"), 5000);
+    setTimeout(() => history.push("/bookings"), 2000);
   };
 
   useEffect(() => {
@@ -148,7 +148,9 @@ export default function SpotDetailPage() {
             />
             <div className="calendar_actions">
               <input type="text" value={formattedDate} placeholder="Add date" />
-              <button type="submit" onClick={handleBooking}>Book</button>
+              <button type="submit" onClick={handleBooking}>
+                Book
+              </button>
               <button onClick={() => setFormattedDate("")}>Clear</button>
             </div>
           </form>
