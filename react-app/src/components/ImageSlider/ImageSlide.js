@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { Fade } from "react-slideshow-image";
+import { Fade, Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
 import { Link } from "react-router-dom";
 
@@ -31,9 +31,9 @@ function ImageSlide({ spot }) {
   };
 
   const properties = {
-    duration: 1200,
-    transitionDuration: 1000,
-    easing: "linear",
+    duration: 2500,
+    transitionDuration: 350,
+    easing: "ease-out",
     indicators: true,
     arrows: arrowState,
     autoplay: autoplayStarter,
@@ -50,7 +50,7 @@ function ImageSlide({ spot }) {
       onMouseEnter={() => hoverStateSetterEnter()}
       onMouseLeave={() => hoverStateSetterExit()}
     >
-      <Fade {...properties}>
+      <Slide {...properties}>
         {imageArray.map((image) => (
           <Link to={`/spots/${spot.id}`} key={`Slider-${image.id}`}>
             <div
@@ -59,10 +59,11 @@ function ImageSlide({ spot }) {
                 backgroundImage: `url(${image}), url("https://i.imgur.com/MJ5yHQw.jpg")`,
               }}
               id="single-image-slide-id"
+              className="container-image-slide"
             ></div>
           </Link>
         ))}
-      </Fade>
+      </Slide>
     </div>
   );
 }
