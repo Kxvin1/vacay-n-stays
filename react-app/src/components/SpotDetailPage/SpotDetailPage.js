@@ -105,7 +105,7 @@ export default function SpotDetailPage() {
         <img
           style={{ objectFit: "cover", width: "100%", height: "100%" }}
           src={spot?.images[0]}
-          alt="NICE"
+          alt="spot-details-container"
         />
       </div>
       <div className="spot_detail_container">

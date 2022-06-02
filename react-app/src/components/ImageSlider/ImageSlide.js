@@ -64,7 +64,7 @@ function ImageSlide({ spot }) {
               <img
                 style={{ objectFit: "cover", width: "100%", height: "100%" }}
                 src={image}
-                alt="COOL"
+                alt="single-slide"
               />
             </div>
           </Link>
