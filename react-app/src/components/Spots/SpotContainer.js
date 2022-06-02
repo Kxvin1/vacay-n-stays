@@ -24,7 +24,7 @@ export default function SpotContainer({ spots }) {
               </div>
               <div className="spot_price" style={{ fontWeight: "bold" }}>
                 ${spot?.price}
-                <span style={{ fontWeight: "lighter" }}> night</span>
+                <span style={{ fontWeight: "lighter" }}>/night</span>
               </div>
             </div>
           </div>
