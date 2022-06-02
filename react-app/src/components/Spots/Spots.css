@@ -8,6 +8,11 @@
   margin-top: 9rem;
 }
 
+.spot_info_main_container {
+  margin-top: 2em;
+  margin-bottom: 1.5em;
+}
+
 .all_spots_container {
   display: flex;
   flex-wrap: wrap;

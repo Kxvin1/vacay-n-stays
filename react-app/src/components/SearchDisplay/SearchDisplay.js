@@ -175,8 +175,9 @@ function SearchDisplay() {
                               {spotInfo?.user.last_name}
                             </div>
                             <div className="info_window_price">
+                              <span style={{ fontWeight: "400" }}>Price:</span>{" "}
                               ${spotInfo?.price}
-                              <span className="perNightSpan"> night</span>
+                              <span className="perNightSpan">/night</span>
                             </div>
                           </div>
                         </div>

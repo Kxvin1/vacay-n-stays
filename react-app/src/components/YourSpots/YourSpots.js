@@ -224,8 +224,9 @@ export default function YourSpots() {
                       {spotInfo?.user.first_name} {spotInfo?.user.last_name}
                     </div>
                     <div className="info_window_price">
-                      ${spotInfo?.price}
-                      <span className="perNightSpan"> night</span>
+                      <span style={{ fontWeight: "400" }}>Price:</span> $
+                      {spotInfo?.price}
+                      <span className="perNightSpan">/night</span>
                     </div>
                   </div>
                 </div>
