@@ -159,9 +159,6 @@ function BookingCard({ booking, upcoming, user }) {
       {deleteAvailable && (
         <div className="delete-booking-modal">
           <div className="delete-booking-form">
-            <div className="delete-confirmation-modal">{`Are you sure you want to cancel your trip at ${
-              booking?.spot?.name
-            } on ${"test"}?`}</div>
             <div className="delete-confirmation-modal">{`Are you sure you want to cancel your trip at ${booking?.spot?.name} on ${checkInDateFormatted}?`}</div>
             <div className="delete-booking-confirm-buttons">
               <div class="delete-button" onClick={deleteBooking}>
