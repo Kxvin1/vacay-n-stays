@@ -54,9 +54,9 @@ const Reviews = ({ spotId, reviews, user }) => {
 
   return (
     <>
-      <h2>Reviews</h2>
+      <h2 id="starRatings">Reviews</h2>
       <h4 className="center">{avgRatings[1]} total reviews</h4>
-      <div id="starRatings" className="starAvgs">
+      <div className="starAvgs">
         
         <div>Cleanliness</div>
         <div className="bar">

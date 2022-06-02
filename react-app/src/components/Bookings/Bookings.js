@@ -15,7 +15,7 @@ function Bookings() {
 
   // console.log(bookings, "bookings use selector state.bookings");
 
-  bookings.sort((a, b) => b.id - a.id);
+  bookings.sort((a, b) => b?.id - a?.id);
 
   useEffect(() => {
     dispatch(loadUserBookingsThunk(user?.id)).then(setLoaded(true));

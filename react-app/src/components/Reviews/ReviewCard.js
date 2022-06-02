@@ -72,7 +72,7 @@ const ReviewCard = ({ review, user }) => {
 
   return (
     <div className="singleReview">
-      <img className="avatar" src={avatars[review?.user_id]} />
+      <img className="avatar" src={avatars[review?.user_id]} alt="avatar" />
       <h3>{review?.user.first_name}</h3>
       <p>{review.date.slice(0, 16)}</p>
       <div className="rating">

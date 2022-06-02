@@ -39,7 +39,8 @@ const ReviewForm = ({ userId, spotId }) => {
     setLocationRating(0);
     setValueRating(0);
     setComment('');
-
+    setShowError(false)
+    
     document.querySelector("#starRatings").scrollIntoView({behavior: 'smooth' });
     }
   };

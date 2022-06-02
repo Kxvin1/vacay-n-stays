@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 import { loadSpotReviews } from "../../store/reviews";
 import { addNewBookingThunk } from "../../store/booking";
 import { getSpots } from "../../store/spots";
-import { getUserSpots } from "../../store/your_spots";
+
 import Reviews from "../Reviews/Reviews";
+
 import DatePicker from "react-calendar";
 import ReactBnbGallery from "react-bnb-gallery";
 import { GoogleMap, Marker } from "@react-google-maps/api";
@@ -28,11 +29,11 @@ const options = {
 
 export default function SpotDetailPage() {
   const dispatch = useDispatch();
-  const { spotId } = useParams();
+  const history = useHistory();
 
+  const { spotId } = useParams();
   const user = useSelector((state) => state.session.user);
   const spot = useSelector((state) => state.spots[spotId]);
-  // const spot = useSelector((state) => state.yourSpots[spotId]);
   const reviews = useSelector((state) => Object.values(state.reviews));
 
   const [date, setDate] = useState(null);
@@ -40,54 +41,26 @@ export default function SpotDetailPage() {
   const [photoIndex, setPhotoIndex] = useState(0);
   const [photoObject, setPhotoObject] = useState([]);
   const [showPhotoModal, setShowPhotoModal] = useState(false);
+  const [showSuccess, setSuccess] = useState(false);
 
   useEffect(() => {
     dispatch(getSpots(spotId));
     dispatch(loadSpotReviews(spotId));
   }, [dispatch, spotId]);
 
-  useEffect(() => {
-    dispatch(getUserSpots(user.id));
-  }, [dispatch, spotId]);
-
-  // useEffect(() => {
-  //   if (date) {
-  //     const displayDate = `${
-  //       date[0].getMonth() + 1
-  //     }/${date[0].getDate()}/${date[0].getFullYear()} - ${
-  //       date[1].getMonth() + 1
-  //     }/${date[1].getDate()}/${date[1].getFullYear()}`;
-  //     setFormattedDate(displayDate);
-  //   }
-  // }, [date]);
-
-  const monthFormatter = {
-    Jan: "1",
-    Feb: "2",
-    Mar: "3",
-    Apr: "4",
-    May: "5",
-    Jun: "6",
-    Jul: "7",
-    Aug: "8",
-    Sep: "9",
-    Oct: "10",
-    Nov: "11",
-    Dec: "12",
-  };
-
   const handleBooking = async (e) => {
     e.preventDefault();
 
     const checkInDate = date[0].toISOString().split("T")[0];
-    console.log(checkInDate);
 
     const checkOutDate = date[1].toISOString().split("T")[0];
-    console.log(checkOutDate);
 
     const data = await dispatch(
       addNewBookingThunk(user.id, spotId, checkInDate, checkOutDate)
     );
+
+    setSuccess(true);
+    setTimeout(() => history.push("/bookings"), 5000);
   };
 
   useEffect(() => {
@@ -140,6 +113,7 @@ export default function SpotDetailPage() {
           {spot?.images.map((image) => (
             <img
               className="image"
+              key={image.id}
               src={image}
               alt={image.id}
               onClick={() => handlePhotos()}
@@ -160,24 +134,25 @@ export default function SpotDetailPage() {
         </div>
         <div className="booking_container">
           <h2>Booking</h2>
-          <form onSubmit={handleBooking}>
+          <form>
             <DatePicker
               onChange={(picked) => setDate(picked)}
               value={date}
               view={"month"}
               showFixedNumberOfWeeks={true}
-              activeStartDate={new Date()}
               prev2Label={null}
               next2Label={null}
               returnValue="range"
               selectRange={true}
-              tileDisabled={({ activeStartDate, date }) => date < activeStartDate}
+              tileDisabled={({ date }) => date < new Date()}
             />
-            <input type="text" value={formattedDate} placeholder="Add date" />
-            <button type="Submit">Book</button>
+            <div className="calendar_actions">
+              <input type="text" value={formattedDate} placeholder="Add date" />
+              <button type="submit" onClick={handleBooking}>Book</button>
+              <button onClick={() => setFormattedDate("")}>Clear</button>
+            </div>
           </form>
         </div>
-        <div></div>
       </div>
       <div className="spot_map">
         <GoogleMap
@@ -204,6 +179,14 @@ export default function SpotDetailPage() {
       <div className="reviews_container">
         <Reviews spotId={spotId} reviews={reviews} user={user} />
       </div>
+      {showSuccess && (
+        <div className="modal">
+          <div className="reviewFormModal">
+            <p>Booking Successful, Redirecting Now</p>
+            <p>Enjoy your Stay!</p>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
