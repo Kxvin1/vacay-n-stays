@@ -54,6 +54,13 @@ export default function SpotEditForm() {
       return;
     }
 
+    console.log(coordinates, address);
+
+    if (coordinates.lat === null || coordinates.lng === null) {
+      window.alert("Invalid address, please use one of the options listed.");
+      return;
+    }
+
     const data = {
       user_id: user.id,
       name,
@@ -70,6 +77,7 @@ export default function SpotEditForm() {
     const spotData = await dispatch(editSpot(data, spotToEdit.id));
 
     await addImages(images, spotData[1].id);
+    window.alert("Successful edit.");
     history.push(`/spots/${spotData[1].id}`);
   };
 
@@ -105,7 +113,7 @@ export default function SpotEditForm() {
     //   errors.push("Please include a description for your Spot.");
     // if (!address.length)
     //   errors.push("Please include an address for your Spot.");
-    // if (images.length < 3) errors.push("Please include at least 3 images");
+    if (images.length < 3) errors.push("Please include at least 3 images");
     // if (!state.length) errors.push("Please include the state for your Spot.");
     // if (!country.length) errors.push("Please include Country for your Spot.");
     setValidationErrors(errors);
@@ -120,20 +128,6 @@ export default function SpotEditForm() {
             <div className="spot_form_field_container">
               <div className="spot_input_main_container">
                 <h3>Edit {name}:</h3>
-                <div className="error_container_div">
-                  <ul className="error_container">
-                    {validationErrors.length > 0 &&
-                      validationErrors.map((error) => (
-                        <li
-                          className="error"
-                          key={error}
-                          style={{ color: "red" }}
-                        >
-                          {error}
-                        </li>
-                      ))}
-                  </ul>
-                </div>
                 <div className="spot_name_container_input spot_input">
                   <label className="label">Name:</label>
                   <input
