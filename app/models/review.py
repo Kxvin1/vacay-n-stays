@@ -31,3 +31,11 @@ class Review(db.Model):
             "user": self.user.owner_info(),
             "value": self.value,
         }
+
+    def review_info(self):
+        return {
+             "id": self.id,
+             "cleanliness": self.cleanliness,
+             "value": self.value,
+             "location": self.location,
+        }

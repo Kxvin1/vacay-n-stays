@@ -13,6 +13,11 @@
   margin-top: 0;
 }
 
+.cont_search {
+  display: flex;
+  justify-content: space-between;
+}
+
 .search-spot-map {
   width: 50%;
   flex: 1;

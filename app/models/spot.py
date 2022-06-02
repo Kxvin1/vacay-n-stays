@@ -48,6 +48,13 @@ class Spot(db.Model):
             "price": self.price,
             "user": self.user.owner_info(),
             "images": [image.image_info() for image in self.images],
+            "cleanSum": sum([review.review_info()["cleanliness"] for review in self.review]),
+            "cleanLen": len([review.review_info()["cleanliness"] for review in self.review]),
+            "valueSum": sum([review.review_info()["value"] for review in self.review]),
+            "valueLen": len([review.review_info()["value"] for review in self.review]),
+            "locSum": sum([review.review_info()["location"] for review in self.review]),
+            "locLen": len([review.review_info()["location"] for review in self.review]),
+            "totalReview": len([review.review_info() for review in self.review])
         }
 
     def booking_info(self):
