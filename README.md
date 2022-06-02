@@ -217,7 +217,7 @@ Inspired by Airbnb, VacayNStays is a single page online marketplace app where us
 
 - The map zooms and pans to that spot to show the surroundings and any nearby shops that might interest the user.
 
-![Zoomed In](https://i.imgur.com/PUGI1m6.jpeg)
+![Zoomed In](https://i.imgur.com/OhenHeL.png)
 
 
 ## Page Not Found
