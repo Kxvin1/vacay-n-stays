@@ -28,7 +28,7 @@ function BookingCard({ booking, upcoming, user }) {
   const checkInDate = () => {
     const dateFromDb = booking?.check_in?.split(" ");
     // console.log(booking.check_in.split(" "));
-    console.log(dateFromDb); // => returns an array with length of 6, example below
+    // console.log(dateFromDb); // => returns an array with length of 6, example below
     // [0, 1, 2, 3, 4, 5]
     // 0 = "Sun,"
     // 1 = "24"
@@ -127,6 +127,15 @@ function BookingCard({ booking, upcoming, user }) {
             </div>
           </div>
           {upcoming && (
+            <div className="get-directions-booking-page-button">
+              <Link to={`/directions/${booking?.spot?.id}`}>
+                <div className="get-directions-booking-button-inner">
+                  Get Directions
+                </div>
+              </Link>
+            </div>
+          )}
+          {upcoming && (
             <div className="delete-booking-page-button">
               <div
                 className="delete-booking-button-inner"
@@ -135,15 +144,6 @@ function BookingCard({ booking, upcoming, user }) {
                 <i className="fas fa-trash"></i>
                 {/* Cancel Trip */}
               </div>
-            </div>
-          )}
-          {upcoming && (
-            <div className="get-directions-booking-page-button">
-              <Link to={`/directions/${booking?.spot?.id}`}>
-                <div className="get-directions-booking-button-inner">
-                  Get Directions
-                </div>
-              </Link>
             </div>
           )}
         </div>

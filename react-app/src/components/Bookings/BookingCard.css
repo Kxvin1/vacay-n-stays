@@ -146,7 +146,7 @@
 
 .delete-booking-page-button {
   display: flex;
-  margin-top: -8em;
+  margin-top: 0.5em;
   /* margin-right: 12em; */
   /* margin-left: 45em; */
   justify-content: flex-end;
@@ -183,7 +183,7 @@
   /* margin-bottom: 8em; */
   /* margin-right: 20em; */
   /* margin-left: 25em; */
-  /* margin-top: 10em; */
+  margin-top: -2em;
   justify-content: center;
   /* align-self: flex-end; */
   /* position: fixed; */
@@ -193,8 +193,8 @@
 }
 
 .get-directions-booking-page-button div {
-  width: 10em;
-  height: 2em;
+  width: 8em;
+  height: 0.7em;
   text-align: center;
   display: flex;
   justify-content: center;
