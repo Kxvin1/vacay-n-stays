@@ -85,8 +85,14 @@ function BookingCard({ booking, upcoming, user }) {
           <div className="specific-booking-info-card">
             <div
               className="booking-picture"
-              style={{ backgroundImage: `url(${booking?.spot?.images[0]})` }}
-            ></div>
+              // style={{ backgroundImage: `url(${booking?.spot?.images[0]})` }}
+            >
+              <img
+                style={{ objectFit: "cover", width: "100%", height: "100%" }}
+                src={booking?.spot?.images[0]}
+                alt="single-slide"
+              />
+            </div>
             <div className="booking-spot-info">
               <div className="booking-spot-info-container-center">
                 <div className="booking-confirmed-details">
