@@ -1,6 +1,6 @@
 # Vacay N Stays
 
-Inspired by Airbnb, VacayNStays is an online marketplace single page app where users can book vacations at luxurious and unique vacation spots. Users can search for spots and either book stays at these spots, create their own spot or leave reviews for spots.
+Inspired by Airbnb, VacayNStays is a single page online marketplace app where users can book vacations at luxurious and unique vacation spots. Users can search for spots and either book stays at these spots, create their own spot or leave reviews for spots.
 
 ### Here are some key features:
   - Leveraged Redux to create a single page app to dynamically render React components without a refresh
