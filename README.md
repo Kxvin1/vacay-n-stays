@@ -108,6 +108,10 @@ Inspired by Airbnb, VacayNStays is a single page online marketplace app where us
 
 ![Home Page Authenticated](https://i.imgur.com/NPVBOq4.jpeg)
 
+- When hovering over a spot arrows appear so the user can view all of the images of the spot.
+
+![Home Page Arrows](https://i.imgur.com/TlIeSvG.jpeg)
+
 
 ## Spot Details
 
@@ -139,19 +143,19 @@ Inspired by Airbnb, VacayNStays is a single page online marketplace app where us
 
 - When clicking on 'My Spots' the user is redirected to a page that contains a list of all the logged in User's created spots.
 
-![Your Spots Blank](https://i.imgur.com/u2E88ya.jpeg)
+![Your Spots Blank](https://i.imgur.com/zG7Oto4.jpeg)
 
 - When a User hovers over a marker on the map and clicks it an image modal pops up with details of that specific spot.
 
-![Image Modal Spot](https://i.imgur.com/W4b0smC.jpeg)
+![Image Modal Spot](https://i.imgur.com/bhpkFJX.jpeg)
 
 - When a user hovers over a spot, 3 buttons appear: Click to view on map, an Edit button, and a Delete button.
 
-![Your Spots Hovered](https://i.imgur.com/vSb5dkX.jpeg)
+![Your Spots Hovered](https://i.imgur.com/5QHeX1Y.jpeg)
 
 - Clicking on the red Click to view on map will pan the map to that specific spot
 
-![Click To View Spot](https://i.imgur.com/j8kuMVD.png)
+![Click To View Spot](https://i.imgur.com/Cj27baG.jpeg)
 
 
 ## Adding and Editing a Spot
@@ -160,12 +164,12 @@ Inspired by Airbnb, VacayNStays is a single page online marketplace app where us
 - Users can add images via drag and drop
 - Address and latitude and longitude are automatically filled out via Google Maps API
 
-![Post A Spot](https://i.imgur.com/shHyHXl.png)
+![Post A Spot](https://i.imgur.com/UJj0X98.png)
 
 - A User can also edit a spot
 - The layout and functionality is similar to the Post A Spot page
 
-![Edit a Spot](https://i.imgur.com/OcswhtO.png)
+![Edit a Spot](https://i.imgur.com/z98rnGD.png)
 
 
 ## Bookings
@@ -193,19 +197,20 @@ Inspired by Airbnb, VacayNStays is a single page online marketplace app where us
 - This is the page that displays when a user accesses the search bar.
   - On the left, they are shown a list of all the results of the search that met their criteria.
   - On the right is a Google Map of all the spots with their respective locations marked on the map that display as that spot's price per night.
-![Search Page](https://i.imgur.com/eexkSjI.jpeg)
+
+![Search Page](https://i.imgur.com/N2cCFPs.jpeg)
 
 - When a User hovers over a marker on the map and clicks it an image modal pops up with details of that specific spot.
 
-![Image Modal Spot](https://i.imgur.com/W4b0smC.jpeg)
+![Image Modal Spot](https://i.imgur.com/yfweQLq.jpeg)
 
 -  When hovering over a specific spot, a clickable button appears "Click to view on map" that will zoom into the map to that specific spot.
 
-![Click To View](https://i.imgur.com/em1wDR1.jpeg)
+![Click To View](https://i.imgur.com/5l3GAAc.jpeg)
 
 - The map zooms and pans to that spot to show the surroundings and any nearby shops that might interest the user.
 
-![Zoomed In](https://i.imgur.com/NmfD1jt.png)
+![Zoomed In](https://i.imgur.com/PUGI1m6.jpeg)
 
 
 ## Page Not Found
