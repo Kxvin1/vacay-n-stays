@@ -6,6 +6,12 @@
   top: 100px;
 }
 
+.dots {
+  color: blue;
+  font-size: small;
+  border-bottom: 1px solid blue;
+}
+
 .your_spot_name {
   margin-left: 1.5em;
   font-size: 1.2em;
@@ -15,6 +21,16 @@
 
 .main_content_your_spots {
   margin-top: 10rem;
+}
+
+.star_rating_container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.cont {
+  display: flex;
+  justify-content: flex-start;
 }
 
 .your_spot_empty_container {

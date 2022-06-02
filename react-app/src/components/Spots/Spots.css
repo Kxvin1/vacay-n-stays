@@ -8,6 +8,10 @@
   margin-top: 9rem;
 }
 
+.spot_city_rating {
+  display: flex;
+}
+
 .spot_info_main_container {
   margin-top: 2em;
   margin-bottom: 1.5em;
@@ -32,6 +36,13 @@
   margin-top: 0.2rem;
   margin-bottom: 0.2rem;
   font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+}
+
+.spot_main_avg_rating {
+  font-size: small;
+  margin-left: 0.2rem;
 }
 
 .all_spots_main_header {
@@ -41,6 +52,7 @@
 .spot_city {
   margin-top: 0.2rem;
   margin-bottom: 0.2rem;
+  margin-right: 5rem;
 }
 
 .spot_host {
