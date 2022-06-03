@@ -65,7 +65,6 @@ export default function SpotDetailPage() {
 
       setSuccess(true);
       setTimeout(() => window.location.reload(true), 2000);
-      
     }
   };
 
@@ -96,14 +95,12 @@ export default function SpotDetailPage() {
     setShowPhotoModal(true);
   };
 
-  function bookingTotal (date1, date2) {
+  function bookingTotal(date1, date2) {
     let oned = 24 * 60 * 60 * 1000;
     const days = Math.ceil((date2 - date1) / oned);
 
-    return spot?.price * days
-
- }
- 
+    return spot?.price * days;
+  }
 
   return (
     <div className="spot_detail_main_container">
@@ -170,14 +167,14 @@ export default function SpotDetailPage() {
             <div className="calendar_actions">
               <div>${spot?.price} per night</div>
               <div className="checkin">
-                CheckIn: {date ? date[0].toISOString().split("T")[0] : ""}
+                Check In Date: {date ? date[0].toISOString().split("T")[0] : ""}
               </div>
               <div className="checkout">
-                CheckOut: {date ? date[1].toISOString().split("T")[0] : ""}
+                Check Out Date:{" "}
+                {date ? date[1].toISOString().split("T")[0] : ""}
               </div>
               <div className="total">
-                Total Price: $
-                  {date ? bookingTotal(date[0], date[1]) : ""}
+                Total Price: ${date ? bookingTotal(date[0], date[1]) : ""}
               </div>
               {showError && (
                 <p className="reviewError">Please select a range of dates</p>
