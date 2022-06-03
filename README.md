@@ -125,7 +125,7 @@ Inspired by Airbnb, VacayNStays is a single page online marketplace app where us
 - On the right is a calendar that allows a User to book a stay at this spot.
 - Below those two is a Google Map displaying the location of the spot.
 
-![Spot Details 2](https://i.imgur.com/MdUmVjO.png)
+![Spot Details 2](https://i.imgur.com/C9Ov1Vw.jpeg)
 
 - Image Modal
 
@@ -133,7 +133,7 @@ Inspired by Airbnb, VacayNStays is a single page online marketplace app where us
 
 - The Spot's reviews are shown here and all the User reviews are calculated to display an average via the ratings bar.
 
-![Spot Details 3](https://i.imgur.com/Yo2cqDf.png)
+![Spot Details 3](https://i.imgur.com/ANNrnja.png)
 
 - To achieve a cleaner look on the site, the edit and delete icons only show when the logged in User wrote the comment themselves.
 
