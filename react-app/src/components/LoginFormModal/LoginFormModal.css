@@ -10,6 +10,7 @@
   font-weight: 500;
   padding-right: 20px;
   transition: all 0.5s;
+  width: 5em;
 }
 
 .login-btn-modal:hover {
