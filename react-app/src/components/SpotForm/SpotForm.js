@@ -44,8 +44,30 @@ export default function SpotForm() {
       return;
     }
 
+    // if state and address does not match return alert here.
+    let addressSplit = address.split(" ");
+
+    let stateWithComma = state + ",";
+    let stateWithoutComma = state;
+    let count = 0;
+
     if (coordinates.lat === null || coordinates.lng === null) {
       window.alert("Invalid address, please select one of the options listed.");
+      return;
+    }
+
+    for (let i = 0; i < addressSplit.length; i++) {
+      let word = addressSplit[i].toLowerCase();
+      if (
+        word === stateWithComma.toLowerCase() ||
+        word === stateWithoutComma.toLowerCase()
+      ) {
+        count += 1;
+      }
+    }
+
+    if (count === 0) {
+      window.alert("Please make sure your state and address matches");
       return;
     }
 
@@ -243,18 +265,19 @@ export default function SpotForm() {
                     type="number"
                     value={price}
                     onChange={(e) => setPrice(e.target.value)}
+                    required
                   ></input>
                 </div>
               </div>
               <div className="form_input_section" id="imageUploadSection">
                 <div className="field_section_container">
                   <h3 className="imagesHeader">Images</h3>
-                  <div className="error_container_div">
-                    <ul className="error_container">
+                  <div className="erro_container_div">
+                    <ul className="erro_container">
                       {validationErrors.length > 0 &&
                         validationErrors.map((error) => (
                           <li
-                            className="error"
+                            className="erro"
                             key={error}
                             style={{ color: "red" }}
                           >
