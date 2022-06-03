@@ -243,18 +243,19 @@ export default function SpotForm() {
                     type="number"
                     value={price}
                     onChange={(e) => setPrice(e.target.value)}
+                    required
                   ></input>
                 </div>
               </div>
               <div className="form_input_section" id="imageUploadSection">
                 <div className="field_section_container">
                   <h3 className="imagesHeader">Images</h3>
-                  <div className="error_container_div">
-                    <ul className="error_container">
+                  <div className="erro_container_div">
+                    <ul className="erro_container">
                       {validationErrors.length > 0 &&
                         validationErrors.map((error) => (
                           <li
-                            className="error"
+                            className="erro"
                             key={error}
                             style={{ color: "red" }}
                           >

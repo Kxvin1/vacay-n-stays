@@ -234,24 +234,25 @@ export default function SpotEditForm() {
         ></input>
       </div> */}
                 <div className="spot_price_input spot_input">
-                  <label className="label">Price $:</label>
+                  <label className="label">Price/night:</label>
                   <input
                     class="spot_price"
                     type="number"
                     value={price}
                     onChange={(e) => setPrice(e.target.value)}
+                    required
                   ></input>
                 </div>
               </div>
               <div className="formInputSection" id="imageUploadSection">
                 <div className="field_section_container">
                   <h3 className="imagesHeader">Images</h3>
-                  <div className="error_container_div">
-                    <ul className="error_container">
+                  <div className="erro_container_div">
+                    <ul className="erro_container">
                       {validationErrors.length > 0 &&
                         validationErrors.map((error) => (
                           <li
-                            className="error"
+                            className="erro"
                             key={error}
                             style={{ color: "red" }}
                           >
