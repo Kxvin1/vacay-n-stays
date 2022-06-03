@@ -25,24 +25,35 @@ function LoginForm() {
     const errors = [];
 
     const data = await dispatch(login(email, password));
-    // console.log(userError);
-    if (data[0] && data[1]) {
-      let emailError = data[0].split(":")[1].trimStart();
-      errors.push(emailError);
-      let userError = data[1].split(":")[1].trimStart();
-      errors.push(userError);
-      clearForm();
-      setErrors(errors);
-    } else if (data[0]) {
-      let emailError = data[0].split(":")[1].trimStart();
-      errors.push(emailError);
-      clearForm();
-      setErrors(errors);
-    } else if (data[1]) {
-      let userError = data[1].split(":")[1].trimStart();
-      errors.push(userError);
-      clearForm();
-      setErrors(errors);
+
+    let emailError;
+    let userError;
+
+    if (data) {
+      if (data[0] && data[1]) {
+        emailError = data[0].split(":")[1].trimStart();
+        userError = data[1].split(":")[1].trimStart();
+
+        errors.push(emailError);
+        errors.push(userError);
+
+        clearForm();
+        setErrors(errors);
+      } else if (data[0]) {
+        emailError = data[0].split(":")[1].trimStart();
+        errors.push(emailError);
+
+        clearForm();
+        setErrors(errors);
+      } else if (data[1]) {
+        userError = data[1].split(":")[1].trimStart();
+        errors.push(userError);
+
+        clearForm();
+        setErrors(errors);
+      } else {
+        dispatch(login(email, password));
+      }
     }
   };
 
