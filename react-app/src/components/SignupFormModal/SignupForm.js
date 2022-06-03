@@ -19,11 +19,14 @@ function SignupForm() {
     e.preventDefault();
 
     if (password === confirmPassword) {
-
-      const data = await dispatch(signUp(first_name, last_name, email, password));
+      const data = await dispatch(
+        signUp(first_name, last_name, email, password)
+      );
       if (data) {
-        setErrors(data)
+        setErrors(data);
       }
+    } else {
+      return setErrors(["passwords do not match"]);
     }
   };
 
