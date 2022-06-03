@@ -84,9 +84,9 @@ Inspired by Airbnb, VacayNStays is a single page online marketplace app where us
 
 ## Home Page (logged out) & User Authentication
 
-- A User that isn't logged in can browse the catalog of spots and use the search feature.
+- A User that isn't logged in can browse the catalog of spots.
 
-![Splash Page](https://i.imgur.com/3gbHgcv.jpeg)
+![Splash Page](https://i.imgur.com/RTfJ2rX.jpeg)
 
 - A User that isn't logged is not able to click and view the details of the spot. 
   - The User will be redirected to a 403 FORBIDDEN page if they attempt to access a page they are not allowed to until they log in.
@@ -98,20 +98,20 @@ Inspired by Airbnb, VacayNStays is a single page online marketplace app where us
 
 - Users can log into an existing account or sign up. Alternatively, users can test the site with the Demo Login feature.
 
-![Login Modal](https://i.imgur.com/qGly91y.jpeg)
-![Signup Modal](https://i.imgur.com/PMlygWn.jpeg)
+![Login Modal](https://i.imgur.com/8egfXXt.jpeg)
+![Signup Modal](https://i.imgur.com/esYbV5a.jpeg)
 
 
 ## Home Page (logged in)
 
 - A User that is logged in will gain additional links to their navigation bar: My Spots, Trips, Post A Spot. The footer will also disappear.
 
-![Home Page Authenticated](https://i.imgur.com/2g7Gzs3.jpeg)
+![Home Page Authenticated](https://i.imgur.com/1Kykha9.jpeg)
 
 - When hovering over a spot arrows appear so the user can easily view all of the images of the spot.
 - In addition, if the User's cursor stays hovered on an image, every 2.5 seconds the image will auto slide to the next without having to click.
 
-![Home Page Arrows](https://i.imgur.com/PyQjVf7.png)
+![Home Page Arrows](https://i.imgur.com/89Qc88T.png)
 
 
 ## Spot Details
