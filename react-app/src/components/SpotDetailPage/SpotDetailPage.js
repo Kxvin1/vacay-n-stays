@@ -64,7 +64,8 @@ export default function SpotDetailPage() {
       );
 
       setSuccess(true);
-      setTimeout(() => setSuccess(false), 2000);
+      setTimeout(() => window.location.reload(true), 2000);
+      
     }
   };
 
@@ -94,6 +95,15 @@ export default function SpotDetailPage() {
     setPhotoIndex(photoIndex);
     setShowPhotoModal(true);
   };
+
+  function bookingTotal (date1, date2) {
+    let oned = 24 * 60 * 60 * 1000;
+    const days = Math.ceil((date2 - date1) / oned);
+
+    return spot?.price * days
+
+ }
+ 
 
   return (
     <div className="spot_detail_main_container">
@@ -157,7 +167,6 @@ export default function SpotDetailPage() {
               selectRange={true}
               tileDisabled={({ date }) => date < new Date()}
             />
-            {console.log(date)}
             <div className="calendar_actions">
               <div>${spot?.price} per night</div>
               <div className="checkin">
@@ -168,17 +177,7 @@ export default function SpotDetailPage() {
               </div>
               <div className="total">
                 Total Price: $
-                {formattedDate
-                  ? spot?.price *
-                    (formattedDate.split("/")[3] -
-                      formattedDate.split("/")[1] +
-                      1)
-                  : ""}
-                  {console.log(formattedDate
-                  ? formattedDate.split("/")[1] : "")}
-                  {console.log(formattedDate
-                  ? formattedDate.split("/")[3] : "")}
-                  
+                  {date ? bookingTotal(date[0], date[1]) : ""}
               </div>
               {showError && (
                 <p className="reviewError">Please select a range of dates</p>
@@ -218,7 +217,7 @@ export default function SpotDetailPage() {
       {showSuccess && (
         <div className="modal">
           <div className="reviewFormModal">
-            <p>Booking Successful, Redirecting Now</p>
+            <p>Booking Successful, Visit Trips to see it!</p>
             <p>Enjoy your Stay!</p>
           </div>
         </div>
