@@ -17,16 +17,23 @@ function SignupForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setErrors([]);
+    const errors = [];
+
+    let emailError;
 
     if (password === confirmPassword) {
       const data = await dispatch(
         signUp(first_name, last_name, email, password)
       );
+
       if (data) {
-        setErrors(data);
+        emailError = data[0].split(":")[1].trimStart();
+        errors.push(emailError);
+        setErrors(errors);
       }
     } else {
-      return setErrors(["passwords do not match"]);
+      return setErrors(["Passwords do not match."]);
     }
   };
 

@@ -44,16 +44,12 @@ export default function SpotForm() {
       return;
     }
 
-    console.log(address);
-
     if (coordinates.lat === null || coordinates.lng === null) {
       window.alert("Invalid address, please select one of the options listed.");
       return;
     }
 
     let cleanImages = images.map((image) => image.file);
-
-    // console.log(cleanImages, "clean images");
 
     const data = {
       user_id: user.id,

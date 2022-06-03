@@ -48,11 +48,6 @@ export const loadUserBookingsThunk = (userId) => async (dispatch) => {
 // POST Booking Thunk
 export const addNewBookingThunk =
   (user_id, spot_id, check_in, check_out) => async (dispatch) => {
-    // console.log(user_id);
-    // console.log(spot_id);
-    // console.log(check_in);
-    // console.log(check_out);
-
     const res = await fetch(`/api/bookings/`, {
       method: "POST",
       headers: {
@@ -65,8 +60,6 @@ export const addNewBookingThunk =
         check_out,
       }),
     });
-
-    console.log(res);
 
     if (res.ok) {
       const bookingInfo = await res.json();

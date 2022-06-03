@@ -9,7 +9,6 @@ import { Redirect } from "react-router-dom";
 
 function LoginForm() {
   const dispatch = useDispatch();
-  const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
@@ -22,11 +21,40 @@ function LoginForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setErrors([]);
+    const errors = [];
+
     const data = await dispatch(login(email, password));
+
+    let emailError;
+    let userError;
+
     if (data) {
-      setErrors(data);
+      if (data[0] && data[1]) {
+        emailError = data[0].split(":")[1].trimStart();
+        userError = data[1].split(":")[1].trimStart();
+
+        errors.push(emailError);
+        errors.push(userError);
+
+        clearForm();
+        setErrors(errors);
+      } else if (data[0]) {
+        emailError = data[0].split(":")[1].trimStart();
+        errors.push(emailError);
+
+        clearForm();
+        setErrors(errors);
+      } else if (data[1]) {
+        userError = data[1].split(":")[1].trimStart();
+        errors.push(userError);
+
+        clearForm();
+        setErrors(errors);
+      } else {
+        dispatch(login(email, password));
+      }
     }
-    // history.push("/discover-page");
   };
 
   useEffect(() => {
@@ -47,7 +75,6 @@ function LoginForm() {
     setPassword(demoPassword);
     dispatch(sessionActions.login("dmo@dmo.com", "password"));
     clearForm();
-    // history.push("/discover-page");
   };
 
   return (
@@ -60,7 +87,7 @@ function LoginForm() {
               {error}
             </li>
           ))}
-        </ul>        
+        </ul>
         <div className="user-box">
           <input
             placeholder="Email"
