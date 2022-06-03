@@ -9,7 +9,6 @@ import { Redirect } from "react-router-dom";
 
 function LoginForm() {
   const dispatch = useDispatch();
-  const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
@@ -22,11 +21,29 @@ function LoginForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setErrors([]);
+    const errors = [];
+
     const data = await dispatch(login(email, password));
-    if (data) {
-      setErrors(data);
+    // console.log(userError);
+    if (data[0] && data[1]) {
+      let emailError = data[0].split(":")[1].trimStart();
+      errors.push(emailError);
+      let userError = data[1].split(":")[1].trimStart();
+      errors.push(userError);
+      clearForm();
+      setErrors(errors);
+    } else if (data[0]) {
+      let emailError = data[0].split(":")[1].trimStart();
+      errors.push(emailError);
+      clearForm();
+      setErrors(errors);
+    } else if (data[1]) {
+      let userError = data[1].split(":")[1].trimStart();
+      errors.push(userError);
+      clearForm();
+      setErrors(errors);
     }
-    // history.push("/discover-page");
   };
 
   useEffect(() => {
@@ -60,7 +77,7 @@ function LoginForm() {
               {error}
             </li>
           ))}
-        </ul>        
+        </ul>
         <div className="user-box">
           <input
             placeholder="Email"
