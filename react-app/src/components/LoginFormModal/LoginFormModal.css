@@ -19,3 +19,9 @@
   transform: scale(1.2);
   cursor: pointer;
 }
+
+.error {
+  position: absolute;
+  margin-top: 7em;
+  margin-left: -3em;
+}
