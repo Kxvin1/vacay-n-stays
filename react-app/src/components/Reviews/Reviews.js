@@ -64,9 +64,9 @@ const Reviews = ({ spotId, reviews, user }) => {
         ) : (
           <h4 style={{textAlign: 'center'}}>No Current Reviews</h4>
         )}
-        <div className="starAvgs">
+        <div>
           {reviews.length ? (
-            <div>
+            <div className="starAvgs">
               <div>Cleanliness</div>
               <div className="bar">
                 <div className="full">
