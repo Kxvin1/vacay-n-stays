@@ -67,7 +67,7 @@ function Header({ isLoaded }) {
   } else {
     defaultLinks = (
       <>
-        <Search />
+        {/* <Search /> */}
         <li id="login">
           <LoginFormModal />
         </li>
