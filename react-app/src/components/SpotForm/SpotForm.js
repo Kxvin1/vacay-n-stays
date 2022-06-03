@@ -58,7 +58,6 @@ export default function SpotForm() {
 
     for (let i = 0; i < addressSplit.length; i++) {
       let word = addressSplit[i].toLowerCase();
-      // console.log(word);
       if (
         word === stateWithComma.toLowerCase() ||
         word === stateWithoutComma.toLowerCase()
