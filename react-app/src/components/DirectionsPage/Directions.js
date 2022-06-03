@@ -22,8 +22,6 @@ const mapContainerStyle = {
   height: "100%",
 };
 
-// const center = { lat: 48.8584, lng: 2.3522 };
-
 export default function Directions() {
   const { spotId } = useParams();
   const dispatch = useDispatch();
@@ -79,8 +77,6 @@ export default function Directions() {
   async function getCoordinates() {
     const res = await getGeocode({ address: destinationRef.current.value });
     const { lat, lng } = await getLatLng(res[0]);
-
-    // console.log(lat, lng);
   }
   return (
     <>

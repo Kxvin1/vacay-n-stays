@@ -19,9 +19,6 @@ export const loadSearchResultsThunk = (city, state) => async (dispatch) => {
 
   if (res.ok) {
     const searchResults = await res.json();
-    // console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-    // console.log(searchResults);
-    // console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 
     dispatch(loadSearchResults(searchResults));
     return ["Results", searchResults];

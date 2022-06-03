@@ -75,7 +75,6 @@ function LoginForm() {
     setPassword(demoPassword);
     dispatch(sessionActions.login("dmo@dmo.com", "password"));
     clearForm();
-    // history.push("/discover-page");
   };
 
   return (

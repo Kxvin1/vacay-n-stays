@@ -98,8 +98,6 @@ function SearchDisplay() {
     return totalAvg.toFixed(2);
   };
 
-  // console.log(spotInfo);
-
   return (
     <>
       {isLoaded && (

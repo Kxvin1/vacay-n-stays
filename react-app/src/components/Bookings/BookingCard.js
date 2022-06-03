@@ -6,7 +6,6 @@ import DatePicker from "react-calendar";
 
 import { deleteBookingThunk } from "../../store/booking";
 import { loadSpotBookingsThunk } from "../../store/bookingSpot";
-// import { loadUserBookingsThunk } from "../../store/booking";
 
 import "./BookingCard.css";
 
@@ -27,16 +26,6 @@ function BookingCard({ booking, upcoming, user }) {
 
   const checkInDate = () => {
     const dateFromDb = booking?.check_in?.split(" ");
-    // console.log(booking.check_in.split(" "));
-    // console.log(dateFromDb); // => returns an array with length of 6, example below
-    // [0, 1, 2, 3, 4, 5]
-    // 0 = "Sun,"
-    // 1 = "24"
-    // 2 = "Jul"
-    // 3 = "2022"
-    // 4 = "00:00:00"
-    // 5 = "GMT"
-    // console.log(booking.spot.description);
     const formattedDate = [];
 
     formattedDate.push(dateFromDb[0]);
@@ -49,7 +38,6 @@ function BookingCard({ booking, upcoming, user }) {
 
   const checkOutDate = () => {
     const dateFromDb = booking?.check_out?.split(" ");
-    // console.log(dateFromDb);
     const formattedDate = [];
     formattedDate.push(dateFromDb[0]);
     formattedDate.push(dateFromDb[2]);
@@ -60,7 +48,6 @@ function BookingCard({ booking, upcoming, user }) {
 
   const spotDescriptionText = () => {
     const description = booking?.spot?.description;
-    // console.log(description.length);
     const finalResult = [];
     if (description?.length > 350) {
       let newDescription = description.slice(0, 350);

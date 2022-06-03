@@ -54,8 +54,6 @@ export default function SpotEditForm() {
       return;
     }
 
-    console.log(coordinates, address);
-
     if (coordinates.lat === null || coordinates.lng === null) {
       window.alert("Invalid address, please use one of the options listed.");
       return;

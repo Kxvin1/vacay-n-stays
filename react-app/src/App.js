@@ -4,17 +4,12 @@ import { useDispatch } from "react-redux";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import { authenticate } from "./store/session";
 
-// dont add stuff here
 import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
 import NavBar from "./components/NavBar";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
-// dont add stuff here
 
-// add new imports here ~~~~~~~~~~
-
-// new stuff
 import Header from "./components/Header/Header";
 import SpotForm from "./components/SpotForm/SpotForm";
 import YourSpots from "./components/YourSpots/YourSpots";

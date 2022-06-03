@@ -13,8 +13,6 @@ function Bookings() {
 
   const [loaded, setLoaded] = useState(false);
 
-  // console.log(bookings, "bookings use selector state.bookings");
-
   bookings.sort((a, b) => b?.id - a?.id);
 
   useEffect(() => {

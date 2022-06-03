@@ -106,7 +106,6 @@ export const uploadFile = (fileForm) => async (dispatch) => {
   form.append("spot_id", spot_id);
   form.append("newFile", newFile);
 
-  console.log("before");
   const res = await fetch("/api/spots/images", {
     method: "POST",
     body: form,
