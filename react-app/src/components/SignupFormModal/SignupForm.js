@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import * as sessionActions from "../../store/session";
-import { useDispatch } from "react-redux";
+import { signUp } from "../../store/session";
+import { useDispatch, useSelector } from "react-redux";
 
 import "./SignupForm.css";
 
@@ -14,22 +15,16 @@ function SignupForm() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (password === confirmPassword) {
-      setErrors([]);
-      return dispatch(
-        sessionActions.signUp(first_name, last_name, email, password)
-      ).catch(async (res) => {
-        const data = await res.json();
-        if (data && data.errors) {
-          setErrors(data.errors);
-        }
-      });
-    }
 
-    return setErrors(["Passwords do not match."]);
+      const data = await dispatch(signUp(first_name, last_name, email, password));
+      if (data) {
+        setErrors(data)
+      }
+    }
   };
 
   return (

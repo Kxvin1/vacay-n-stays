@@ -15,7 +15,6 @@ export const getUsers = () => async (dispatch) => {
   if (response.ok) {
     // array of users.
     const users = await response.json();
-    console.log(users);
     // console.log(users, "Thunk");
     dispatch(get(users));
   }

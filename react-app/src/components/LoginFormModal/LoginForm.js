@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import * as sessionActions from "../../store/session";
+import { login } from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
@@ -11,7 +12,7 @@ function LoginForm() {
   const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState([]);
   const user = useSelector((state) => state.session.user);
 
   const clearForm = (e) => {
@@ -19,16 +20,12 @@ function LoginForm() {
     setPassword("");
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setErrors([]);
-    dispatch(sessionActions.login(email, password)).catch(async (res) => {
-      const data = await res.json();
-      if (data && data.errors) {
-        clearForm();
-        setErrors(data.errors);
-      }
-    });
+    const data = await dispatch(login(email, password));
+    if (data) {
+      setErrors(data);
+    }
     // history.push("/discover-page");
   };
 
@@ -57,6 +54,13 @@ function LoginForm() {
     <div className="login-box">
       <form onSubmit={handleSubmit} className="login-form">
         <label className="login-header">Log in to Vacay N Stays</label>
+        <ul className="error">
+          {errors.map((error, idx) => (
+            <li key={idx} className="error-li">
+              {error}
+            </li>
+          ))}
+        </ul>        
         <div className="user-box">
           <input
             placeholder="Email"
