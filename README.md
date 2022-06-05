@@ -3,11 +3,11 @@
 Inspired by Airbnb, VacayNStays is a single page marketplace app where users can book vacations at luxurious and unique spots. Users can search for spots and either book stays at these spots, create their own spot or leave reviews for spots.
 
 ### Here are some key features:
+  - Utilized Google Maps API to dynamically display the location and markers on the map for each spot, and established additional Google Map functionality such as directions, zooming, and panning to a specific spot based on user input
   - Leveraged Redux to create a single page app to dynamically render React components without a refresh
   - Implemented CRUD features for Spots, Bookings, and Reviews
-  - Implemented Google Maps API to dynamically display the location of all spots and add markers on the map for each spot
-  - Utilized Werkzeug to hash user passwords and store them in the database to implement access control lists
-  - Integrated AWS S3 for all image uploads
+  - Used Werkzeug to hash user passwords and store them in the database to implement access control lists
+  - Integrated AWS S3 for image uploads
 
 ### Links
 - [Live Site](https://vacay-n-stays.herokuapp.com/)
