@@ -226,4 +226,4 @@ Inspired by Airbnb, VacayNStays is a single page online marketplace app where us
 
 ![Page Not Found 404](https://i.imgur.com/oGK39MC.png)
 
-## Click [Here](https://github.com/Kxvin1/vacay-n-stays#vacay-n-stays) to go back to the top of this page!
+[Back to top](https://github.com/Kxvin1/vacay-n-stays#vacay-n-stays)
