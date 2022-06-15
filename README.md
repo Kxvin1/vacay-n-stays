@@ -7,7 +7,7 @@ Inspired by Airbnb, VacayNStays is a single page marketplace app where users can
   - Leveraged Redux to create a single page app to dynamically render React components without a refresh
   - Implemented CRUD features for Spots, Bookings, and Reviews
   - Used Werkzeug to hash user passwords and store them in the database to implement access control lists
-  - Integrated AWS S3 for image uploads
+  - Connected the Python back end to AWS S3 for media storage and organization while maintaining content security with AWS IAM
 
 ### Links
 - [Live Site](https://vacay-n-stays.herokuapp.com/)
